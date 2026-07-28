@@ -10,9 +10,9 @@
         :root {
             --accent-color: #38bdf8;
             --text-main: #ffffff;
-            --text-muted: #cbd5e1;
-            --glass-bg: rgba(15, 23, 42, 0.65);
-            --border-glass: rgba(56, 189, 248, 0.3);
+            --text-muted: #e2e8f0;
+            --glass-bg: rgba(15, 23, 42, 0.55);
+            --border-glass: rgba(56, 189, 248, 0.35);
         }
 
         * {
@@ -24,13 +24,13 @@
         }
 
         body {
-            background-color: #0b0f19;
+            background-color: #050b14;
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* Transparent Background Slideshow */
+        /* Background Moving Photos Slideshow */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -50,7 +50,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.4) contrast(1.1);
+            filter: brightness(0.45) contrast(1.1);
         }
 
         .bg-slide.active {
@@ -63,7 +63,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glass);
@@ -102,14 +102,12 @@
             background: rgba(56, 189, 248, 0.25);
         }
 
-        /* Main Container */
         main {
             max-width: 1100px;
             margin: 120px auto 60px auto;
             padding: 0 20px;
         }
 
-        /* Glossy Glassmorphism Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(14px);
@@ -117,7 +115,7 @@
             border: 1px solid var(--border-glass);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             margin-bottom: 40px;
         }
 
@@ -129,6 +127,7 @@
             gap: 20px;
         }
 
+        /* Profile Photo Container */
         .profile-img-container {
             width: 160px;
             height: 160px;
@@ -205,7 +204,7 @@
 
         .date-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.2);
             color: var(--accent-color);
             padding: 2px 10px;
             border-radius: 12px;
@@ -232,7 +231,7 @@
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--border-glass);
             padding: 5px 12px;
             border-radius: 6px;
@@ -272,7 +271,7 @@
 </head>
 <body>
 
-    <!-- Transparent Background Slideshow -->
+    <!-- Transparent Background Moving Photos Slideshow using GitHub Raw Links -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
 
     <!-- Navigation Bar -->
@@ -295,10 +294,10 @@
     </header>
 
     <main>
-        <!-- About Section with my-photo.jpg -->
+        <!-- About Section with your exact GitHub profile photo -->
         <section id="about" class="glass-card hero-section">
             <div class="profile-img-container">
-                <img src="my-photo.jpg" alt="Ramappa Hanagal">
+                <img src="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/my-photo.jpg" alt="Ramappa Hanagal">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
@@ -477,14 +476,18 @@
         </section>
     </main>
 
-    <!-- Background Slideshow Script -->
+    <!-- JavaScript to automatically load all 57 background photos from GitHub -->
     <script>
         const container = document.getElementById('slideshowContainer');
-        
+        const githubUser = 'ramappahanagal-creator';
+        const repoName = 'my-web';
+        const branch = 'main';
+
         for (let i = 1; i <= 57; i++) {
             const div = document.createElement('div');
             div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
-            div.style.backgroundImage = `url('${i}.jpg')`;
+            // Correct GitHub Raw URL path for each photo
+            div.style.backgroundImage = `url('https://raw.githubusercontent.com/${githubUser}/${repoName}/${branch}/${i}.jpg')`;
             container.appendChild(div);
         }
 
