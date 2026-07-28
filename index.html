@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramappa Hanagal - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -11,21 +12,24 @@
             padding: 0;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            color: #f8fafc;
             position: relative;
             min-height: 100vh;
             overflow-x: hidden;
+            background-color: #0f172a;
         }
+        /* Background Slideshow for 57 Images */
         .slideshow-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             transition: background-image 1s ease-in-out;
         }
         .overlay {
@@ -34,109 +38,163 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 23, 42, 0.75);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 58, 138, 0.88));
             z-index: -1;
         }
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 40px auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             position: relative;
             z-index: 1;
+            backdrop-filter: blur(12px);
         }
         .header-section {
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            gap: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            background: rgba(30, 41, 59, 0.6);
+            padding: 20px;
+            border-radius: 12px;
         }
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 30px;
-            border: 4px solid #2563eb;
+            border: 4px solid #3b82f6;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
         }
         .header-info h1 {
-            margin: 0 0 5px 0;
-            color: #1e3a8a;
-            font-size: 32px;
+            margin: 0 0 8px 0;
+            color: #ffffff;
+            font-size: 34px;
+            font-weight: 800;
         }
         .header-info h3 {
             margin: 0 0 10px 0;
-            color: #475569;
-            font-size: 18px;
+            color: #60a5fa;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.4;
         }
         .contact-info {
             font-size: 14px;
-            color: #64748b;
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-weight: 500;
         }
         .contact-info a {
-            color: #2563eb;
+            color: #60a5fa;
             text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
         .quote-section {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 600;
             font-style: italic;
-            color: #1e293b;
+            color: #f1f5f9;
             margin: 25px 0;
-            padding-left: 15px;
-            border-left: 5px solid #2563eb;
-            line-height: 1.4;
+            padding: 18px 22px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            border-left: 6px solid #3b82f6;
+            line-height: 1.5;
         }
-        .content-section {
+        
+        /* Accordion / Dropdown Options Styling */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 30px;
-            line-height: 1.6;
-            display: none;
         }
-        .content-section.active {
-            display: block;
+        .menu-item {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .content-section h2 {
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 8px;
-            color: #1e3a8a;
-            margin-bottom: 15px;
+        .menu-header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            color: #ffffff;
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 6px solid #3b82f6;
         }
-        .content-section p, .content-section ul {
-            color: #334155;
+        .menu-header:hover {
+            background: rgba(30, 58, 138, 0.7);
+        }
+        .menu-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 20px;
+            color: #e2e8f0;
             font-size: 15px;
+            line-height: 1.6;
+            background: rgba(30, 41, 59, 0.4);
         }
-        .content-section ul {
+        .menu-content.open {
+            max-height: 500px;
+            padding: 20px;
+        }
+        .menu-content ul {
             list-style-type: disc;
             margin-left: 20px;
+            margin-top: 10px;
         }
-        .nav-links {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            border-top: 2px solid #cbd5e1;
-            padding-top: 25px;
+        .menu-content li {
+            margin-bottom: 6px;
         }
-        .nav-links button, .nav-links a {
-            background-color: #1e3a8a;
-            color: #fff;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
+        .toggle-icon {
+            font-size: 20px;
             font-weight: bold;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #60a5fa;
+            transition: transform 0.3s;
         }
-        .nav-links button:hover, .nav-links a:hover {
+        .menu-item.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Resume Download Button Special Style */
+        .resume-btn-container {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .resume-btn {
+            display: inline-block;
             background-color: #2563eb;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+        }
+        .resume-btn:hover {
+            background-color: #1d4ed8;
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.6);
         }
     </style>
 </head>
@@ -150,11 +208,11 @@
         <img src="my-photo.jpg" alt="Profile Picture" class="profile-img">
         <div class="header-info">
             <h1>Ramappa Hanagal</h1>
-            <h3>Technical Team Leader - Lab Infrastructure</h3>
+            <h3>Technical Team Lead - Lab Infrastructure & IT Management Infrastructure Management</h3>
             <div class="contact-info">
-                Sarjapura, Bangalore<br>
-                Phone: 9964375609<br>
-                Email: <a href="mailto:ramappa.hanagal@gmail.com">ramappa.hanagal@gmail.com</a>
+                📍 Sarjapura, Bangalore<br>
+                📞 Phone: 9964375609<br>
+                ✉️ Email: <a href="mailto:ramappa.hanagal@gmail.com">ramappa.hanagal@gmail.com</a>
             </div>
         </div>
     </div>
@@ -163,63 +221,161 @@
         "Engineering excellence is not just about building complex systems; it is about bringing precision, resilience, and operational harmony to the core."
     </div>
 
-    <div id="about" class="tab-content content-section active">
-        <h2>About Me</h2>
-        <p>Strategic Technical Lead with 17+ years of expertise in hardware infrastructure, silicon validation, and global lab operations management. Proven track record in optimizing IT lab lifecycles, procurement processes, and complex hardware troubleshooting. Expert in bridging the gap between hands-on engineering and high-level enterprise operations. Leveraging AI tools and Cloud technologies to enhance operational efficiency, reduce downtime, and ensure 100% compliance in high-security environments.</p>
+    <!-- 9 Interactive Options with Details -->
+    <div class="menu-container">
+        
+        <!-- 1. Professional Summary -->
+        <div class="menu-item" id="item-1">
+            <div class="menu-header" onclick="toggleMenu('item-1')">
+                <span>1. Professional Summary</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <p>Strategic Technical Lead with 17+ years of expertise in hardware infrastructure, silicon validation, and global lab operations management. Proven track record in optimizing IT lab lifecycles, procurement processes, and complex hardware troubleshooting. Expert in bridging the gap between hands-on engineering and high-level enterprise operations. Leveraging AI tools and Cloud technologies to enhance operational efficiency, reduce downtime, and ensure 100% compliance in high-security environments.</p>
+            </div>
+        </div>
+
+        <!-- 2. Key Responsibilities Handled -->
+        <div class="menu-item" id="item-2">
+            <div class="menu-header" onclick="toggleMenu('item-2')">
+                <span>2. Key Responsibilities Handled</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <ul>
+                    <li>Managing global lab operations, silicon validation setups, and complete hardware lifecycles.</li>
+                    <li>Optimizing infrastructure procurement processes and resolving critical hardware issues to minimize operational downtime.</li>
+                    <li>Ensuring strict compliance and security standards across enterprise lab environments.</li>
+                    <li>Bridging hands-on technical engineering execution with high-level enterprise operational frameworks.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Professional Experience -->
+        <div class="menu-item" id="item-3">
+            <div class="menu-header" onclick="toggleMenu('item-3')">
+                <span>3. Professional Experience</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <p><strong>Technical Team Lead - Lab Infrastructure & IT Management</strong></p>
+                <p>Extensive hands-on leadership experience directing large-scale technical lab infrastructures, coordinating cross-functional engineering teams, deploying advanced silicon validation frameworks, and maintaining high availability across high-security corporate assets.</p>
+            </div>
+        </div>
+
+        <!-- 4. Skills and Expertise -->
+        <div class="menu-item" id="item-4">
+            <div class="menu-header" onclick="toggleMenu('item-4')">
+                <span>4. Skills and Expertise</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <ul>
+                    <li>Hardware Infrastructure & Silicon Validation</li>
+                    <li>Global Lab Operations Management</li>
+                    <li>IT Lab Lifecycle & Procurement Optimization</li>
+                    <li>Complex Hardware Troubleshooting & Diagnostics</li>
+                    <li>High-Security Enterprise Environment Compliance</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. Tools and Technologies -->
+        <div class="menu-item" id="item-5">
+            <div class="menu-header" onclick="toggleMenu('item-5')">
+                <span>5. Tools and Technologies</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <ul>
+                    <li>Enterprise Hardware Systems & Silicon Validation Kits</li>
+                    <li>Cloud Infrastructure & Virtualization Technologies</li>
+                    <li>Advanced IT Management & Lab Monitoring Tools</li>
+                    <li>Network Architecture & Security Compliance Tools</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. Projects and Achievements -->
+        <div class="menu-item" id="item-6">
+            <div class="menu-header" onclick="toggleMenu('item-6')">
+                <span>6. Projects and Achievements</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <p>Successfully spearheaded multiple large-scale lab infrastructure setups, minimized system downtime through streamlined procurement and proactive hardware tracking, and optimized silicon validation pipelines for enhanced operational speed and precision.</p>
+            </div>
+        </div>
+
+        <!-- 7. Education and Certifications -->
+        <div class="menu-item" id="item-7">
+            <div class="menu-header" onclick="toggleMenu('item-7')">
+                <span>7. Education and Certifications</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <p><strong>Qualifications:</strong> Professional degree and specialized technical certifications aligned with engineering systems, hardware infrastructure, and modern enterprise IT management.</p>
+            </div>
+        </div>
+
+        <!-- 8. Professional Details -->
+        <div class="menu-item" id="item-8">
+            <div class="menu-header" onclick="toggleMenu('item-8')">
+                <span>8. Professional Details</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <p><strong>Location:</strong> Sarjapura, Bangalore</p>
+                <p><strong>Domain:</strong> Lab Infrastructure, Silicon Validation & IT Operations Management</p>
+                <p><strong>Experience Level:</strong> 17+ Years of Industry Expertise</p>
+            </div>
+        </div>
+
+        <!-- 9. AI Tools & Generative AI Skills -->
+        <div class="menu-item" id="item-9">
+            <div class="menu-header" onclick="toggleMenu('item-9')">
+                <span>9. AI Tools & Generative AI Skills</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="menu-content">
+                <ul>
+                    <li>Leveraging modern AI-driven tools to enhance IT operational efficiency and automation.</li>
+                    <li>Integrating Generative AI concepts for workflow optimization and technical troubleshooting support.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
-    <div id="experience" class="tab-content content-section">
-        <h2>Experience</h2>
-        <p><strong>Technical Team Leader - Lab Infrastructure</strong></p>
-        <ul>
-            <li>Managing global lab operations, silicon validation setups, and hardware lifecycles.</li>
-            <li>Optimizing procurement processes and resolving complex hardware issues to reduce downtime.</li>
-            <li>Bridging hands-on engineering execution with high-level enterprise operational frameworks.</li>
-        </ul>
-    </div>
-
-    <div id="skills" class="tab-content content-section">
-        <h2>Skills</h2>
-        <ul>
-            <li>Hardware Infrastructure & Silicon Validation</li>
-            <li>Global Lab Operations Management</li>
-            <li>IT Lab Lifecycle & Procurement Optimization</li>
-            <li>AI Tools & Cloud Technologies Integration</li>
-            <li>High-Security Environment Compliance</li>
-        </ul>
-    </div>
-
-    <div id="certifications" class="tab-content content-section">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Cloud Technologies & Infrastructure Certifications</li>
-            <li>Advanced Technical Leadership & Lab Management</li>
-        </ul>
-    </div>
-
-    <div id="education" class="tab-content content-section">
-        <h2>Education</h2>
-        <p>Professional degree and technical qualifications aligned with engineering, hardware systems, and modern IT management.</p>
-    </div>
-
-    <div class="nav-links">
-        <button onclick="showTab('about')">About Me</button>
-        <button onclick="showTab('experience')">Experience</button>
-        <button onclick="showTab('skills')">Skills</button>
-        <button onclick="showTab('certifications')">Certifications</button>
-        <button onclick="showTab('education')">Education</button>
-        <a href="Ramappa_Hanagal_July-2026(1).pdf" download>Resume</a>
+    <!-- Direct PDF Resume Download Button -->
+    <div class="resume-btn-container">
+        <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>Download Resume (PDF)</a>
     </div>
 </div>
 
 <script>
-    function showTab(tabId) {
-        const contents = document.querySelectorAll('.tab-content');
-        contents.forEach(content => content.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+    // Accordion Toggle Script for Options
+    function toggleMenu(id) {
+        const item = document.getElementById(id);
+        const content = item.querySelector('.menu-content');
+        
+        // Close other open items if desired, or keep multiple open. Let's toggle current:
+        const isOpen = item.classList.contains('active');
+        
+        // Optional: Close all items first for a clean accordion effect
+        document.querySelectorAll('.menu-item').forEach(el => {
+            el.classList.remove('active');
+            el.querySelector('.menu-content').style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+            item.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
     }
 
-    const totalImages = 51;
+    // Slideshow for 57 Images
+    const totalImages = 57;
     let currentImageIndex = 1;
     const bgSlider = document.getElementById('bgSlider');
 
