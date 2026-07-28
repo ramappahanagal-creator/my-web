@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramappa Hanagal - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --accent-color: #38bdf8;
             --text-main: #ffffff;
-            --text-muted: #f1f5f9;
-            --glass-bg: rgba(15, 23, 42, 0.35); /* High transparency for clear background photos */
-            --border-glass: rgba(56, 189, 248, 0.6);
+            --text-muted: #f8fafc;
+            --glass-bg: rgba(2, 6, 23, 0.20); /* Ultra transparent for crystal clear background photos */
+            --border-glass: rgba(56, 189, 248, 0.4);
         }
 
         * {
@@ -20,14 +20,14 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
             background-color: #000000;
             color: var(--text-main);
-            overflow-x: hidden;
-            min-height: 100vh;
+            overflow: hidden; /* Locks main page scrolling as requested */
+            height: 100vh;
+            width: 100vw;
         }
 
         /* Background Moving Photos Slideshow */
@@ -50,7 +50,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.7) contrast(1.15);
+            filter: brightness(0.85) contrast(1.1); /* Brighter to make photos clearly visible */
         }
 
         .bg-slide.active {
@@ -63,22 +63,22 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 2px solid var(--border-glass);
+            background: rgba(2, 6, 23, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 3%;
+            padding: 0.7rem 2.5rem;
         }
 
         .logo {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-color);
-            white-space: nowrap;
+            letter-spacing: 0.5px;
         }
 
         nav ul {
@@ -87,67 +87,73 @@
             gap: 6px;
             flex-wrap: nowrap;
             overflow-x: auto;
-            max-width: 100%;
-            padding: 4px 0;
         }
 
         nav ul::-webkit-scrollbar {
             display: none;
         }
 
-        nav ul li a {
+        nav ul li button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--text-muted);
-            text-decoration: none;
             font-size: 0.78rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 5px 8px;
+            padding: 6px 12px;
             border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             white-space: nowrap;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        nav ul li a:hover, nav ul li a.active {
+        nav ul li button:hover, nav ul li button.active {
             color: #ffffff;
-            background: rgba(56, 189, 248, 0.35);
+            background: rgba(56, 189, 248, 0.3);
             border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
         }
 
+        /* Main Center Hero Card (No Scrolling on Main Page) */
         main {
-            max-width: 1100px;
-            margin: 110px auto 60px auto;
-            padding: 0 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.2);
-            margin-bottom: 35px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 30px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.15);
+            max-width: 750px;
+            width: 100%;
+            text-align: center;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 15px;
+        .glass-card::-webkit-scrollbar {
+            width: 5px;
+        }
+        .glass-card::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
         }
 
         .profile-img-container {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 3px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
-            background: #1e293b;
+            margin: 0 auto 15px auto;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
+            background: #0f172a;
         }
 
         .profile-img-container img {
@@ -156,110 +162,187 @@
             object-fit: cover;
         }
 
-        .hero-section h1 {
-            font-size: 2.2rem;
+        h1 {
+            font-size: 1.8rem;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 4px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
         .designation {
-            font-size: 1.05rem;
-            color: #38bdf8;
-            font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .engineering-quote {
-            font-style: italic;
-            color: #f8fafc;
-            max-width: 700px;
             font-size: 0.95rem;
-            line-height: 1.6;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* User Exact Quote Styling */
+        .engineering-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #ffffff;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.35);
             border-left: 4px solid var(--accent-color);
-            padding-left: 15px;
-            margin-top: 5px;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 10px 15px;
-            border-radius: 0 8px 8px 0;
+            border-right: 4px solid var(--accent-color);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.15);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
         }
 
-        section {
-            scroll-margin-top: 90px;
+        .about-me-text {
+            color: #f1f5f9;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.7);
         }
 
-        .section-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+        /* Modal Popup Windows for Clickable Options */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-glass);
+            color: #ffffff;
+            font-size: 1rem;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: #38bdf8;
+            color: #000;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
             color: var(--accent-color);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
             border-bottom: 2px solid var(--border-glass);
             padding-bottom: 8px;
             font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        p, li {
-            color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 0.95rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+        .modal-body p, .modal-body li {
+            color: #f1f5f9;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
-        ul {
+        .modal-body ul {
             padding-left: 20px;
         }
 
         .experience-item, .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 12px;
         }
 
         .experience-item h3, .project-item h3 {
             color: #ffffff;
-            font-size: 1.05rem;
-            margin-bottom: 4px;
+            font-size: 1rem;
+            margin-bottom: 3px;
             font-weight: 600;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.25);
             color: #ffffff;
             padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
             border: 1px solid var(--accent-color);
             font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
 
         .skill-category h4 {
             color: #ffffff;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tag {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(2, 6, 23, 0.5);
             border: 1px solid var(--border-glass);
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
             color: #ffffff;
             font-weight: 500;
         }
@@ -267,113 +350,121 @@
         .resume-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--accent-color);
             color: #0f172a;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
             margin-top: 10px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
         }
 
         .resume-btn:hover {
             background: #ffffff;
-            color: #0369a1;
+            color: #0284c7;
         }
 
-        @media(max-width: 1024px) {
+        @media(max-width: 768px) {
             header {
+                padding: 0.5rem 1rem;
                 flex-direction: column;
-                gap: 8px;
-                padding: 0.6rem 2%;
+                gap: 6px;
             }
-            main {
-                margin-top: 140px;
+            .glass-card {
+                padding: 20px;
+                margin-top: 50px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Bright Transparent Background Slideshow -->
+    <!-- Ultra-Transparent Background Slideshow (Photos 1 to 57) -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar with Clickable Options -->
     <header>
         <div class="logo">Ramappa Hanagal</div>
         <nav>
             <ul>
-                <li><a href="#about" class="active">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#ai-skills">AI Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#resume">Resume</a></li>
+                <li><button onclick="openModal('experienceModal')">Experience</button></li>
+                <li><button onclick="openModal('skillsModal')">Skills</button></li>
+                <li><button onclick="openModal('toolsModal')">Tools</button></li>
+                <li><button onclick="openModal('projectsModal')">Projects</button></li>
+                <li><button onclick="openModal('educationModal')">Education</button></li>
+                <li><button onclick="openModal('certificationsModal')">Certifications</button></li>
+                <li><button onclick="openModal('aiSkillsModal')">AI Skills</button></li>
+                <li><button onclick="openModal('contactModal')">Contact</button></li>
+                <li><button onclick="openModal('resumeModal')">Resume</button></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Main Clean Page (Only Profile, Photo, Exact Quote & About Me) -->
     <main>
-        <!-- About Section -->
-        <section id="about" class="glass-card hero-section">
+        <div class="glass-card">
             <div class="profile-img-container">
                 <img src="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/my-photo.jpg" alt="Ramappa Hanagal">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
+            
+            <!-- User Exact Quote -->
             <div class="engineering-quote">
-                "Bridging advanced technologies, modern AI tooling, and operational excellence to drive zero-downtime environments, compliance, and optimized technical workflows."
+                "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <p style="margin-top: 10px;">
-                Senior Technical Lead Analyst with over 17 years of extensive multi-domain experience spanning global lab infrastructure operations, hardware validation, component-level debugging, silicon bring-up, and end-to-end project management.
-            </p>
-        </section>
 
-        <!-- Professional Experience Section -->
-        <section id="experience" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+            <!-- About Me -->
+            <div class="about-me-text">
+                Senior Technical Lead Analyst with over 17 years of extensive multi-domain experience spanning global lab infrastructure operations, hardware validation, component-level debugging, silicon bring-up, and end-to-end project management. Bridging advanced technologies, modern AI tooling, and operational excellence to drive zero-downtime environments, compliance, and optimized technical workflows.
+            </div>
+        </div>
+    </main>
+
+    <!-- POPUP MODALS FOR CLICKABLE OPTIONS -->
+
+    <!-- Experience Modal -->
+    <div id="experienceModal" class="modal-overlay" onclick="outsideClose(event, 'experienceModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('experienceModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
             
             <div class="experience-item">
                 <h3>Tech Mahindra</h3>
                 <span class="date-badge">June 2026 – Present</span>
                 <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
             </div>
-
             <div class="experience-item">
                 <h3>Tech Mahindra — Google Client Project</h3>
                 <span class="date-badge">April 2025 – June 2026</span>
                 <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations, governance models, and compliance frameworks.</p>
             </div>
-
             <div class="experience-item">
                 <h3>UST Global — Intel Client Project</h3>
                 <span class="date-badge">2014 – 2025</span>
                 <p>Lab Associate 2, Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up, hardware debugging, and complex board validations.</p>
             </div>
-
             <div class="experience-item">
                 <h3>Log-Us Business Systems</h3>
                 <span class="date-badge">2009 – 2014</span>
                 <p>System Engineer, Lab Admin, Senior Rework Engineer & Technical Team Lead</p>
             </div>
-
             <div class="experience-item">
                 <h3>Hi-tech Computers & Mangala Electronics, Hubli</h3>
                 <span class="date-badge">2001 – 2005</span>
                 <p>Audio & Video Servicing Engineer</p>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Skills and Expertise Section -->
-        <section id="skills" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
+    <!-- Skills Modal -->
+    <div id="skillsModal" class="modal-overlay" onclick="outsideClose(event, 'skillsModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('skillsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4>Supported Brands</h4>
@@ -399,11 +490,14 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Tools and Technologies Section -->
-        <section id="tools" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
+    <!-- Tools Modal -->
+    <div id="toolsModal" class="modal-overlay" onclick="outsideClose(event, 'toolsModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('toolsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4>Hardware & Measuring Equipment</h4>
@@ -418,11 +512,14 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Projects and Achievements Section -->
-        <section id="projects" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
+    <!-- Projects Modal -->
+    <div id="projectsModal" class="modal-overlay" onclick="outsideClose(event, 'projectsModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('projectsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
                 <h3>Global Lab Infrastructure Setup</h3>
                 <p>Successfully directed global lab infrastructure setup and validation workflows for major tier-1 client projects, achieving benchmarked turnaround time reductions and zero-downtime lab audits.</p>
@@ -435,22 +532,28 @@
                 <h3>Digital Transformation</h3>
                 <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking, inventory governance, and team training modules.</p>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Education Section -->
-        <section id="education" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+    <!-- Education Modal -->
+    <div id="educationModal" class="modal-overlay" onclick="outsideClose(event, 'educationModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('educationModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul>
                 <li><strong>B.Sc. in Information Technology</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
                 <li><strong>ITI – Electronics Mechanics</strong> — Government ITI, Kalaghatagi (1998 – 2000)</li>
                 <li><strong>National Apprenticeship Certificate (NAC)</strong> — BEL, Bangalore (2001 – 2002)</li>
                 <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
+    <!-- Certifications Modal -->
+    <div id="certificationsModal" class="modal-overlay" onclick="outsideClose(event, 'certificationsModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('certificationsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="tag-container" style="margin-top: 10px;">
                 <span class="tag">AI Accelerating Program (Skill Nation)</span>
                 <span class="tag">ITIL Foundation</span>
@@ -461,11 +564,14 @@
                 <span class="tag">Tech Mahindra AI 101</span>
                 <span class="tag">ISO/IEC 42001:2023 AIMS</span>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- AI Tools & Generative AI Skills Section -->
-        <section id="ai-skills" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
+    <!-- AI Skills Modal -->
+    <div id="aiSkillsModal" class="modal-overlay" onclick="outsideClose(event, 'aiSkillsModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('aiSkillsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
                 <span class="tag">Flow.ai</span>
@@ -481,29 +587,35 @@
                 <span class="tag">Prompt Engineering & AI-Assisted Workflows</span>
                 <span class="tag">Tech Mahindra AI 101 & Gen AI Fundamentals</span>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Contact Section (Updated header as requested) -->
-        <section id="contact" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Contact</h2>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay" onclick="outsideClose(event, 'contactModal')">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('contactModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title"><i class="fa-solid fa-address-book"></i> Contact</h2>
             <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
             <p><strong>Phone:</strong> 9964375609</p>
             <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
             <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
             <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
-        </section>
+        </div>
+    </div>
 
-        <!-- Resume Download Section (Using direct GitHub Raw link to prevent File Not Found error) -->
-        <section id="resume" class="glass-card" style="text-align: center;">
-            <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="modal-overlay" onclick="outsideClose(event, 'resumeModal')">
+        <div class="modal-content" style="text-align: center;">
+            <button class="close-btn" onclick="closeModal('resumeModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
             <p style="margin-bottom: 15px;">Download the official professional CV document.</p>
             <a href="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download target="_blank">
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <!-- JavaScript for Background Slideshow & Menu Highlighting -->
+    <!-- JavaScript for Slideshow & Modal Controls -->
     <script>
         const container = document.getElementById('slideshowContainer');
         const githubUser = 'ramappahanagal-creator';
@@ -530,25 +642,20 @@
 
         setInterval(nextSlide, 4000);
 
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        function outsideClose(event, modalId) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeModal(modalId);
+            }
+        }
     </script>
 </body>
 </html>
