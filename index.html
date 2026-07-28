@@ -9,11 +9,11 @@
     <style>
         :root {
             --primary-bg: #0f172a;
-            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-bg: rgba(15, 23, 42, 0.88);
             --accent-color: #38bdf8;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-glass: rgba(56, 189, 248, 0.2);
+            --border-glass: rgba(56, 189, 248, 0.25);
         }
 
         * {
@@ -31,7 +31,7 @@
             min-height: 100vh;
         }
 
-        /* Background Slideshow for 57 Photos */
+        /* Background Slideshow */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -58,13 +58,13 @@
             opacity: 1;
         }
 
-        /* Navigation Bar with 10 Clickable Options */
+        /* Navigation Bar */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-glass);
             z-index: 1000;
@@ -78,23 +78,22 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--accent-color);
-            letter-spacing: 0.5px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.2rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
         nav ul li a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: color 0.3s ease;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 0.7rem;
             border-radius: 4px;
         }
 
@@ -103,7 +102,7 @@
             background: rgba(56, 189, 248, 0.15);
         }
 
-        /* Main Glassy Container */
+        /* Main Container */
         main {
             max-width: 1100px;
             margin: 120px auto 60px auto;
@@ -117,11 +116,10 @@
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             margin-bottom: 40px;
         }
 
-        /* Hero / About Section */
         .hero-section {
             display: flex;
             flex-direction: column;
@@ -167,7 +165,6 @@
             margin-top: 10px;
         }
 
-        /* Section Headings */
         section {
             scroll-margin-top: 100px;
         }
@@ -183,7 +180,6 @@
             padding-bottom: 10px;
         }
 
-        /* Content Styling */
         p, li {
             color: var(--text-muted);
             line-height: 1.7;
@@ -214,7 +210,6 @@
             margin-bottom: 10px;
         }
 
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -242,7 +237,6 @@
             color: var(--text-main);
         }
 
-        /* Resume Download Button */
         .resume-btn {
             display: inline-flex;
             align-items: center;
@@ -261,7 +255,6 @@
             opacity: 0.9;
         }
 
-        /* Responsive Design */
         @media(max-width: 900px) {
             header {
                 flex-direction: column;
@@ -276,15 +269,10 @@
 </head>
 <body>
 
-    <!-- Background Slideshow (Connect your 57 GitHub Photo URLs here) -->
-    <div class="bg-slideshow" id="slideshow">
-        <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Note: Add all your 57 GitHub image links sequentially as above -->
-    </div>
+    <!-- Background Slideshow Container -->
+    <div class="bg-slideshow" id="slideshowContainer"></div>
 
-    <!-- Navigation Bar with 10 Clickable Options -->
+    <!-- Navigation Bar -->
     <header>
         <div class="logo">Ramappa Hanagal</div>
         <nav>
@@ -307,8 +295,7 @@
         <!-- 1. About / Hero Section -->
         <section id="about" class="glass-card hero-section">
             <div class="profile-img-container">
-                <!-- Replace with your Profile Photo URL -->
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ramappa Hanagal">
+                <img src="1.jpg" alt="Ramappa Hanagal">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
@@ -434,17 +421,16 @@
 
         <!-- 7. Certifications Section -->
         <section id="certifications" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications (30+ Total)</h2>
+            <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="tag-container" style="margin-top: 15px;">
-                <span class="tag">Skill Nation AI Program</span>
+                <span class="tag">AI Accelerating Program (Skill Nation)</span>
+                <span class="tag">ITIL Foundation</span>
+                <span class="tag">PMP Training (35 Hours)</span>
+                <span class="tag">Future Leadership Program (FLP)</span>
+                <span class="tag">Hardware & Networking Certification</span>
                 <span class="tag">Google Gen AI Courses</span>
                 <span class="tag">Tech Mahindra AI 101</span>
                 <span class="tag">ISO/IEC 42001:2023 AIMS</span>
-                <span class="tag">ITIL® 4 Foundation</span>
-                <span class="tag">PMP Training (35 Hours)</span>
-                <span class="tag">Future Leaders Program</span>
-                <span class="tag">FPGA Development Courses</span>
-                <span class="tag">Advanced Soldering & Rework</span>
             </div>
         </section>
 
@@ -454,16 +440,17 @@
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
                 <span class="tag">Flow.ai</span>
-                <span class="tag">Claude AI</span>
-                <span class="tag">ChatGPT / OpenAI</span>
+                <span class="tag">Claude AI (Anthropic)</span>
+                <span class="tag">ChatGPT / OpenAI Tools</span>
                 <span class="tag">Google Gemini</span>
-                <span class="tag">NotebookLM</span>
+                <span class="tag">NotebookLM (Google)</span>
                 <span class="tag">Julius AI</span>
                 <span class="tag">GitHub & Version Control</span>
-                <span class="tag">Microsoft 365 Copilot</span>
-                <span class="tag">n8n Automation</span>
-                <span class="tag">OpenAI Whisper</span>
-                <span class="tag">Prompt Engineering</span>
+                <span class="tag">Microsoft 365 Copilot / M365 AI Tools</span>
+                <span class="tag">n8n (Workflow Automation & AI Integration)</span>
+                <span class="tag">Whisper (OpenAI Whisper — Speech-to-Text & Audio AI)</span>
+                <span class="tag">Prompt Engineering & AI-Assisted Workflows</span>
+                <span class="tag">Tech Mahindra AI 101 & Gen AI Fundamentals</span>
             </div>
         </section>
 
@@ -479,27 +466,37 @@
 
         <!-- 10. Resume Download Section -->
         <section id="resume" class="glass-card" style="text-align: center;">
-            <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
+            <h2 class="section-title" style="justify-content: center;"><<i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
             <p style="margin-bottom: 20px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
-            <!-- Link your actual resume PDF file here -->
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
         </section>
     </main>
 
-    <!-- JavaScript for 4-Second Slideshow Transition -->
+    <!-- JavaScript to load all 57 photos safely without errors -->
     <script>
+        const container = document.getElementById('slideshowContainer');
+        
+        // Dynamically generating 57 background slides safely via JavaScript
+        for (let i = 1; i <= 57; i++) {
+            const div = document.createElement('div');
+            div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
+            div.style.backgroundImage = `url('${i}.jpg')`;
+            container.appendChild(div);
+        }
+
         const slides = document.querySelectorAll('.bg-slide');
         let currentSlide = 0;
 
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
         }
 
-        // Changes background image every 4 seconds (3 to 5 seconds requirement)
         setInterval(nextSlide, 4000);
 
         // Active link highlighting on scroll
@@ -510,7 +507,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
+                if (window.pageYOffset >= sectionTop - 150) {
                     current = section.getAttribute('id');
                 }
             });
