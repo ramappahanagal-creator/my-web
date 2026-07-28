@@ -3,489 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramappa Hanagal - Complete Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Ramappa Hanagal - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-bg: #0f172a;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --accent-color: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(56, 189, 248, 0.2);
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-        body {
+            box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            color: #f1f5f9;
-            position: relative;
-            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
             overflow-x: hidden;
-            background-color: #030712;
+            min-height: 100vh;
         }
 
-        /* 57 Images Background Slideshow Engine */
-        .slideshow-background {
+        /* Background Slideshow for 57 Photos */
+        .bg-slideshow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: background-image 1.5s ease-in-out;
-        }
-
-        /* Deep Gradient Overlay for Maximum Readability */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(3, 7, 18, 0.88) 0%, rgba(15, 23, 42, 0.85) 100%);
             z-index: -1;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            filter: brightness(0.35) contrast(1.1);
         }
 
-        /* 1. HEADER SECTION: Unique Color & Glassmorphism */
-        .header-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            padding: 35px;
-            border-radius: 20px;
+        .bg-slide.active {
+            opacity: 1;
+        }
+
+        /* Navigation Bar with 10 Clickable Options */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-            margin-bottom: 25px;
-            border-left: 10px solid #3b82f6; /* Blue Accent */
-        }
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #60a5fa;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
-        }
-        .header-info h1 {
-            margin: 0 0 8px 0;
-            color: #ffffff;
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .header-info h3 {
-            margin: 0 0 12px 0;
-            color: #93c5fd;
-            font-size: 17px;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-        .contact-info {
-            font-size: 14px;
-            color: #cbd5e1;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-        .contact-info a {
-            color: #93c5fd;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* 2. QUOTE SECTION: Unique Indigo/Purple Color & Glassmorphism */
-        .quote-section {
-            font-size: 17px;
-            font-weight: 600;
-            font-style: italic;
-            color: #f8fafc;
-            margin-bottom: 30px;
-            padding: 22px 28px;
-            background: rgba(49, 46, 129, 0.85); /* Deep Indigo */
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            border-left: 10px solid #818cf8; /* Violet Accent */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            line-height: 1.6;
-        }
-        
-        /* Accordion Menu Container */
-        .menu-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        
-        /* Base Menu Item with Unique Glassmorphic Color Accents */
-        .menu-item {
-            background: rgba(30, 41, 59, 0.85);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Specific Left Borders & Tints for each of the 9 Options */
-        #item-1 .menu-header { border-left-color: #06b6d4; } /* Cyan */
-        #item-2 .menu-header { border-left-color: #3b82f6; } /* Blue */
-        #item-3 .menu-header { border-left-color: #10b981; } /* Emerald */
-        #item-4 .menu-header { border-left-color: #f59e0b; } /* Amber */
-        #item-5 .menu-header { border-left-color: #ef4444; } /* Red */
-        #item-6 .menu-header { border-left-color: #8b5cf6; } /* Purple */
-        #item-7 .menu-header { border-left-color: #ec4899; } /* Pink */
-        #item-8 .menu-header { border-left-color: #14b8a6; } /* Teal */
-        #item-9 .menu-header { border-left-color: #f97316; } /* Orange */
-
-        .menu-header {
-            padding: 20px 25px;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 17px;
-            color: #ffffff;
-            background: rgba(15, 23, 42, 0.85);
-            border-left: 10px solid #06b6d4;
-            transition: background 0.3s;
-        }
-        .menu-header:hover {
-            background: rgba(30, 58, 138, 0.9);
-        }
-        .menu-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease-out, padding 0.6s ease-out;
-            padding: 0 25px;
-            color: #cbd5e1;
-            font-size: 15px;
-            line-height: 1.8;
-            background: rgba(15, 23, 42, 0.65);
-        }
-        .menu-content.open {
-            max-height: 5000px;
-            padding: 28px;
-        }
-        .menu-content ul {
-            list-style-type: disc;
-            margin-left: 22px;
-            margin-top: 12px;
-        }
-        .menu-content li {
-            margin-bottom: 12px;
-        }
-        .toggle-icon {
-            font-size: 22px;
-            font-weight: bold;
-            color: #38bdf8;
-            transition: transform 0.3s;
-        }
-        .menu-item.active .toggle-icon {
-            transform: rotate(45deg);
+            padding: 1rem 5%;
         }
 
-        .sub-heading {
-            color: #38bdf8;
+        .logo {
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-top: 18px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            border-bottom: 1px solid rgba(56, 189, 248, 0.3);
-            padding-bottom: 5px;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
         }
 
-        .job-title {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 16px;
-            margin-top: 15px;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
-        /* 10. RESUME BUTTON SECTION: Unique Gradient & Glassmorphism */
-        .resume-btn-container {
-            margin-top: 35px;
-            text-align: center;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border-left: 10px solid #22c55e; /* Green Accent for Download */
-        }
-        .resume-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #fff;
-            padding: 16px 40px;
-            border-radius: 12px;
+        nav ul li a {
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.6);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
         }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-main);
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        /* Main Glassy Container */
+        main {
+            max-width: 1100px;
+            margin: 120px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        /* Hero / About Section */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-section h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .designation {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .engineering-quote {
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 700px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        /* Section Headings */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 10px;
+        }
+
+        /* Content Styling */
+        p, li {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+        }
+
+        .experience-item h3, .project-item h3 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        /* Resume Download Button */
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            margin-top: 10px;
+        }
+
         .resume-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.8);
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 1rem;
+            }
+            main {
+                margin-top: 160px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 57 Images Background Slideshow Engine -->
-    <div class="slideshow-background" id="bgSlider"></div>
-    <div class="overlay"></div>
+    <!-- Background Slideshow (Connect your 57 GitHub Photo URLs here) -->
+    <div class="bg-slideshow" id="slideshow">
+        <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Note: Add all your 57 GitHub image links sequentially as above -->
+    </div>
 
-<div class="container">
-    
-    <!-- Header Section -->
-    <div class="header-section">
-        <img src="my-photo.jpg" alt="Ramappa Hanagal" class="profile-img">
-        <div class="header-info">
+    <!-- Navigation Bar with 10 Clickable Options -->
+    <header>
+        <div class="logo">Ramappa Hanagal</div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#ai-skills">AI Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#resume">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. About / Hero Section -->
+        <section id="about" class="glass-card hero-section">
+            <div class="profile-img-container">
+                <!-- Replace with your Profile Photo URL -->
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ramappa Hanagal">
+            </div>
             <h1>Ramappa Hanagal</h1>
-            <h3>Technical Team Lead - Lab Infrastructure & IT Operations Management</h3>
-            <div class="contact-info">
-                📍 Sarjapura, Bangalore, Karnataka, India<br>
-                📞 Phone: 9964375609<br>
-                ✉️ Email: <a href="mailto:ramappa.hanagal@gmail.com">ramappa.hanagal@gmail.com</a>
+            <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
+            <div class="engineering-quote">
+                "Bridging advanced technologies, modern AI tooling, and operational excellence to drive zero-downtime environments, compliance, and optimized technical workflows."
             </div>
-        </div>
-    </div>
+            <p style="margin-top: 15px;">
+                Senior Technical Lead Analyst with over 17 years of extensive multi-domain experience spanning global lab infrastructure operations, hardware validation, component-level debugging, silicon bring-up, and end-to-end project management.
+            </p>
+        </section>
 
-    <!-- Quote Section -->
-    <div class="quote-section">
-        "Driving high-performance engineering operations, silicon validation test beds, and resilient enterprise lab infrastructure with over 17 years of hands-on technical excellence."
-    </div>
+        <!-- 2. Professional Experience Section -->
+        <section id="experience" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Tech Mahindra</h3>
+                <span class="date-badge">June 2026 – Present</span>
+                <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
+            </div>
 
-    <!-- ALL 9 ACCORDION OPTIONS INCLUDED -->
-    <div class="menu-container">
-        
-        <!-- Option 1: Professional Summary -->
-        <div class="menu-item" id="item-1">
-            <div class="menu-header" onclick="toggleMenu('item-1')">
-                <span>1. Professional Summary</span>
-                <span class="toggle-icon">+</span>
+            <div class="experience-item">
+                <h3>Tech Mahindra — Google Client Project</h3>
+                <span class="date-badge">April 2025 – June 2026</span>
+                <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations, governance models, and compliance frameworks.</p>
             </div>
-            <div class="menu-content">
-                <p>Accomplished and Strategic Technical Team Lead backed by 17+ years of intensive, hands-on experience in global enterprise lab infrastructure architecture, silicon validation ecosystems, and advanced hardware management. Proven track record across multiple multinational organizations in streamlining lab lifecycles, executing complex board-level debugging, managing tier-1 vendor procurement, and enforcing rigorous security compliance in high-security research zones.</p>
-                <p style="margin-top: 12px;">Expert in bridging hands-on hardware engineering execution with executive operational planning. Adept at implementing automated monitoring frameworks, modern AI-driven IT operations (AIOps), and cloud technologies to minimize downtime, optimize resource allocation, and accelerate silicon validation pipelines.</p>
-            </div>
-        </div>
 
-        <!-- Option 2: Key Responsibilities Handled -->
-        <div class="menu-item" id="item-2">
-            <div class="menu-header" onclick="toggleMenu('item-2')">
-                <span>2. Key Responsibilities Handled</span>
-                <span class="toggle-icon">+</span>
+            <div class="experience-item">
+                <h3>UST Global — Intel Client Project</h3>
+                <span class="date-badge">2014 – 2025</span>
+                <p>Lab Associate 2, Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up, hardware debugging, and complex board validations.</p>
             </div>
-            <div class="menu-content">
-                <ul>
-                    <li><strong>Global Lab Operations Leadership:</strong> Directing enterprise-wide R&D lab setups, advanced silicon validation test beds, and complete hardware lifecycles across multiple corporate facilities.</li>
-                    <li><strong>Infrastructure Architecture:</strong> Designing, deploying, and maintaining high-density server racks, blade servers, enterprise-grade switches, routers, and specialized power distribution units (PDUs).</li>
-                    <li><strong>Vendor & Budget Management:</strong> Overseeing tier-1 vendor negotiations, procurement lifecycles, asset tracking, warranty management, and hardware cost-optimization strategies.</li>
-                    <li><strong>Advanced Debugging & RMA:</strong> Executing complex component-level hardware troubleshooting, oscilloscope diagnostics, and rapid failure recovery workflows to ensure 100% uptime.</li>
-                    <li><strong>Security & Compliance:</strong> Enforcing strict access control policies, data protection guidelines, and audit compliance across restricted high-security corporate lab zones.</li>
-                    <li><strong>Cross-Functional Mentorship:</strong> Leading, mentoring, and coordinating multi-disciplinary teams of system administrators, test engineers, and software developers to meet critical milestones.</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Option 3: Professional Experience -->
-        <div class="menu-item" id="item-3">
-            <div class="menu-header" onclick="toggleMenu('item-3')">
-                <span>3. Professional Experience</span>
-                <span class="toggle-icon">+</span>
+            <div class="experience-item">
+                <h3>Log-Us Business Systems</h3>
+                <span class="date-badge">2009 – 2014</span>
+                <p>System Engineer, Lab Admin, Senior Rework Engineer & Technical Team Lead</p>
             </div>
-            <div class="menu-content">
-                <p><strong>Total Professional Experience:</strong> 17+ Years of progressive technical leadership and infrastructure management across 5 to 6 top-tier technology organizations.</p>
-                
-                <div class="sub-heading">Detailed Career History:</div>
-                
-                <div class="job-title">Technical Team Lead - Lab Infrastructure & IT Management</div>
-                <ul>
-                    <li>Spearheaded large-scale enterprise lab build-outs, managing multi-million-dollar hardware inventories and complex validation test environments.</li>
-                    <li>Directed cross-functional engineering teams to accelerate silicon validation cycles, successfully reducing hardware staging bottlenecks by over 30%.</li>
-                    <li>Implemented automated asset tracking systems and predictive maintenance scripts using advanced monitoring software and ticketing tools.</li>
-                </ul>
 
-                <div class="job-title">Senior Infrastructure & Lab Operations Engineer</div>
-                <ul>
-                    <li>Managed end-to-end deployment and maintenance of enterprise server clusters, storage arrays (SAN/NAS), and high-speed network topologies.</li>
-                    <li>Handled root cause analysis (RCA), hardware replacements, and RMA processing with global hardware vendors.</li>
-                    <li>Coordinated with international stakeholders to standardize operational procedures across distributed research centers.</li>
-                </ul>
-
-                <div class="job-title">IT Systems Administrator & Hardware Specialist</div>
-                <ul>
-                    <li>Administered Red Hat Linux and Windows Server environments, user permission directories, backup schedules, and internal IT helpdesk workflows.</li>
-                    <li>Maintained structural cabling, patch panel mapping, firewall configurations, and meticulous hardware inventory logs.</li>
-                </ul>
+            <div class="experience-item">
+                <h3>Hi-tech Computers & Mangala Electronics, Hubli</h3>
+                <span class="date-badge">2001 – 2005</span>
+                <p>Audio & Video Servicing Engineer</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Option 4: Skills and Expertise -->
-        <div class="menu-item" id="item-4">
-            <div class="menu-header" onclick="toggleMenu('item-4')">
-                <span>4. Skills and Expertise</span>
-                <span class="toggle-icon">+</span>
+        <!-- 3. Skills and Expertise Section -->
+        <section id="skills" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Supported Brands</h4>
+                    <div class="tag-container">
+                        <span class="tag">Apple iPhone</span>
+                        <span class="tag">Google Pixel</span>
+                        <span class="tag">OPPO</span>
+                        <span class="tag">Realme</span>
+                        <span class="tag">MI / Xiaomi</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Core Technical Skills</h4>
+                    <div class="tag-container">
+                        <span class="tag">Silicon Bring-Up</span>
+                        <span class="tag">Board Power-On</span>
+                        <span class="tag">Hardware Validation & Debugging</span>
+                        <span class="tag">High-Precision Soldering (SMD/BGA)</span>
+                        <span class="tag">Lab Infrastructure Management</span>
+                        <span class="tag">Supply Chain & Procurement</span>
+                        <span class="tag">Thermal Management</span>
+                        <span class="tag">Signal Integrity</span>
+                    </div>
+                </div>
             </div>
-            <div class="menu-content">
-                <ul>
-                    <li><strong>Hardware Architecture:</strong> Enterprise Server Platforms, Silicon Validation Kits, Blade Systems, Thermal & Power Management.</li>
-                    <li><strong>Lab Operations:</strong> Multi-site Lab Lifecycle Management, Facility Planning, Asset Tracking, Inventory Optimization.</li>
-                    <li><strong>Diagnostics:</strong> Component-Level Hardware Debugging, Oscilloscope Diagnostics, RMA Management, Root Cause Analysis.</li>
-                    <li><strong>Procurement:</strong> Vendor Negotiation, Enterprise Procurement, Cost-Reduction Strategies, License Management.</li>
-                    <li><strong>Security:</strong> High-Security Lab Zone Compliance, Access Control Audits, Data Protection Protocols.</li>
-                    <li><strong>Leadership:</strong> Cross-Functional Team Direction, Technical Mentorship, Project Management, Agile Delivery.</li>
-                </ul>
-            </div>
-        </div>
+        </section>
 
-        <!-- Option 5: Tools and Technologies -->
-        <div class="menu-item" id="item-5">
-            <div class="menu-header" onclick="toggleMenu('item-5')">
-                <span>5. Tools and Technologies</span>
-                <span class="toggle-icon">+</span>
+        <!-- 4. Tools and Technologies Section -->
+        <section id="tools" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Hardware & Measuring Equipment</h4>
+                    <div class="tag-container">
+                        <span class="tag">Oscilloscope</span>
+                        <span class="tag">Digital Multimeter (DMM)</span>
+                        <span class="tag">DAQ Systems</span>
+                        <span class="tag">DC Power Supply</span>
+                        <span class="tag">Logic Analyzers</span>
+                        <span class="tag">JTAG/Lauterbach</span>
+                        <span class="tag">Power Analyzer</span>
+                    </div>
+                </div>
             </div>
-            <div class="menu-content">
-                <ul>
-                    <li><strong>Hardware Systems:</strong> Intel/AMD Server Platforms, Silicon Validation Boards, High-Performance Workstations, Storage Arrays.</li>
-                    <li><strong>Virtualization & Cloud:</strong> VMware ESXi, Hyper-V, Cloud Infrastructure Services, Containerization Tools.</li>
-                    <li><strong>IT Management & Ticketing:</strong> Jira, ServiceNow, Enterprise Lab Monitoring Software, SNMP, Log Analyzers.</li>
-                    <li><strong>Networking Hardware:</strong> Cisco/Aruba Enterprise Switches, Routers, Firewalls, Patch Panels, KVM-over-IP.</li>
-                    <li><strong>Operating Systems:</strong> Red Hat Enterprise Linux (RHEL), Ubuntu Server, CentOS, Windows Server (2012/2016/2019/2022), Windows 10/11 Pro.</li>
-                </ul>
+        </section>
+
+        <!-- 5. Projects and Achievements Section -->
+        <section id="projects" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
+            <div class="project-item">
+                <h3>Global Lab Infrastructure Setup</h3>
+                <p>Successfully directed global lab infrastructure setup and validation workflows for major tier-1 client projects, achieving benchmarked turnaround time reductions and zero-downtime lab audits.</p>
             </div>
-        </div>
-
-        <!-- Option 6: Projects and Achievements -->
-        <div class="menu-item" id="item-6">
-            <div class="menu-header" onclick="toggleMenu('item-6')">
-                <span>6. Projects and Achievements</span>
-                <span class="toggle-icon">+</span>
+            <div class="project-item">
+                <h3>Custom Testing Fixtures</h3>
+                <p>Designed custom testing fixtures and implemented advanced BGA/SMD micro-soldering solutions that drastically improved prototype board reliability and fault isolation rates.</p>
             </div>
-            <div class="menu-content">
-                <ul>
-                    <li><strong>Multi-Site Lab Migration Project:</strong> Successfully led the end-to-end migration and setup of 3 major corporate R&D testing labs with zero unplanned downtime and 100% asset accountability.</li>
-                    <li><strong>Validation Pipeline Optimization:</strong> Re-architected hardware staging and software testing workflows, significantly reducing overall validation turnaround time.</li>
-                    <li><strong>Vendor Cost Reduction Initiative:</strong> Spearheaded a comprehensive vendor audit and procurement restructuring project, resulting in a substantial annual decrease in hardware maintenance overhead.</li>
-                    <li><strong>Audit Excellence Recognition:</strong> Achieved flawless 100% compliance scores across consecutive internal and external security audits for restricted high-security enterprise lab zones.</li>
-                </ul>
+            <div class="project-item">
+                <h3>Digital Transformation</h3>
+                <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking, inventory governance, and team training modules.</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Option 7: Education and Certifications -->
-        <div class="menu-item" id="item-7">
-            <div class="menu-header" onclick="toggleMenu('item-7')">
-                <span>7. Education and Certifications</span>
-                <span class="toggle-icon">+</span>
+        <!-- 6. Education Section -->
+        <section id="education" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+            <ul>
+                <li><strong>B.Sc. in Information Technology</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
+                <li><strong>ITI – Electronics Mechanics</strong> — Government ITI, Kalaghatagi (1998 – 2000)</li>
+                <li><strong>National Apprenticeship Certificate (NAC)</strong> — BEL, Bangalore (2001 – 2002)</li>
+                <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
+            </ul>
+        </section>
+
+        <!-- 7. Certifications Section -->
+        <section id="certifications" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications (30+ Total)</h2>
+            <div class="tag-container" style="margin-top: 15px;">
+                <span class="tag">Skill Nation AI Program</span>
+                <span class="tag">Google Gen AI Courses</span>
+                <span class="tag">Tech Mahindra AI 101</span>
+                <span class="tag">ISO/IEC 42001:2023 AIMS</span>
+                <span class="tag">ITIL® 4 Foundation</span>
+                <span class="tag">PMP Training (35 Hours)</span>
+                <span class="tag">Future Leaders Program</span>
+                <span class="tag">FPGA Development Courses</span>
+                <span class="tag">Advanced Soldering & Rework</span>
             </div>
-            <div class="menu-content">
-                <div class="sub-heading">Educational Qualifications:</div>
-                <ul>
-                    <li><strong>Professional Degree in Engineering / Technology:</strong> Completed formal graduation and technical education from a recognized university/institution with specialized coursework in Information Technology, Hardware Systems, and Network Administration. (Extracted directly from your primary ATS and 2020 resumes).</li>
-                </ul>
+        </section>
 
-                <div class="sub-heading">Professional Certifications (30+ Completed Modules):</div>
-                <ul>
-                    <li><strong>Cloud & Infrastructure Badges:</strong> Over 30+ verified technical training certificates covering Google Cloud Platform (GCP) concepts, Dataproc, Compute Engine, and enterprise infrastructure modernization modules.</li>
-                    <li><strong>ITIL & Operational Management:</strong> ITIL Foundation Certification, Enterprise Data Center Operations, and Advanced IT Service Management credentials.</li>
-                    <li><strong>Hardware & Security Badges:</strong> Certified Hardware Diagnostics Specialist, Network Security Best Practices, and Corporate Compliance Badges.</li>
-                </ul>
+        <!-- 8. AI Tools & Generative AI Skills Section -->
+        <section id="ai-skills" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
+            <div class="tag-container">
+                <span class="tag">Google AI Studio</span>
+                <span class="tag">Flow.ai</span>
+                <span class="tag">Claude AI</span>
+                <span class="tag">ChatGPT / OpenAI</span>
+                <span class="tag">Google Gemini</span>
+                <span class="tag">NotebookLM</span>
+                <span class="tag">Julius AI</span>
+                <span class="tag">GitHub & Version Control</span>
+                <span class="tag">Microsoft 365 Copilot</span>
+                <span class="tag">n8n Automation</span>
+                <span class="tag">OpenAI Whisper</span>
+                <span class="tag">Prompt Engineering</span>
             </div>
-        </div>
+        </section>
 
-        <!-- Option 8: Professional Details -->
-        <div class="menu-item" id="item-8">
-            <div class="menu-header" onclick="toggleMenu('item-8')">
-                <span>8. Professional Details</span>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="menu-content">
-                <p><strong>Current Location:</strong> Sarjapura, Bangalore, Karnataka, India</p>
-                <p><strong>Core Domains:</strong> Lab Infrastructure Management, Silicon Validation, Enterprise IT Operations, Cloud Architecture</p>
-                <p><strong>Experience Span:</strong> 17+ Years of Corporate Leadership & Technical Execution across 5-6 Leading Organizations</p>
-                <p><strong>Target Industry Sectors:</strong> High-Tech Semiconductor, Enterprise IT, Hardware Manufacturing, and Cloud R&D</p>
-                <p><strong>Professional Philosophy:</strong> Ensuring 100% operational resilience, streamlined testing pipelines, and robust hardware architectures to empower engineering teams.</p>
-            </div>
-        </div>
+        <!-- 9. Contact Section -->
+        <section id="contact" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
+            <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
+            <p><strong>Phone:</strong> 9964375609</p>
+            <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
+            <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
+        </section>
 
-        <!-- Option 9: AI Tools & Generative AI Skills -->
-        <div class="menu-item" id="item-9">
-            <div class="menu-header" onclick="toggleMenu('item-9')">
-                <span>9. AI Tools & Generative AI Skills</span>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="menu-content">
-                <ul>
-                    <li><strong>AI-Driven IT Operations (AIOps):</strong> Leveraging intelligent automation and AI tools to monitor lab health metrics, predict hardware component wear, and automate routine system diagnostics.</li>
-                    <li><strong>Generative AI & LLM Integration:</strong> Utilizing modern generative AI frameworks to draft technical documentation, compile standard operating procedures (SOPs), and write infrastructure automation scripts.</li>
-                    <li><strong>Smart Troubleshooting & RCA:</strong> Applying AI-assisted debugging tools to accelerate root-cause analysis (RCA) and minimize mean-time-to-resolution (MTTR) for critical lab incidents.</li>
-                    <li><strong>Prompt Engineering & Workflow Efficiency:</strong> Utilizing advanced prompt structures to optimize cross-functional communication, bridge technical requirements, and boost engineering output.</li>
-                </ul>
-            </div>
-        </div>
+        <!-- 10. Resume Download Section -->
+        <section id="resume" class="glass-card" style="text-align: center;">
+            <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
+            <p style="margin-bottom: 20px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
+            <!-- Link your actual resume PDF file here -->
+            <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
+                <i class="fa-solid fa-download"></i> Download Resume PDF
+            </a>
+        </section>
+    </main>
 
-    </div>
+    <!-- JavaScript for 4-Second Slideshow Transition -->
+    <script>
+        const slides = document.querySelectorAll('.bg-slide');
+        let currentSlide = 0;
 
-    <!-- Option 10: Resume Download Button Section (Glassmorphism & Unique Green Accent) -->
-    <div class="resume-btn-container">
-        <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>10. Download Complete Resume (PDF)</a>
-    </div>
-
-</div>
-
-<script>
-    // Accordion Logic
-    function toggleMenu(id) {
-        const item = document.getElementById(id);
-        const content = item.querySelector('.menu-content');
-        const isOpen = item.classList.contains('active');
-        
-        document.querySelectorAll('.menu-item').forEach(el => {
-            el.classList.remove('active');
-            el.querySelector('.menu-content').classList.remove('open');
-        });
-
-        if (!isOpen) {
-            item.classList.add('active');
-            content.classList.add('open');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
-    }
 
-    // 57 Images Slideshow Background Engine (Changes every 4 seconds)
-    const totalImages = 57;
-    let currentImageIndex = 1;
-    const bgSlider = document.getElementById('bgSlider');
+        // Changes background image every 4 seconds (3 to 5 seconds requirement)
+        setInterval(nextSlide, 4000);
 
-    function changeBackground() {
-        bgSlider.style.backgroundImage = url('${currentImageIndex}.jpg');
-        currentImageIndex = (currentImageIndex % totalImages) + 1;
-    }
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
 
-    changeBackground();
-    setInterval(changeBackground, 4000);
-</script>
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
 
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
