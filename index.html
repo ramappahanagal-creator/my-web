@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-bg: #0f172a;
-            --card-bg: rgba(15, 23, 42, 0.88);
             --accent-color: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glass: rgba(56, 189, 248, 0.25);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(15, 23, 42, 0.65);
+            --border-glass: rgba(56, 189, 248, 0.3);
         }
 
         * {
@@ -25,13 +24,13 @@
         }
 
         body {
-            background-color: var(--primary-bg);
+            background-color: #0b0f19;
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* Background Slideshow */
+        /* Transparent Background Slideshow */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -51,7 +50,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.35) contrast(1.1);
+            filter: brightness(0.4) contrast(1.1);
         }
 
         .bg-slide.active {
@@ -64,8 +63,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glass);
             z-index: 1000;
             display: flex;
@@ -99,7 +99,7 @@
 
         nav ul li a:hover, nav ul li a.active {
             color: var(--text-main);
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.25);
         }
 
         /* Main Container */
@@ -109,14 +109,15 @@
             padding: 0 20px;
         }
 
+        /* Glossy Glassmorphism Cards */
         .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--border-glass);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px;
         }
 
@@ -134,7 +135,8 @@
             border-radius: 50%;
             border: 3px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            background: #1e293b;
         }
 
         .profile-img-container img {
@@ -144,14 +146,15 @@
         }
 
         .hero-section h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 700;
+            color: #ffffff;
         }
 
         .designation {
             font-size: 1.1rem;
             color: var(--accent-color);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .engineering-quote {
@@ -202,7 +205,7 @@
 
         .date-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.15);
             color: var(--accent-color);
             padding: 2px 10px;
             border-radius: 12px;
@@ -229,7 +232,7 @@
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-glass);
             padding: 5px 12px;
             border-radius: 6px;
@@ -242,7 +245,7 @@
             align-items: center;
             gap: 10px;
             background: var(--accent-color);
-            color: var(--primary-bg);
+            color: #0f172a;
             padding: 12px 25px;
             border-radius: 8px;
             font-weight: 600;
@@ -269,7 +272,7 @@
 </head>
 <body>
 
-    <!-- Background Slideshow Container -->
+    <!-- Transparent Background Slideshow -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
 
     <!-- Navigation Bar -->
@@ -292,10 +295,10 @@
     </header>
 
     <main>
-        <!-- 1. About / Hero Section -->
+        <!-- About Section with my-photo.jpg -->
         <section id="about" class="glass-card hero-section">
             <div class="profile-img-container">
-                <img src="1.jpg" alt="Ramappa Hanagal">
+                <img src="my-photo.jpg" alt="Ramappa Hanagal">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
@@ -307,7 +310,7 @@
             </p>
         </section>
 
-        <!-- 2. Professional Experience Section -->
+        <!-- Professional Experience Section -->
         <section id="experience" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
             
@@ -342,7 +345,7 @@
             </div>
         </section>
 
-        <!-- 3. Skills and Expertise Section -->
+        <!-- Skills and Expertise Section -->
         <section id="skills" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
             <div class="skills-grid">
@@ -372,7 +375,7 @@
             </div>
         </section>
 
-        <!-- 4. Tools and Technologies Section -->
+        <!-- Tools and Technologies Section -->
         <section id="tools" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
             <div class="skills-grid">
@@ -391,7 +394,7 @@
             </div>
         </section>
 
-        <!-- 5. Projects and Achievements Section -->
+        <!-- Projects and Achievements Section -->
         <section id="projects" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
@@ -408,7 +411,7 @@
             </div>
         </section>
 
-        <!-- 6. Education Section -->
+        <!-- Education Section -->
         <section id="education" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul>
@@ -419,7 +422,7 @@
             </ul>
         </section>
 
-        <!-- 7. Certifications Section -->
+        <!-- Certifications Section -->
         <section id="certifications" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="tag-container" style="margin-top: 15px;">
@@ -434,7 +437,7 @@
             </div>
         </section>
 
-        <!-- 8. AI Tools & Generative AI Skills Section -->
+        <!-- AI Tools & Generative AI Skills Section -->
         <section id="ai-skills" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
@@ -454,7 +457,7 @@
             </div>
         </section>
 
-        <!-- 9. Contact Section -->
+        <!-- Contact Section -->
         <section id="contact" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
             <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
@@ -464,9 +467,9 @@
             <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
         </section>
 
-        <!-- 10. Resume Download Section -->
+        <!-- Resume Download Section -->
         <section id="resume" class="glass-card" style="text-align: center;">
-            <h2 class="section-title" style="justify-content: center;"><<i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
+            <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
             <p style="margin-bottom: 20px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
@@ -474,11 +477,10 @@
         </section>
     </main>
 
-    <!-- JavaScript to load all 57 photos safely without errors -->
+    <!-- Background Slideshow Script -->
     <script>
         const container = document.getElementById('slideshowContainer');
         
-        // Dynamically generating 57 background slides safely via JavaScript
         for (let i = 1; i <= 57; i++) {
             const div = document.createElement('div');
             div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
@@ -499,7 +501,6 @@
 
         setInterval(nextSlide, 4000);
 
-        // Active link highlighting on scroll
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav ul li a');
 
