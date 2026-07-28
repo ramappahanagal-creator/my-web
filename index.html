@@ -10,9 +10,9 @@
         :root {
             --accent-color: #38bdf8;
             --text-main: #ffffff;
-            --text-muted: #e2e8f0;
-            --glass-bg: rgba(15, 23, 42, 0.55);
-            --border-glass: rgba(56, 189, 248, 0.35);
+            --text-muted: #f1f5f9;
+            --glass-bg: rgba(15, 23, 42, 0.35); /* High transparency for clear background photos */
+            --border-glass: rgba(56, 189, 248, 0.6);
         }
 
         * {
@@ -24,7 +24,7 @@
         }
 
         body {
-            background-color: #050b14;
+            background-color: #000000;
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
@@ -50,7 +50,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.45) contrast(1.1);
+            filter: brightness(0.7) contrast(1.15);
         }
 
         .bg-slide.active {
@@ -63,60 +63,73 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
+            border-bottom: 2px solid var(--border-glass);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0.8rem 3%;
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-color);
+            white-space: nowrap;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 0.8rem;
-            flex-wrap: wrap;
+            gap: 6px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            max-width: 100%;
+            padding: 4px 0;
+        }
+
+        nav ul::-webkit-scrollbar {
+            display: none;
         }
 
         nav ul li a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.4rem 0.7rem;
-            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 5px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav ul li a:hover, nav ul li a.active {
-            color: var(--text-main);
-            background: rgba(56, 189, 248, 0.25);
+            color: #ffffff;
+            background: rgba(56, 189, 248, 0.35);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         main {
             max-width: 1100px;
-            margin: 120px auto 60px auto;
+            margin: 110px auto 60px auto;
             padding: 0 20px;
         }
 
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid var(--border-glass);
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            margin-bottom: 40px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.2);
+            margin-bottom: 35px;
         }
 
         .hero-section {
@@ -124,17 +137,16 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        /* Profile Photo Container */
         .profile-img-container {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 3px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
             background: #1e293b;
         }
 
@@ -145,47 +157,55 @@
         }
 
         .hero-section h1 {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .designation {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            font-weight: 600;
+            font-size: 1.05rem;
+            color: #38bdf8;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .engineering-quote {
             font-style: italic;
-            color: var(--text-muted);
+            color: #f8fafc;
             max-width: 700px;
             font-size: 0.95rem;
             line-height: 1.6;
-            border-left: 3px solid var(--accent-color);
+            border-left: 4px solid var(--accent-color);
             padding-left: 15px;
-            margin-top: 10px;
+            margin-top: 5px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
         }
 
         section {
-            scroll-margin-top: 100px;
+            scroll-margin-top: 90px;
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-glass);
+            padding-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         p, li {
             color: var(--text-muted);
             line-height: 1.7;
             font-size: 0.95rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
         }
 
         ul {
@@ -193,35 +213,39 @@
         }
 
         .experience-item, .project-item {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .experience-item h3, .project-item h3 {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+            font-weight: 600;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.2);
-            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.3);
+            color: #ffffff;
             padding: 2px 10px;
             border-radius: 12px;
             font-size: 0.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            border: 1px solid var(--accent-color);
+            font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
         .skill-category h4 {
-            color: var(--text-main);
+            color: #ffffff;
             margin-bottom: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .tag-container {
@@ -231,12 +255,13 @@
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.6);
             border: 1px solid var(--border-glass);
             padding: 5px 12px;
             border-radius: 6px;
             font-size: 0.85rem;
-            color: var(--text-main);
+            color: #ffffff;
+            font-weight: 500;
         }
 
         .resume-btn {
@@ -247,31 +272,33 @@
             color: #0f172a;
             padding: 12px 25px;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             margin-top: 10px;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
         }
 
         .resume-btn:hover {
-            opacity: 0.9;
+            background: #ffffff;
+            color: #0369a1;
         }
 
-        @media(max-width: 900px) {
+        @media(max-width: 1024px) {
             header {
                 flex-direction: column;
-                gap: 10px;
-                padding: 1rem;
+                gap: 8px;
+                padding: 0.6rem 2%;
             }
             main {
-                margin-top: 160px;
+                margin-top: 140px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Transparent Background Moving Photos Slideshow using GitHub Raw Links -->
+    <!-- Bright Transparent Background Slideshow -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
 
     <!-- Navigation Bar -->
@@ -294,7 +321,7 @@
     </header>
 
     <main>
-        <!-- About Section with your exact GitHub profile photo -->
+        <!-- About Section -->
         <section id="about" class="glass-card hero-section">
             <div class="profile-img-container">
                 <img src="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/my-photo.jpg" alt="Ramappa Hanagal">
@@ -304,7 +331,7 @@
             <div class="engineering-quote">
                 "Bridging advanced technologies, modern AI tooling, and operational excellence to drive zero-downtime environments, compliance, and optimized technical workflows."
             </div>
-            <p style="margin-top: 15px;">
+            <p style="margin-top: 10px;">
                 Senior Technical Lead Analyst with over 17 years of extensive multi-domain experience spanning global lab infrastructure operations, hardware validation, component-level debugging, silicon bring-up, and end-to-end project management.
             </p>
         </section>
@@ -424,7 +451,7 @@
         <!-- Certifications Section -->
         <section id="certifications" class="glass-card">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
-            <div class="tag-container" style="margin-top: 15px;">
+            <div class="tag-container" style="margin-top: 10px;">
                 <span class="tag">AI Accelerating Program (Skill Nation)</span>
                 <span class="tag">ITIL Foundation</span>
                 <span class="tag">PMP Training (35 Hours)</span>
@@ -456,9 +483,9 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section (Updated header as requested) -->
         <section id="contact" class="glass-card">
-            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
+            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Contact</h2>
             <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
             <p><strong>Phone:</strong> 9964375609</p>
             <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
@@ -466,17 +493,17 @@
             <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
         </section>
 
-        <!-- Resume Download Section -->
+        <!-- Resume Download Section (Using direct GitHub Raw link to prevent File Not Found error) -->
         <section id="resume" class="glass-card" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
-            <p style="margin-bottom: 20px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
-            <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
+            <p style="margin-bottom: 15px;">Download the official professional CV document.</p>
+            <a href="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download target="_blank">
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
         </section>
     </main>
 
-    <!-- JavaScript to automatically load all 57 background photos from GitHub -->
+    <!-- JavaScript for Background Slideshow & Menu Highlighting -->
     <script>
         const container = document.getElementById('slideshowContainer');
         const githubUser = 'ramappahanagal-creator';
@@ -486,7 +513,6 @@
         for (let i = 1; i <= 57; i++) {
             const div = document.createElement('div');
             div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
-            // Correct GitHub Raw URL path for each photo
             div.style.backgroundImage = `url('https://raw.githubusercontent.com/${githubUser}/${repoName}/${branch}/${i}.jpg')`;
             container.appendChild(div);
         }
