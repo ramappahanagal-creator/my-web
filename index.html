@@ -5,25 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramappa Hanagal - Portfolio</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .slideshow-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.75);
+            z-index: -1;
+        }
         .container {
             max-width: 900px;
-            margin: 50px auto;
-            background: #fff;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
         }
         .header-section {
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid #cbd5e1;
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
@@ -33,62 +60,90 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 30px;
+            border: 4px solid #2563eb;
         }
         .header-info h1 {
-            margin: 0 0 10px 0;
-            color: #222;
+            margin: 0 0 5px 0;
+            color: #1e3a8a;
+            font-size: 32px;
         }
         .header-info h3 {
-            margin: 0 0 5px 0;
-            color: #555;
+            margin: 0 0 10px 0;
+            color: #475569;
+            font-size: 18px;
         }
         .contact-info {
             font-size: 14px;
-            color: #777;
+            color: #64748b;
         }
         .contact-info a {
-            color: #0066cc;
+            color: #2563eb;
             text-decoration: none;
         }
         .quote-section {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
             font-style: italic;
-            color: #333;
-            margin: 30px 0;
+            color: #1e293b;
+            margin: 25px 0;
             padding-left: 15px;
-            border-left: 5px solid #0066cc;
+            border-left: 5px solid #2563eb;
             line-height: 1.4;
         }
-        .about-section {
+        .content-section {
             margin-top: 30px;
             line-height: 1.6;
+            display: none;
         }
-        .about-section h2 {
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
-            color: #222;
+        .content-section.active {
+            display: block;
+        }
+        .content-section h2 {
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 8px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+        .content-section p, .content-section ul {
+            color: #334155;
+            font-size: 15px;
+        }
+        .content-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
         .nav-links {
-            margin-top: 40px;
-            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            border-top: 2px solid #cbd5e1;
+            padding-top: 25px;
         }
-        .nav-links a {
-            display: inline-block;
-            background-color: #0066cc;
+        .nav-links button, .nav-links a {
+            background-color: #1e3a8a;
             color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 10px 18px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .nav-links a:hover {
-            background-color: #004999;
+        .nav-links button:hover, .nav-links a:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
+
+    <div class="slideshow-background" id="bgSlider"></div>
+    <div class="overlay"></div>
 
 <div class="container">
     <div class="header-section">
@@ -108,15 +163,74 @@
         "Engineering excellence is not just about building complex systems; it is about bringing precision, resilience, and operational harmony to the core."
     </div>
 
-    <div class="about-section">
+    <div id="about" class="tab-content content-section active">
         <h2>About Me</h2>
         <p>Strategic Technical Lead with 17+ years of expertise in hardware infrastructure, silicon validation, and global lab operations management. Proven track record in optimizing IT lab lifecycles, procurement processes, and complex hardware troubleshooting. Expert in bridging the gap between hands-on engineering and high-level enterprise operations. Leveraging AI tools and Cloud technologies to enhance operational efficiency, reduce downtime, and ensure 100% compliance in high-security environments.</p>
     </div>
 
+    <div id="experience" class="tab-content content-section">
+        <h2>Experience</h2>
+        <p><strong>Technical Team Leader - Lab Infrastructure</strong></p>
+        <ul>
+            <li>Managing global lab operations, silicon validation setups, and hardware lifecycles.</li>
+            <li>Optimizing procurement processes and resolving complex hardware issues to reduce downtime.</li>
+            <li>Bridging hands-on engineering execution with high-level enterprise operational frameworks.</li>
+        </ul>
+    </div>
+
+    <div id="skills" class="tab-content content-section">
+        <h2>Skills</h2>
+        <ul>
+            <li>Hardware Infrastructure & Silicon Validation</li>
+            <li>Global Lab Operations Management</li>
+            <li>IT Lab Lifecycle & Procurement Optimization</li>
+            <li>AI Tools & Cloud Technologies Integration</li>
+            <li>High-Security Environment Compliance</li>
+        </ul>
+    </div>
+
+    <div id="certifications" class="tab-content content-section">
+        <h2>Certifications</h2>
+        <ul>
+            <li>Cloud Technologies & Infrastructure Certifications</li>
+            <li>Advanced Technical Leadership & Lab Management</li>
+        </ul>
+    </div>
+
+    <div id="education" class="tab-content content-section">
+        <h2>Education</h2>
+        <p>Professional degree and technical qualifications aligned with engineering, hardware systems, and modern IT management.</p>
+    </div>
+
     <div class="nav-links">
-        <a href="Ramappa_Hanagal_July-2026(1).pdf" download>Resume ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</a>
+        <button onclick="showTab('about')">About Me</button>
+        <button onclick="showTab('experience')">Experience</button>
+        <button onclick="showTab('skills')">Skills</button>
+        <button onclick="showTab('certifications')">Certifications</button>
+        <button onclick="showTab('education')">Education</button>
+        <a href="Ramappa_Hanagal_July-2026(1).pdf" download>Resume</a>
     </div>
 </div>
+
+<script>
+    function showTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    const totalImages = 51;
+    let currentImageIndex = 1;
+    const bgSlider = document.getElementById('bgSlider');
+
+    function changeBackground() {
+        bgSlider.style.backgroundImage = url('${currentImageIndex}.jpg');
+        currentImageIndex = (currentImageIndex % totalImages) + 1;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 4000);
+</script>
 
 </body>
 </html>
