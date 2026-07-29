@@ -10,9 +10,10 @@
         :root {
             --accent-color: #38bdf8;
             --text-main: #ffffff;
-            --text-muted: #f8fafc;
-            --glass-bg: rgba(2, 6, 23, 0.45);
-            --border-glass: rgba(56, 189, 248, 0.5);
+            --text-muted: #f1f5f9;
+            /* Enhanced Glossy Glassmorphism Background */
+            --glass-bg: rgba(15, 23, 42, 0.35);
+            --border-glass: rgba(56, 189, 248, 0.6);
         }
 
         * {
@@ -31,7 +32,7 @@
             position: fixed;
         }
 
-        /* Background Moving Photos Slideshow */
+        /* Background Moving Photos Slideshow - Enhanced Clarity & Depth */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -50,23 +51,26 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.65) contrast(1.15);
+            transition: opacity 1.5s ease-in-out, transform 4s ease-in-out;
+            transform: scale(1.02);
+            /* Brighter, sharper and richer depth for user background photos */
+            filter: brightness(0.88) contrast(1.2) saturate(1.1);
         }
 
         .bg-slide.active {
             opacity: 1;
+            transform: scale(1);
         }
 
-        /* Optimized Header for Mobile & Desktop */
+        /* Top Navigation Bar */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(2, 6, 23, 0.88);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-glass);
             z-index: 1000;
             display: flex;
@@ -81,6 +85,7 @@
             font-weight: 700;
             color: var(--accent-color);
             white-space: nowrap;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         nav {
@@ -99,14 +104,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 4px;
+            gap: 5px;
             flex-wrap: nowrap;
             width: max-content;
         }
 
         nav ul li button {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: var(--text-muted);
             font-size: 0.68rem;
             font-weight: 600;
@@ -119,12 +124,12 @@
 
         nav ul li button:hover, nav ul li button.active {
             color: #ffffff;
-            background: rgba(56, 189, 248, 0.35);
+            background: rgba(56, 189, 248, 0.45);
             border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
         }
 
-        /* Main Card Layout */
+        /* Main Glass Card with Crystal Glossy Look */
         main {
             height: 100vh;
             display: flex;
@@ -136,12 +141,12 @@
 
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
             border: 1.5px solid var(--border-glass);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(56, 189, 248, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.15), 0 0 30px rgba(56, 189, 248, 0.3);
             max-width: 650px;
             width: 100%;
             text-align: center;
@@ -154,7 +159,7 @@
             width: 3px;
         }
         .glass-card::-webkit-scrollbar-thumb {
-            background: rgba(56, 189, 248, 0.5);
+            background: rgba(56, 189, 248, 0.6);
             border-radius: 10px;
         }
 
@@ -165,7 +170,7 @@
             border: 2px solid var(--accent-color);
             overflow: hidden;
             margin: 0 auto 6px auto;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
             background: #0f172a;
         }
 
@@ -180,7 +185,7 @@
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 2px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
         }
 
         .designation {
@@ -188,7 +193,7 @@
             color: #38bdf8;
             font-weight: 600;
             margin-bottom: 6px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.9);
             line-height: 1.3;
         }
 
@@ -198,26 +203,26 @@
             color: #ffffff;
             font-size: 0.78rem;
             line-height: 1.3;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.45);
             border-left: 3px solid var(--accent-color);
             border-right: 3px solid var(--accent-color);
             padding: 6px 8px;
             border-radius: 6px;
             margin-bottom: 6px;
-            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.2);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.25);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
 
         .about-me-text {
-            color: #f1f5f9;
+            color: #f8fafc;
             font-size: 0.75rem;
             line-height: 1.35;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
             text-align: left;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             padding: 8px 10px;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .about-me-title {
@@ -228,18 +233,19 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
-        /* Modal Popup Windows */
+        /* Modal Popup Windows with Glossy Glass Look */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 2000;
             display: flex;
             justify-content: center;
@@ -256,9 +262,9 @@
         }
 
         .modal-content {
-            background: rgba(15, 23, 42, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 2px solid var(--border-glass);
             border-radius: 16px;
             padding: 18px;
@@ -268,7 +274,7 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.1);
             transform: scale(0.9);
             transition: transform 0.3s ease;
             text-align: left;
@@ -282,7 +288,7 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             border: 1px solid var(--border-glass);
             color: #ffffff;
             font-size: 0.85rem;
@@ -312,13 +318,15 @@
             padding-bottom: 6px;
             font-weight: 700;
             padding-right: 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
         .modal-body p, .modal-body li {
-            color: #f1f5f9;
+            color: #f8fafc;
             font-size: 0.8rem;
             line-height: 1.4;
             margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
         }
 
         .modal-body ul {
@@ -327,7 +335,7 @@
 
         .experience-item, .project-item {
             margin-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
             padding-bottom: 8px;
         }
 
@@ -336,11 +344,12 @@
             font-size: 0.85rem;
             margin-bottom: 2px;
             font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.25);
+            background: rgba(56, 189, 248, 0.3);
             color: #ffffff;
             padding: 2px 6px;
             border-radius: 6px;
@@ -361,6 +370,7 @@
             margin-bottom: 4px;
             font-size: 0.78rem;
             font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
         .tag-container {
@@ -370,7 +380,7 @@
         }
 
         .tag {
-            background: rgba(2, 6, 23, 0.6);
+            background: rgba(2, 6, 23, 0.5);
             border: 1px solid var(--border-glass);
             padding: 2px 6px;
             border-radius: 4px;
@@ -391,7 +401,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             margin-top: 6px;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
             font-size: 0.82rem;
         }
 
