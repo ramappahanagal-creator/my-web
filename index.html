@@ -368,6 +368,7 @@
             <ul id="navLinks">
                 <li><button onclick="showSection('about')" class="active" id="btn-about">About</button></li>
                 <li><button onclick="showSection('experience')" id="btn-experience">Experience</button></li>
+                <li><button onclick="showSection('responsibilities')" id="btn-responsibilities">Key Responsibilities Handled</button></li>
                 <li><button onclick="showSection('skills')" id="btn-skills">Skills</button></li>
                 <li><button onclick="showSection('tools')" id="btn-tools">Tools</button></li>
                 <li><button onclick="showSection('projects')" id="btn-projects">Projects</button></li>
@@ -422,6 +423,31 @@
                 <h3>Log-Us Business Systems</h3>
                 <span class="date-badge">2009 – 2014</span>
                 <p>System Engineer & Technical Team Lead</p>
+            </div>
+        </div>
+
+        <!-- Key Responsibilities Handled Section -->
+        <div id="responsibilities" class="content-panel">
+            <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Key Responsibilities Handled</h2>
+            <div style="max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
+                <ul style="display: flex; flex-direction: column; gap: 6px;">
+                    <li>Spearheaded global lab infrastructure operations, establishing rigorous governance models, compliance frameworks, and seamless hardware validation workflows.</li>
+                    <li>Handled multiple leading smartphone brands including Apple iPhone, Google Pixel, OPPO, Realme, MI / Xiaomi; executed deep device teardowns, component-level rework, high-precision BGA soldering, micro-components handling (0201, 0402, 01005 components), BGA rework, and advanced chip reballing activities.</li>
+                    <li>Performed comprehensive debugging, hardware troubleshooting, performance benchmarking, and power analysis across diverse smartphone platforms.</li>
+                    <li>Managed end-to-end laboratory asset tracking, calibration schedules, tool maintenance, and safety compliance audits to ensure zero downtime.</li>
+                    <li>Coordinated cross-functional engineering teams to streamline hardware validation cycles, root-cause analysis, and defect tracking reports.</li>
+                    <li>Implemented strict quality assurance protocols for prototype testing, ensuring compliance with global regulatory and client-specific engineering standards.</li>
+                    <li>Maintained detailed technical documentation, test logs, failure analysis reports, and standard operating procedures (SOPs) for lab operations.</li>
+                    <li>Handled vendor negotiations, procurement of specialized testing equipment, and inventory control for critical electronic components and spare parts.</li>
+                    <li>Spearheaded technical training and knowledge transfer sessions for junior engineers and technicians on advanced soldering and diagnostic techniques.</li>
+                    <li>Optimized lab workflow efficiencies by adopting automated testing methodologies and streamlining hardware triage processes.</li>
+                    <li>Directed and executed critical silicon bring-up, advanced board power-on sequences, and complex hardware debugging activities across multiple silicon generations and prototype boards.</li>
+                    <li>Performed high-precision micro-soldering (SMD/BGA) and component-level fault isolation, significantly reducing hardware turnaround times and improving prototype reliability.</li>
+                    <li>Led, mentored, and supervised technical teams, overseeing daily lab operations, equipment maintenance, and adherence to strict safety and quality protocols.</li>
+                    <li>Executed thermal management analysis, voltage/current measurements, and signal integrity checks during initial board bring-up phases.</li>
+                    <li>Implemented rigorous ESD (Electrostatic Discharge) safety standards and lab environmental controls across all engineering testing floors.</li>
+                    <li>Designed and executed custom test fixtures and jigs to enhance diagnostic accuracy and speed up board-level testing cycles.</li>
+                </ul>
             </div>
         </div>
 
@@ -500,11 +526,10 @@
             </ul>
         </div>
 
-        <!-- Certifications Section (Updated with Provided List) -->
+        <!-- Certifications Section -->
         <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
             <div style="display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
-                
                 <div class="skill-category">
                     <h4>AI & Generative AI</h4>
                     <div class="tag-container">
@@ -514,7 +539,6 @@
                         <span class="tag">ISO/IEC 42001:2023 AIMS Standard</span>
                     </div>
                 </div>
-
                 <div class="skill-category">
                     <h4>IT, Project Management & Operations</h4>
                     <div class="tag-container">
@@ -524,7 +548,6 @@
                         <span class="tag">Supply Chain Foundations</span>
                     </div>
                 </div>
-
                 <div class="skill-category">
                     <h4>Electronics, Hardware & Networking</h4>
                     <div class="tag-container">
@@ -533,7 +556,6 @@
                         <span class="tag">Computer Peripherals & Mainboard Troubleshooting</span>
                     </div>
                 </div>
-
                 <div class="skill-category">
                     <h4>Additional Credentials</h4>
                     <div class="tag-container">
@@ -543,7 +565,6 @@
                         <span class="tag">Technical Workflow Automation & Enterprise Tooling Certifications</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -613,8 +634,8 @@
         }
 
         function showSection(sectionId) {
-            const panels = document.querySelectorAll('.content-panel');
-            panels.forEach(panel => panel.classList.remove('active'));
+            const ThePanels = document.querySelectorAll('.content-panel');
+            ThePanels.forEach(panel => panel.classList.remove('active'));
 
             const buttons = document.querySelectorAll('nav ul li button');
             buttons.forEach(btn => btn.classList.remove('active'));
