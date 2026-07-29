@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramappa Hanagal - Portfolio</title>
+    <title>Ramappa Hanagal - Single Page Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --accent-color: #facc15; /* Golden Yellow Theme as per your requirement */
+            --accent-color: #facc15;
             --text-main: #ffffff;
-            --text-muted: #cbd5e1;
-            --glass-bg: rgba(15, 23, 42, 0.80);
-            --border-glass: rgba(250, 204, 21, 0.35);
+            --text-muted: #e2e8f0;
+            --glass-bg: rgba(8, 12, 20, 0.75);
+            --border-glass: rgba(250, 204, 21, 0.5);
         }
 
         * {
@@ -20,25 +20,26 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
 
-        body {
-            background-color: #07090e;
+        /* Lock screen to single page without scrolling */
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #030508;
             color: var(--text-main);
-            overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        /* Transparent Background Slideshow with Secure Fallback */
+        /* Brightened Background Slideshow (3 Seconds per Photo) */
         .bg-slideshow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #07090e 0%, #0f172a 100%);
+            width: 100vw;
+            height: 100vh;
+            z-index: -999;
+            background: #030508;
         }
 
         .bg-slide {
@@ -50,33 +51,37 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            filter: brightness(0.35) contrast(1.1);
+            transition: opacity 1s ease-in-out;
+            /* Increased brightness for vibrant background */
+            filter: brightness(0.65) contrast(1.2);
+            z-index: -998;
         }
 
         .bg-slide.active {
             opacity: 1;
+            z-index: -997;
         }
 
-        /* Navigation Bar - Responsive for Mobile & Desktop */
+        /* Navigation Bar */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            height: 65px;
+            background: rgba(5, 8, 15, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.9rem 4%;
+            padding: 0 3%;
         }
 
         .logo {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-color);
             letter-spacing: -0.5px;
@@ -86,8 +91,7 @@
             overflow-x: auto;
             white-space: nowrap;
             scrollbar-width: none;
-            max-width: 70vw;
-            padding-bottom: 2px;
+            max-width: 72vw;
         }
 
         nav::-webkit-scrollbar {
@@ -97,67 +101,92 @@
         nav ul {
             display: inline-flex;
             list-style: none;
-            gap: 0.5rem;
+            gap: 4px;
         }
 
-        nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.4rem 0.7rem;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.02);
+        nav ul li button {
+            background: transparent;
             border: 1px solid transparent;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        nav ul li a:hover, nav ul li a.active {
+        nav ul li button:hover, nav ul li button.active {
             color: var(--text-main);
-            background: rgba(250, 204, 21, 0.15);
+            background: rgba(250, 204, 21, 0.22);
             border-color: var(--border-glass);
         }
 
-        /* Main Container */
+        /* Single Page Main Display Container */
         main {
-            max-width: 1100px;
-            margin: 115px auto 60px auto;
-            padding: 0 20px;
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 950px;
+            height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Ultra-Thin Glossy Glassmorphism Cards */
-        .glass-card {
+        /* Ultra-Glossy & Reflective Single Content Box */
+        .content-panel {
+            position: absolute;
+            width: 100%;
+            max-height: 100%;
             background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            margin-bottom: 35px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(250, 204, 21, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            transform: scale(0.97);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) transparent;
         }
 
-        .glass-card:hover {
-            border-color: rgba(250, 204, 21, 0.7);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 204, 21, 0.2);
+        .content-panel::-webkit-scrollbar {
+            width: 5px;
+        }
+        .content-panel::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
         }
 
+        .content-panel.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Hero / About Content Styling */
         .hero-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 18px;
+            gap: 14px;
         }
 
         .profile-img-container {
-            width: 150px;
-            height: 150px;
+            width: 125px;
+            height: 125px;
             border-radius: 50%;
             border: 2px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(250, 204, 21, 0.5);
+            box-shadow: 0 0 35px rgba(250, 204, 21, 0.7);
             background: #1e293b;
         }
 
@@ -168,112 +197,106 @@
         }
 
         .hero-section h1 {
-            font-size: 2.2rem;
+            font-size: 1.9rem;
             font-weight: 700;
             color: #ffffff;
         }
 
         .designation {
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             color: var(--accent-color);
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .engineering-quote {
             font-style: italic;
             color: var(--text-muted);
-            max-width: 700px;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            max-width: 650px;
+            font-size: 0.85rem;
+            line-height: 1.5;
             border-left: 3px solid var(--accent-color);
-            padding-left: 15px;
-            margin: 5px 0;
+            padding-left: 12px;
+            background: rgba(250, 204, 21, 0.05);
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 0 6px 6px 0;
             text-align: left;
-            background: rgba(250, 204, 21, 0.03);
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        section {
-            scroll-margin-top: 100px;
         }
 
         .section-title {
-            font-size: 1.35rem;
-            margin-bottom: 18px;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
             gap: 10px;
             border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             font-weight: 600;
         }
 
         p, li {
             color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 0.92rem;
+            line-height: 1.6;
+            font-size: 0.88rem;
         }
 
         ul {
-            padding-left: 20px;
+            padding-left: 18px;
         }
 
         .experience-item, .project-item {
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 1.05rem;
-            margin-bottom: 4px;
+            font-size: 1rem;
+            margin-bottom: 3px;
             font-weight: 600;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(250, 204, 21, 0.12);
+            background: rgba(250, 204, 21, 0.15);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.78rem;
-            margin-bottom: 8px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
 
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-glass);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 6px;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--text-main);
             transition: 0.3s;
         }
 
         .tag:hover {
-            background: rgba(250, 204, 21, 0.2);
+            background: rgba(250, 204, 21, 0.25);
             border-color: var(--accent-color);
         }
 
@@ -282,65 +305,56 @@
             align-items: center;
             gap: 8px;
             background: linear-gradient(135deg, #facc15 0%, #ca8a04 100%);
-            color: #07090e;
-            padding: 10px 24px;
+            color: #030508;
+            padding: 9px 20px;
             border-radius: 8px;
             font-weight: 700;
             text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(250, 204, 21, 0.3);
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.4);
             margin-top: 10px;
         }
 
-        .resume-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(250, 204, 21, 0.5);
-        }
-
         @media(max-width: 768px) {
-            main {
-                margin-top: 95px;
-                padding: 0 12px;
+            nav {
+                max-width: 50vw;
             }
-            .glass-card {
-                padding: 22px 16px;
+            .content-panel {
+                padding: 20px 15px;
             }
             .hero-section h1 {
-                font-size: 1.75rem;
-            }
-            nav {
-                max-width: 55vw;
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Transparent Background Slideshow Container -->
+    <!-- Brightened Background Slideshow Container (1.jpg to 57.jpg) -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar with Interactive Clickable Tabs -->
     <header>
         <div class="logo">RAMAPPA HANAGAL</div>
         <nav>
-            <ul>
-                <li><a href="#about" class="active">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#ai-skills">AI Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#resume">Resume</a></li>
+            <ul id="navLinks">
+                <li><button onclick="showSection('about')" class="active" id="btn-about">About</button></li>
+                <li><button onclick="showSection('experience')" id="btn-experience">Experience</button></li>
+                <li><button onclick="showSection('skills')" id="btn-skills">Skills</button></li>
+                <li><button onclick="showSection('tools')" id="btn-tools">Tools</button></li>
+                <li><button onclick="showSection('projects')" id="btn-projects">Projects</button></li>
+                <li><button onclick="showSection('education')" id="btn-education">Education</button></li>
+                <li><button onclick="showSection('certifications')" id="btn-certifications">Certifications</button></li>
+                <li><button onclick="showSection('ai-skills')" id="btn-ai-skills">AI Skills</button></li>
+                <li><button onclick="showSection('contact')" id="btn-contact">Contact</button></li>
+                <li><button onclick="showSection('resume')" id="btn-resume">Resume</button></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Single Page Container -->
     <main>
-        <!-- About Section with my-photo.jpg -->
-        <section id="about" class="glass-card hero-section">
+        <!-- About Section -->
+        <div id="about" class="content-panel hero-section active">
             <div class="profile-img-container">
                 <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.src='https://via.placeholder.com/150'">
             </div>
@@ -349,51 +363,46 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 15px;">
-                <h3 class="section-title" style="font-size: 1.1rem; border: none; margin-bottom: 8px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+            <div style="width: 100%; text-align: left; margin-top: 10px;">
+                <h3 class="section-title" style="font-size: 1rem; border: none; margin-bottom: 6px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
                 <p>
                     Senior Technical Lead Analyst with 17 years experience. Bridging advanced technologies, modern AI tooling and operational excellency, driven zero downtime environment, compliances and optimized technical workflows.
                 </p>
             </div>
-        </section>
+        </div>
 
-        <!-- Professional Experience Section -->
-        <section id="experience" class="glass-card">
+        <!-- Experience Section -->
+        <div id="experience" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-            
             <div class="experience-item">
                 <h3>Tech Mahindra</h3>
                 <span class="date-badge">June 2026 – Present</span>
                 <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
             </div>
-
             <div class="experience-item">
                 <h3>Tech Mahindra — Google Client Project</h3>
                 <span class="date-badge">April 2025 – June 2026</span>
                 <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations, governance models, and compliance frameworks.</p>
             </div>
-
             <div class="experience-item">
                 <h3>UST Global — Intel Client Project</h3>
                 <span class="date-badge">2014 – 2025</span>
                 <p>Lab Associate 2, Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up, hardware debugging, and complex board validations.</p>
             </div>
-
             <div class="experience-item">
                 <h3>Log-Us Business Systems</h3>
                 <span class="date-badge">2009 – 2014</span>
                 <p>System Engineer, Lab Admin, Senior Rework Engineer & Technical Team Lead</p>
             </div>
-
             <div class="experience-item">
                 <h3>Hi-tech Computers & Mangala Electronics, Hubli</h3>
                 <span class="date-badge">2001 – 2005</span>
                 <p>Audio & Video Servicing Engineer</p>
             </div>
-        </section>
+        </div>
 
-        <!-- Skills and Expertise Section -->
-        <section id="skills" class="glass-card">
+        <!-- Skills Section -->
+        <div id="skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -420,10 +429,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Tools and Technologies Section -->
-        <section id="tools" class="glass-card">
+        <!-- Tools Section -->
+        <div id="tools" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -439,10 +448,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Projects and Achievements Section -->
-        <section id="projects" class="glass-card">
+        <!-- Projects Section -->
+        <div id="projects" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
                 <h3>Global Lab Infrastructure Setup</h3>
@@ -456,10 +465,10 @@
                 <h3>Digital Transformation</h3>
                 <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking, inventory governance, and team training modules.</p>
             </div>
-        </section>
+        </div>
 
         <!-- Education Section -->
-        <section id="education" class="glass-card">
+        <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul>
                 <li><strong>B.Sc. in Information Technology</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
@@ -467,10 +476,10 @@
                 <li><strong>National Apprenticeship Certificate (NAC)</strong> — BEL, Bangalore (2001 – 2002)</li>
                 <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
             </ul>
-        </section>
+        </div>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="glass-card">
+        <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="tag-container" style="margin-top: 5px;">
                 <span class="tag">AI Accelerating Program (Skill Nation)</span>
@@ -482,10 +491,10 @@
                 <span class="tag">Tech Mahindra AI 101</span>
                 <span class="tag">ISO/IEC 42001:2023 AIMS</span>
             </div>
-        </section>
+        </div>
 
-        <!-- AI Tools & Generative AI Skills Section -->
-        <section id="ai-skills" class="glass-card">
+        <!-- AI Skills Section -->
+        <div id="ai-skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
@@ -498,77 +507,74 @@
                 <span class="tag">GitHub & Version Control</span>
                 <span class="tag">Microsoft 365 Copilot / M365 AI Tools</span>
                 <span class="tag">n8n (Workflow Automation & AI Integration)</span>
-                <span class="tag">Whisper (OpenAI Whisper — Speech-to-Text & Audio AI)</span>
-                <span class="tag">Prompt Engineering & AI-Assisted Workflows</span>
+                <span class="tag">Whisper (OpenAI Whisper)</span>
+                <span class="tag">Prompt Engineering</span>
                 <span class="tag">Tech Mahindra AI 101 & Gen AI Fundamentals</span>
             </div>
-        </section>
+        </div>
 
         <!-- Contact Section -->
-        <section id="contact" class="glass-card">
+        <div id="contact" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
             <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
             <p><strong>Phone:</strong> 9964375609</p>
             <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
             <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
             <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
-        </section>
+        </div>
 
-        <!-- Resume Download Section -->
-        <section id="resume" class="glass-card" style="text-align: center;">
+        <!-- Resume Section -->
+        <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
             <p style="margin-bottom: 15px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
-        </section>
+        </div>
     </main>
 
-    <!-- Background Slideshow & Scrollspy Script -->
+    <!-- JavaScript for 3-Second Bright Slideshow & Single-Page Tab Switching -->
     <script>
+        // 1. Background Bright Slideshow Logic (3 Seconds per photo)
         const container = document.getElementById('slideshowContainer');
-        
-        for (let i = 1; i <= 57; i++) {
-            const div = document.createElement('div');
-            div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
-            div.style.backgroundImage = `url('${i}.jpg')`;
-            container.appendChild(div);
+        const totalSlides = 57;
+
+        for (let i = 1; i <= totalSlides; i++) {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = i === 1 ? 'bg-slide active' : 'bg-slide';
+            slideDiv.style.backgroundImage = `url('${i}.jpg')`;
+            container.appendChild(slideDiv);
         }
 
         const slides = document.querySelectorAll('.bg-slide');
-        let currentSlide = 0;
+        let currentIndex = 0;
 
-        function nextSlide() {
-            if(slides.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+        function changeSlide() {
+            if (slides.length > 0) {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
             }
         }
 
-        if(slides.length > 1) {
-            setInterval(nextSlide, 4000);
+        if (slides.length > 1) {
+            setInterval(changeSlide, 3000);
         }
 
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
+        // 2. Single Page Tab Switching Logic (Clickable without scrolling)
+        function showSection(sectionId) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.content-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('nav ul li button');
+            buttons.forEach(btn => btn.classList.remove('active'));
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
+            // Show selected panel and activate corresponding button
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('btn-' + sectionId).classList.add('active');
+        }
     </script>
 </body>
 </html>
