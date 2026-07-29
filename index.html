@@ -4,33 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramappa Hanagal - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --accent-color: #38bdf8;
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --border-glass: rgba(56, 189, 248, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: #0b0f19;
-            color: #ffffff;
-            min-height: 100vh;
+            color: var(--text-main);
             overflow-x: hidden;
-            position: relative;
+            min-height: 100vh;
         }
 
-        /* Background 57 Photos Slideshow */
+        /* Transparent Background Slideshow with Fallback Background */
         .bg-slideshow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
         }
 
         .bg-slide {
@@ -41,97 +49,116 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
+            filter: brightness(0.4) contrast(1.1);
         }
 
         .bg-slide.active {
             opacity: 1;
         }
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(11, 15, 25, 0.65);
-            z-index: -1;
-            pointer-events: none;
-        }
-
+        /* Navigation Bar - Mobile & Desktop Responsive */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 0.9rem 4%;
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: #ffd700;
-            letter-spacing: 1px;
+            color: var(--accent-color);
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            max-width: 70vw;
+            padding-bottom: 2px;
+        }
+
+        nav::-webkit-scrollbar {
+            display: none;
         }
 
         nav ul {
-            display: flex;
+            display: inline-flex;
             list-style: none;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        nav ul li button {
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 0.9rem;
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
             font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.4rem 0.7rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
         }
 
-        nav ul li button:hover {
-            color: #ffd700;
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-main);
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--border-glass);
         }
 
+        /* Main Container */
         main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 100px 20px 40px 20px;
+            max-width: 1100px;
+            margin: 115px auto 60px auto;
+            padding: 0 20px;
         }
 
-        .profile-card {
-            background: rgba(18, 24, 38, 0.75);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+        /* Ultra-Thin Glossy Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            margin-bottom: 35px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            gap: 18px;
         }
 
         .profile-img-container {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 3px solid #ffd700;
+            border: 2px solid var(--accent-color);
             overflow: hidden;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+            background: #1e293b;
         }
 
         .profile-img-container img {
@@ -140,158 +167,90 @@
             object-fit: cover;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #fff;
+        .hero-section h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
         }
 
         .designation {
-            font-size: 0.95rem;
-            color: #ffd700;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--accent-color);
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .engineering-quote {
             font-style: italic;
-            color: #cbd5e1;
+            color: var(--text-muted);
+            max-width: 700px;
             font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 25px;
-            padding: 15px;
-            background: rgba(11, 15, 25, 0.6);
-            border-left: 3px solid #ffd700;
-            border-radius: 5px;
-        }
-
-        .about-me-section {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+            margin: 5px 0;
             text-align: left;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(56, 189, 248, 0.03);
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
-        .about-me-title {
-            color: #ffd700;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin-bottom: 18px;
+            color: var(--accent-color);
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .about-me-text {
-            color: #94a3b8;
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: #121826;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            width: 100%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-btn:hover {
-            color: #ffd700;
-        }
-
-        .modal-title {
-            color: #ffd700;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            gap: 10px;
+            border-bottom: 1px solid var(--border-glass);
             padding-bottom: 10px;
+            font-weight: 600;
         }
 
-        .modal-body p, .modal-body li {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        p, li {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.92rem;
         }
 
-        .modal-body ul {
+        ul {
             padding-left: 20px;
         }
 
         .experience-item, .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .experience-item h3, .project-item h3 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 5px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+            font-weight: 600;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(255, 215, 0, 0.1);
-            color: #ffd700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-color);
+            border: 1px solid var(--border-glass);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.78rem;
             margin-bottom: 8px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
         .skill-category h4 {
-            color: #fff;
-            margin-bottom: 10px;
+            color: var(--text-main);
+            margin-bottom: 8px;
             font-size: 0.95rem;
         }
 
@@ -302,131 +261,135 @@
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--text-main);
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent-color);
         }
 
         .resume-btn {
-            display: inline-block;
-            background: #ffd700;
-            color: #0b0f19;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            color: #090d16;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
             text-decoration: none;
-            transition: background 0.3s;
-            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+            margin-top: 10px;
         }
 
         .resume-btn:hover {
-            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(56, 189, 248, 0.5);
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 12px 15px;
-                flex-direction: column;
-                gap: 10px;
-            }
-            nav ul {
-                justify-content: center;
-                gap: 10px;
-            }
-            nav ul li button {
-                font-size: 0.8rem;
-            }
+        @media(max-width: 768px) {
             main {
-                padding-top: 130px;
+                margin-top: 95px;
+                padding: 0 12px;
             }
-            .profile-card {
-                padding: 20px;
+            .glass-card {
+                padding: 22px 16px;
+            }
+            .hero-section h1 {
+                font-size: 1.75rem;
+            }
+            nav {
+                max-width: 55vw;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Transparent Background Slideshow Container -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
-    <div class="bg-overlay"></div>
 
+    <!-- Navigation Bar -->
     <header>
         <div class="logo">Ramappa Hanagal</div>
         <nav>
             <ul>
-                <li><button onclick="openModal('experienceModal')">Experience</button></li>
-                <li><button onclick="openModal('skillsModal')">Skills</button></li>
-                <li><button onclick="openModal('toolsModal')">Tools</button></li>
-                <li><button onclick="openModal('projectsModal')">Projects</button></li>
-                <li><button onclick="openModal('educationModal')">Education</button></li>
-                <li><button onclick="openModal('certificationsModal')">Certifications</button></li>
-                <li><button onclick="openModal('aiSkillsModal')">AI Skills</button></li>
-                <li><button onclick="openModal('contactModal')">Contact</button></li>
-                <li><button onclick="openModal('resumeModal')">Resume</button></li>
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#ai-skills">AI Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#resume">Resume</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="profile-card">
+        <!-- About Section with my-photo.jpg -->
+        <section id="about" class="glass-card hero-section">
             <div class="profile-img-container">
-                <img src="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/my-photo.jpg" alt="Ramappa Hanagal">
+                <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.src='https://via.placeholder.com/150'">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">Senior Technical Lead Analyst — Lab Infrastructure & Project Management Operations</div>
-            
             <div class="engineering-quote">
-                "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
+                "Bridging advanced technologies, modern AI tooling, and operational excellence to drive zero-downtime environments, compliance, and optimized technical workflows."
             </div>
+            <p style="margin-top: 10px;">
+                Senior Technical Lead Analyst with over 17 years of extensive multi-domain experience spanning global lab infrastructure operations, hardware validation, component-level debugging, silicon bring-up, and end-to-end project management.
+            </p>
+        </section>
 
-            <div class="about-me-section">
-                <div class="about-me-title"><i class="fa-solid fa-user"></i> About Me</div>
-                <div class="about-me-text">
-                    Senior Technical Lead Analyst with 17 years experience. Bridging advanced technologies, modern AI tooling and operational excellency, driven zero downtime environment, compliances and optimized technical workflows.
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div id="experienceModal" class="modal-overlay" onclick="outsideClose(event, 'experienceModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('experienceModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+        <!-- Professional Experience Section -->
+        <section id="experience" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+            
             <div class="experience-item">
                 <h3>Tech Mahindra</h3>
                 <span class="date-badge">June 2026 – Present</span>
                 <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
             </div>
+
             <div class="experience-item">
                 <h3>Tech Mahindra — Google Client Project</h3>
                 <span class="date-badge">April 2025 – June 2026</span>
                 <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations, governance models, and compliance frameworks.</p>
             </div>
+
             <div class="experience-item">
                 <h3>UST Global — Intel Client Project</h3>
                 <span class="date-badge">2014 – 2025</span>
                 <p>Lab Associate 2, Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up, hardware debugging, and complex board validations.</p>
             </div>
+
             <div class="experience-item">
                 <h3>Log-Us Business Systems</h3>
                 <span class="date-badge">2009 – 2014</span>
                 <p>System Engineer, Lab Admin, Senior Rework Engineer & Technical Team Lead</p>
             </div>
+
             <div class="experience-item">
                 <h3>Hi-tech Computers & Mangala Electronics, Hubli</h3>
                 <span class="date-badge">2001 – 2005</span>
                 <p>Audio & Video Servicing Engineer</p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="skillsModal" class="modal-overlay" onclick="outsideClose(event, 'skillsModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('skillsModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
+        <!-- Skills and Expertise Section -->
+        <section id="skills" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4>Supported Brands</h4>
@@ -452,13 +415,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="toolsModal" class="modal-overlay" onclick="outsideClose(event, 'toolsModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('toolsModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
+        <!-- Tools and Technologies Section -->
+        <section id="tools" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4>Hardware & Measuring Equipment</h4>
@@ -473,13 +434,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="projectsModal" class="modal-overlay" onclick="outsideClose(event, 'projectsModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('projectsModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
+        <!-- Projects and Achievements Section -->
+        <section id="projects" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
                 <h3>Global Lab Infrastructure Setup</h3>
                 <p>Successfully directed global lab infrastructure setup and validation workflows for major tier-1 client projects, achieving benchmarked turnaround time reductions and zero-downtime lab audits.</p>
@@ -492,27 +451,23 @@
                 <h3>Digital Transformation</h3>
                 <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking, inventory governance, and team training modules.</p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="educationModal" class="modal-overlay" onclick="outsideClose(event, 'educationModal')">
-        <div class="modal-content modal-body">
-            <button class="close-btn" onclick="closeModal('educationModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+        <!-- Education Section -->
+        <section id="education" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul>
                 <li><strong>B.Sc. in Information Technology</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
                 <li><strong>ITI – Electronics Mechanics</strong> — Government ITI, Kalaghatagi (1998 – 2000)</li>
                 <li><strong>National Apprenticeship Certificate (NAC)</strong> — BEL, Bangalore (2001 – 2002)</li>
                 <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
             </ul>
-        </div>
-    </div>
+        </section>
 
-    <div id="certificationsModal" class="modal-overlay" onclick="outsideClose(event, 'certificationsModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('certificationsModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
-            <div class="tag-container" style="margin-top: 8px;">
+        <!-- Certifications Section -->
+        <section id="certifications" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
+            <div class="tag-container" style="margin-top: 5px;">
                 <span class="tag">AI Accelerating Program (Skill Nation)</span>
                 <span class="tag">ITIL Foundation</span>
                 <span class="tag">PMP Training (35 Hours)</span>
@@ -522,83 +477,95 @@
                 <span class="tag">Tech Mahindra AI 101</span>
                 <span class="tag">ISO/IEC 42001:2023 AIMS</span>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="aiSkillsModal" class="modal-overlay" onclick="outsideClose(event, 'aiSkillsModal')">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('aiSkillsModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
+        <!-- AI Tools & Generative AI Skills Section -->
+        <section id="ai-skills" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
                 <span class="tag">Flow.ai</span>
                 <span class="tag">Claude AI (Anthropic)</span>
-                <span class="tag">ChatGPT / OpenAI</span>
-                <span class="tag">Prompt Engineering</span>
-                <span class="tag">AI-Driven Workflow Automation</span>
+                <span class="tag">ChatGPT / OpenAI Tools</span>
+                <span class="tag">Google Gemini</span>
+                <span class="tag">NotebookLM (Google)</span>
+                <span class="tag">Julius AI</span>
+                <span class="tag">GitHub & Version Control</span>
+                <span class="tag">Microsoft 365 Copilot / M365 AI Tools</span>
+                <span class="tag">n8n (Workflow Automation & AI Integration)</span>
+                <span class="tag">Whisper (OpenAI Whisper — Speech-to-Text & Audio AI)</span>
+                <span class="tag">Prompt Engineering & AI-Assisted Workflows</span>
+                <span class="tag">Tech Mahindra AI 101 & Gen AI Fundamentals</span>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="contactModal" class="modal-overlay" onclick="outsideClose(event, 'contactModal')">
-        <div class="modal-content modal-body">
-            <button class="close-btn" onclick="closeModal('contactModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title"><i class="fa-solid fa-envelope"></i> Contact Information</h2>
-            <p><i class="fa-solid fa-envelope" style="color:#ffd700; margin-right:8px;"></i> <strong>Email:</strong> ramappahanagal@gmail.com</p>
-            <p><i class="fa-solid fa-phone" style="color:#ffd700; margin-right:8px;"></i> <strong>Phone:</strong> +91 99865 31499</p>
-            <p><i class="fa-solid fa-location-dot" style="color:#ffd700; margin-right:8px;"></i> <strong>Location:</strong> Bangalore, India</p>
-            <p><i class="fa-brands fa-linkedin" style="color:#ffd700; margin-right:8px;"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ramappa-hanagal-9831a238" target="_blank" style="color: #ffffff; text-decoration: underline;">ramappa-hanagal-9831a238</a></p>
-        </div>
-    </div>
+        <!-- Contact Section -->
+        <section id="contact" class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
+            <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
+            <p><strong>Phone:</strong> 9964375609</p>
+            <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
+            <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
+        </section>
 
-    <div id="resumeModal" class="modal-overlay" onclick="outsideClose(event, 'resumeModal')">
-        <div class="modal-content modal-body" style="text-align: center;">
-            <button class="close-btn" onclick="closeModal('resumeModal')"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume / CV</h2>
-            <p>Access and download the complete professional resume of Ramappa Hanagal.</p>
-            <a href="https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/Ramappa_Hanagal_Resume.pdf" target="_blank" class="resume-btn">
-                <i class="fa-solid fa-download"></i> Download CV
+        <!-- Resume Download Section -->
+        <section id="resume" class="glass-card" style="text-align: center;">
+            <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
+            <p style="margin-bottom: 15px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
+            <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
+                <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
-        </div>
-    </div>
+        </section>
+    </main>
 
+    <!-- Background Slideshow & Scrollspy Script -->
     <script>
-        // 57 Photos Background Slideshow Logic
-        const slideshowContainer = document.getElementById('slideshowContainer');
-        const totalImages = 57;
-        let currentSlide = 0;
-        let slides = [];
-
-        for (let i = 1; i <= totalImages; i++) {
-            const slide = document.createElement('div');
-            slide.classList.add('bg-slide');
-            if (i === 1) slide.classList.add('active');
-            slide.style.backgroundImage = `url('https://raw.githubusercontent.com/ramappahanagal-creator/my-web/main/Backgrounds/bg${i}.jpg')`;
-            slideshowContainer.appendChild(slide);
-            slides.push(slide);
+        const container = document.getElementById('slideshowContainer');
+        
+        // Safe Slideshow Loader (won't crash if images are missing)
+        for (let i = 1; i <= 57; i++) {
+            const div = document.createElement('div');
+            div.className = i === 1 ? 'bg-slide active' : 'bg-slide';
+            div.style.backgroundImage = `url('${i}.jpg')`;
+            container.appendChild(div);
         }
+
+        const slides = document.querySelectorAll('.bg-slide');
+        let currentSlide = 0;
 
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % totalImages;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 3000);
-
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        function outsideClose(event, modalId) {
-            if (event.target.id === modalId) {
-                closeModal(modalId);
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
             }
         }
+
+        if(slides.length > 1) {
+            setInterval(nextSlide, 4000);
+        }
+
+        // Active Navigation Scrollspy
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
