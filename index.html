@@ -34,14 +34,15 @@
             position: fixed;
         }
 
-        /* Background Moving Photos Slideshow - Maximum Clarity & Depth */
+        /* Background Moving Photos Slideshow - Ensuring proper rendering and z-index */
         .bg-slideshow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -2;
+            pointer-events: none;
         }
 
         .bg-slide {
@@ -52,10 +53,11 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             opacity: 0;
-            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(1.04);
-            filter: brightness(0.85) contrast(1.15) saturate(1.05);
+            transition: opacity 1.5s ease-in-out, transform 4.5s ease-in-out;
+            transform: scale(1.03);
+            filter: brightness(0.9) contrast(1.1) saturate(1.05);
         }
 
         .bg-slide.active {
@@ -63,15 +65,15 @@
             transform: scale(1);
         }
 
-        /* Cinematic overlay to blend background with luxury theme */
+        /* Cinematic overlay to blend background with luxury theme while keeping images clear */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(6, 9, 15, 0.85) 0%, rgba(11, 15, 25, 0.75) 50%, rgba(6, 9, 15, 0.9) 100%),
-                        radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(6, 9, 15, 0.75) 0%, rgba(11, 15, 25, 0.65) 50%, rgba(6, 9, 15, 0.8) 100%),
+                        radial-gradient(circle at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.5) 100%);
             z-index: -1;
             pointer-events: none;
         }
@@ -159,6 +161,8 @@
             align-items: center;
             padding: 12px;
             padding-top: 60px;
+            position: relative;
+            z-index: 10;
         }
 
         .glass-card {
@@ -737,14 +741,14 @@
             slides.push(slide);
         }
 
-        // Automatic Slideshow Logic
+        // Automatic Slideshow Logic set precisely to 3000ms (3 seconds per photo)
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % totalImages;
             slides[currentSlide].classList.add('active');
         }
 
-        setInterval(nextSlide, 4500);
+        setInterval(nextSlide, 3000);
 
         // Modal Functions
         function openModal(modalId) {
