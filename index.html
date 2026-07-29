@@ -56,7 +56,6 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            /* Maximum brightness and vibrant contrast boost */
             filter: brightness(1.6) contrast(1.35) saturate(1.3);
             z-index: -998;
         }
@@ -66,7 +65,6 @@
             z-index: -997;
         }
 
-        /* Glassmorphism Light Overlay to make background pop */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -167,13 +165,13 @@
             -webkit-backdrop-filter: blur(25px);
             border: 2px solid var(--border-glass);
             border-radius: 20px;
-            padding: 25px 30px;
+            padding: 20px 25px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(255, 215, 0, 0.25);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, transform 0.3s ease;
             transform: scale(0.96);
-            overflow: hidden; /* Strict lock against inner scrolling */
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -240,8 +238,8 @@
         }
 
         .section-title {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
@@ -296,8 +294,8 @@
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 3px;
-            font-size: 0.85rem;
+            margin-bottom: 4px;
+            font-size: 0.82rem;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.8);
         }
@@ -314,7 +312,7 @@
             border: 1px solid var(--border-glass);
             padding: 3px 7px;
             border-radius: 5px;
-            font-size: 0.73rem;
+            font-size: 0.71rem;
             color: var(--text-main);
             font-weight: 500;
             transition: 0.2s;
@@ -348,7 +346,7 @@
                 max-width: 48vw;
             }
             .content-panel {
-                padding: 15px;
+                padding: 12px;
                 height: 92%;
             }
             .hero-section h1 {
@@ -502,33 +500,54 @@
             </ul>
         </div>
 
-        <!-- Certifications Section -->
+        <!-- Certifications Section (Categorized & Structured) -->
         <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
-            <div class="tag-container" style="margin-top: 5px; max-height: 250px; overflow-y: auto;">
-                <!-- AI & Generative AI -->
-                <span class="tag">AI Accelerating Program (Skill Nation)</span>
-                <span class="tag">Google Gen AI Courses</span>
-                <span class="tag">Tech Mahindra AI 101</span>
-                <span class="tag">ISO/IEC 42001:2023 AIMS Standard</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
                 
+                <!-- AI & Generative AI -->
+                <div class="skill-category">
+                    <h4>AI & Generative AI</h4>
+                    <div class="tag-container">
+                        <span class="tag">Skill Nation AI Program</span>
+                        <span class="tag">Google Gen AI Courses</span>
+                        <span class="tag">Tech Mahindra AI 101</span>
+                        <span class="tag">ISO/IEC 42001:2023 AIMS Standard</span>
+                    </div>
+                </div>
+
                 <!-- IT, Project Management & Operations -->
-                <span class="tag">ITIL Foundation</span>
-                <span class="tag">PMP Training (35 Hours)</span>
-                <span class="tag">Future Leadership Program (FLP)</span>
-                <span class="tag">Future Leaders Program</span>
-                <span class="tag">Supply Chain Foundations</span>
+                <div class="skill-category">
+                    <h4>IT, Project Management & Operations</h4>
+                    <div class="tag-container">
+                        <span class="tag">ITIL® 4 Foundation</span>
+                        <span class="tag">PMP Training (35 Hours)</span>
+                        <span class="tag">Future Leaders Program</span>
+                        <span class="tag">Supply Chain Foundations</span>
+                    </div>
+                </div>
 
                 <!-- Electronics, Hardware & Networking -->
-                <span class="tag">FPGA Development Courses & Labs</span>
-                <span class="tag">Advanced Electronics Soldering & Rework</span>
-                <span class="tag">Computer Peripherals & Mainboard Troubleshooting</span>
+                <div class="skill-category">
+                    <h4>Electronics, Hardware & Networking</h4>
+                    <div class="tag-container">
+                        <span class="tag">FPGA Development Courses & Labs</span>
+                        <span class="tag">Advanced Electronics Soldering & Rework</span>
+                        <span class="tag">Computer Peripherals & Mainboard Troubleshooting</span>
+                    </div>
+                </div>
 
                 <!-- Additional Credentials -->
-                <span class="tag">Global Lab Infrastructure Governance & Compliance Modules</span>
-                <span class="tag">Mobile Device 5G Architecture & Teardown Specialist Badges</span>
-                <span class="tag">Silicon Bring-Up & Power Analysis Methodologies</span>
-                <span class="tag">Technical Workflow Automation & Enterprise Tooling Certifications</span>
+                <div class="skill-category">
+                    <h4>Additional Credentials</h4>
+                    <div class="tag-container">
+                        <span class="tag">Global Lab Infrastructure Governance & Compliance Modules</span>
+                        <span class="tag">Mobile Device 5G Architecture & Teardown Specialist Badges</span>
+                        <span class="tag">Silicon Bring-Up & Power Analysis Methodologies</span>
+                        <span class="tag">Technical Workflow Automation & Enterprise Tooling Certifications</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -572,7 +591,6 @@
 
     <!-- JavaScript for Background Slideshow & Clickable Tabs -->
     <script>
-        // High Brightness Background Slideshow (1 to 57.jpg)
         const container = document.getElementById('slideshowContainer');
         const totalSlides = 57;
 
@@ -598,7 +616,6 @@
             setInterval(changeSlide, 3000);
         }
 
-        // Clickable Tab Switcher (No Scrolling)
         function showSection(sectionId) {
             const panels = document.querySelectorAll('.content-panel');
             panels.forEach(panel => panel.classList.remove('active'));
