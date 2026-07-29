@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramappa Hanagal - Single Page Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ramappa Hanagal - Ultra Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --accent-color: #facc15;
+            --accent-color: #ffd700;
+            --accent-glow: rgba(255, 215, 0, 0.6);
             --text-main: #ffffff;
-            --text-muted: #e2e8f0;
-            --glass-bg: rgba(8, 12, 20, 0.75);
-            --border-glass: rgba(250, 204, 21, 0.5);
+            --text-muted: #f8fafc;
+            --glass-bg: rgba(2, 6, 23, 0.45);
+            --border-glass: rgba(255, 215, 0, 0.7);
         }
 
         * {
@@ -22,16 +23,19 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Lock screen to single page without scrolling */
+        /* HARD LOCK: Absolutely NO scrolling allowed on any device */
         html, body {
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
-            background-color: #030508;
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: hidden !important;
+            position: fixed;
+            background-color: #000000;
             color: var(--text-main);
         }
 
-        /* Brightened Background Slideshow (3 Seconds per Photo) */
+        /* Ultra Bright Background Slideshow */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -39,7 +43,7 @@
             width: 100vw;
             height: 100vh;
             z-index: -999;
-            background: #030508;
+            background: #000;
         }
 
         .bg-slide {
@@ -52,8 +56,8 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            /* Increased brightness for vibrant background */
-            filter: brightness(0.65) contrast(1.2);
+            /* Maximum brightness and vibrant contrast boost */
+            filter: brightness(1.15) contrast(1.3) saturate(1.2);
             z-index: -998;
         }
 
@@ -62,29 +66,43 @@
             z-index: -997;
         }
 
-        /* Navigation Bar */
+        /* Glassmorphism Light Overlay to make background pop */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%);
+            z-index: -996;
+            pointer-events: none;
+        }
+
+        /* Top Professional Header & Navigation */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 65px;
-            background: rgba(5, 8, 15, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
+            height: 60px;
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1.5px solid var(--border-glass);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 3%;
+            padding: 0 4%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .logo {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--accent-color);
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         nav {
@@ -108,61 +126,56 @@
             background: transparent;
             border: 1px solid transparent;
             color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 5px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 9px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.25s ease;
         }
 
         nav ul li button:hover, nav ul li button.active {
-            color: var(--text-main);
-            background: rgba(250, 204, 21, 0.22);
-            border-color: var(--border-glass);
+            color: #000;
+            background: var(--accent-color);
+            border-color: #fff;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* Single Page Main Display Container */
+        /* Single Page Strict Main Viewport */
         main {
             position: absolute;
-            top: 75px;
+            top: 68px;
             left: 50%;
             transform: translateX(-50%);
             width: 92%;
-            max-width: 950px;
-            height: calc(100vh - 90px);
+            max-width: 880px;
+            height: calc(100vh - 78px);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Ultra-Glossy & Reflective Single Content Box */
+        /* Ultra-Glossy & Highly Reflective Panels (Zero Scroll) */
         .content-panel {
             position: absolute;
             width: 100%;
-            max-height: 100%;
+            height: 94%;
+            max-height: calc(100vh - 85px);
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 2px solid var(--border-glass);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(250, 204, 21, 0.35);
+            padding: 25px 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(255, 215, 0, 0.4);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.35s ease, transform 0.35s ease;
-            transform: scale(0.97);
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-color) transparent;
-        }
-
-        .content-panel::-webkit-scrollbar {
-            width: 5px;
-        }
-        .content-panel::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 10px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: scale(0.96);
+            overflow: hidden; /* Strict lock against inner scrolling */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .content-panel.active {
@@ -171,23 +184,21 @@
             transform: scale(1);
         }
 
-        /* Hero / About Content Styling */
+        /* Hero / About Section */
         .hero-section {
-            display: flex;
-            flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .profile-img-container {
-            width: 125px;
-            height: 125px;
+            width: 105px;
+            height: 105px;
             border-radius: 50%;
-            border: 2px solid var(--accent-color);
+            border: 2.5px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 35px rgba(250, 204, 21, 0.7);
-            background: #1e293b;
+            box-shadow: 0 0 30px var(--accent-glow);
+            background: #0f172a;
         }
 
         .profile-img-container img {
@@ -197,48 +208,51 @@
         }
 
         .hero-section h1 {
-            font-size: 1.9rem;
-            font-weight: 700;
+            font-size: 1.75rem;
+            font-weight: 800;
             color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .designation {
-            font-size: 0.98rem;
+            font-size: 0.88rem;
             color: var(--accent-color);
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .engineering-quote {
             font-style: italic;
             color: var(--text-muted);
-            max-width: 650px;
-            font-size: 0.85rem;
-            line-height: 1.5;
+            max-width: 600px;
+            font-size: 0.8rem;
+            line-height: 1.4;
             border-left: 3px solid var(--accent-color);
             padding-left: 12px;
-            background: rgba(250, 204, 21, 0.05);
-            padding-top: 8px;
-            padding-bottom: 8px;
+            background: rgba(255, 215, 0, 0.1);
+            padding-top: 6px;
+            padding-bottom: 6px;
             border-radius: 0 6px 6px 0;
             text-align: left;
         }
 
         .section-title {
-            font-size: 1.25rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 8px;
-            font-weight: 600;
+            border-bottom: 1.5px solid var(--border-glass);
+            padding-bottom: 5px;
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--accent-glow);
         }
 
         p, li {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.88rem;
+            line-height: 1.45;
+            font-size: 0.82rem;
         }
 
         ul {
@@ -246,93 +260,100 @@
         }
 
         .experience-item, .project-item {
-            margin-bottom: 18px;
+            margin-bottom: 10px;
         }
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 1rem;
-            margin-bottom: 3px;
-            font-weight: 600;
+            font-size: 0.92rem;
+            margin-bottom: 2px;
+            font-weight: 700;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(250, 204, 21, 0.15);
+            background: rgba(255, 215, 0, 0.25);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            margin-bottom: 6px;
+            padding: 2px 7px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            margin-bottom: 3px;
+            font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 10px;
         }
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 6px;
-            font-size: 0.9rem;
+            margin-bottom: 3px;
+            font-size: 0.85rem;
+            font-weight: 700;
         }
 
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 4px;
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.12);
             border: 1px solid var(--border-glass);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.78rem;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-size: 0.73rem;
             color: var(--text-main);
-            transition: 0.3s;
+            font-weight: 500;
+            transition: 0.2s;
         }
 
         .tag:hover {
-            background: rgba(250, 204, 21, 0.25);
-            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: #000;
+            border-color: #fff;
         }
 
         .resume-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #facc15 0%, #ca8a04 100%);
-            color: #030508;
-            padding: 9px 20px;
+            background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+            color: #000;
+            padding: 8px 16px;
             border-radius: 8px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.4);
-            margin-top: 10px;
+            box-shadow: 0 5px 20px var(--accent-glow);
+            margin-top: 8px;
+            font-size: 0.85rem;
         }
 
         @media(max-width: 768px) {
             nav {
-                max-width: 50vw;
+                max-width: 48vw;
             }
             .content-panel {
-                padding: 20px 15px;
+                padding: 15px;
+                height: 92%;
             }
             .hero-section h1 {
-                font-size: 1.5rem;
+                font-size: 1.35rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Brightened Background Slideshow Container (1.jpg to 57.jpg) -->
+    <!-- Ultra Bright Background Slideshow Container -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
+    <div class="bg-overlay"></div>
 
-    <!-- Navigation Bar with Interactive Clickable Tabs -->
+    <!-- Navigation Bar -->
     <header>
         <div class="logo">RAMAPPA HANAGAL</div>
         <nav>
@@ -351,7 +372,7 @@
         </nav>
     </header>
 
-    <!-- Single Page Container -->
+    <!-- Strict Non-Scrollable Single Page Main Container -->
     <main>
         <!-- About Section -->
         <div id="about" class="content-panel hero-section active">
@@ -363,9 +384,9 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 10px;">
-                <h3 class="section-title" style="font-size: 1rem; border: none; margin-bottom: 6px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
-                <p>
+            <div style="width: 100%; text-align: left; margin-top: 4px;">
+                <h3 class="section-title" style="font-size: 0.9rem; border: none; margin-bottom: 3px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+                <p style="font-size: 0.8rem;">
                     Senior Technical Lead Analyst with 17 years experience. Bridging advanced technologies, modern AI tooling and operational excellency, driven zero downtime environment, compliances and optimized technical workflows.
                 </p>
             </div>
@@ -382,22 +403,17 @@
             <div class="experience-item">
                 <h3>Tech Mahindra — Google Client Project</h3>
                 <span class="date-badge">April 2025 – June 2026</span>
-                <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations, governance models, and compliance frameworks.</p>
+                <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations and governance frameworks.</p>
             </div>
             <div class="experience-item">
                 <h3>UST Global — Intel Client Project</h3>
                 <span class="date-badge">2014 – 2025</span>
-                <p>Lab Associate 2, Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up, hardware debugging, and complex board validations.</p>
+                <p>Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up and board validations.</p>
             </div>
             <div class="experience-item">
                 <h3>Log-Us Business Systems</h3>
                 <span class="date-badge">2009 – 2014</span>
-                <p>System Engineer, Lab Admin, Senior Rework Engineer & Technical Team Lead</p>
-            </div>
-            <div class="experience-item">
-                <h3>Hi-tech Computers & Mangala Electronics, Hubli</h3>
-                <span class="date-badge">2001 – 2005</span>
-                <p>Audio & Video Servicing Engineer</p>
+                <p>System Engineer & Technical Team Lead</p>
             </div>
         </div>
 
@@ -420,12 +436,10 @@
                     <div class="tag-container">
                         <span class="tag">Silicon Bring-Up</span>
                         <span class="tag">Board Power-On</span>
-                        <span class="tag">Hardware Validation & Debugging</span>
-                        <span class="tag">High-Precision Soldering (SMD/BGA)</span>
-                        <span class="tag">Lab Infrastructure Management</span>
-                        <span class="tag">Supply Chain & Procurement</span>
+                        <span class="tag">Hardware Validation</span>
+                        <span class="tag">SMD/BGA Soldering</span>
+                        <span class="tag">Lab Infrastructure</span>
                         <span class="tag">Thermal Management</span>
-                        <span class="tag">Signal Integrity</span>
                     </div>
                 </div>
             </div>
@@ -455,15 +469,15 @@
             <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
                 <h3>Global Lab Infrastructure Setup</h3>
-                <p>Successfully directed global lab infrastructure setup and validation workflows for major tier-1 client projects, achieving benchmarked turnaround time reductions and zero-downtime lab audits.</p>
+                <p>Successfully directed global lab infrastructure setup and validation workflows for major tier-1 client projects, achieving zero-downtime audits.</p>
             </div>
             <div class="project-item">
                 <h3>Custom Testing Fixtures</h3>
-                <p>Designed custom testing fixtures and implemented advanced BGA/SMD micro-soldering solutions that drastically improved prototype board reliability and fault isolation rates.</p>
+                <p>Designed custom testing fixtures and implemented advanced BGA/SMD micro-soldering solutions that drastically improved prototype board reliability.</p>
             </div>
             <div class="project-item">
                 <h3>Digital Transformation</h3>
-                <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking, inventory governance, and team training modules.</p>
+                <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking and inventory governance.</p>
             </div>
         </div>
 
@@ -471,9 +485,9 @@
         <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul>
-                <li><strong>B.Sc. in Information Technology</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
-                <li><strong>ITI – Electronics Mechanics</strong> — Government ITI, Kalaghatagi (1998 – 2000)</li>
-                <li><strong>National Apprenticeship Certificate (NAC)</strong> — BEL, Bangalore (2001 – 2002)</li>
+                <li><strong>B.Sc. in IT</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
+                <li><strong>ITI – Electronics Mechanics</strong> — Gov. ITI, Kalaghatagi (1998 – 2000)</li>
+                <li><strong>NAC</strong> — BEL, Bangalore (2001 – 2002)</li>
                 <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
             </ul>
         </div>
@@ -486,7 +500,6 @@
                 <span class="tag">ITIL Foundation</span>
                 <span class="tag">PMP Training (35 Hours)</span>
                 <span class="tag">Future Leadership Program (FLP)</span>
-                <span class="tag">Hardware & Networking Certification</span>
                 <span class="tag">Google Gen AI Courses</span>
                 <span class="tag">Tech Mahindra AI 101</span>
                 <span class="tag">ISO/IEC 42001:2023 AIMS</span>
@@ -499,17 +512,15 @@
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
                 <span class="tag">Flow.ai</span>
-                <span class="tag">Claude AI (Anthropic)</span>
-                <span class="tag">ChatGPT / OpenAI Tools</span>
+                <span class="tag">Claude AI</span>
+                <span class="tag">ChatGPT / OpenAI</span>
                 <span class="tag">Google Gemini</span>
-                <span class="tag">NotebookLM (Google)</span>
+                <span class="tag">NotebookLM</span>
                 <span class="tag">Julius AI</span>
-                <span class="tag">GitHub & Version Control</span>
-                <span class="tag">Microsoft 365 Copilot / M365 AI Tools</span>
-                <span class="tag">n8n (Workflow Automation & AI Integration)</span>
-                <span class="tag">Whisper (OpenAI Whisper)</span>
+                <span class="tag">Microsoft 365 Copilot</span>
+                <span class="tag">n8n Automation</span>
+                <span class="tag">Whisper AI</span>
                 <span class="tag">Prompt Engineering</span>
-                <span class="tag">Tech Mahindra AI 101 & Gen AI Fundamentals</span>
             </div>
         </div>
 
@@ -526,16 +537,16 @@
         <!-- Resume Section -->
         <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
-            <p style="margin-bottom: 15px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
+            <p style="margin-bottom: 10px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
         </div>
     </main>
 
-    <!-- JavaScript for 3-Second Bright Slideshow & Single-Page Tab Switching -->
+    <!-- JavaScript for Background Slideshow & Clickable Tabs -->
     <script>
-        // 1. Background Bright Slideshow Logic (3 Seconds per photo)
+        // High Brightness Background Slideshow (1 to 57.jpg)
         const container = document.getElementById('slideshowContainer');
         const totalSlides = 57;
 
@@ -561,17 +572,14 @@
             setInterval(changeSlide, 3000);
         }
 
-        // 2. Single Page Tab Switching Logic (Clickable without scrolling)
+        // Clickable Tab Switcher (No Scrolling)
         function showSection(sectionId) {
-            // Hide all panels
             const panels = document.querySelectorAll('.content-panel');
             panels.forEach(panel => panel.classList.remove('active'));
 
-            // Remove active class from all buttons
             const buttons = document.querySelectorAll('nav ul li button');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Show selected panel and activate corresponding button
             document.getElementById(sectionId).classList.add('active');
             document.getElementById('btn-' + sectionId).classList.add('active');
         }
