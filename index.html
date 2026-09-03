@@ -210,17 +210,18 @@
         .hero-section {
             align-items: center;
             text-align: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .profile-img-container {
-            width: 105px;
-            height: 105px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
-            border: 2.5px solid var(--accent-color);
+            border: 2px solid var(--accent-color);
             overflow: hidden;
-            box-shadow: 0 0 30px var(--accent-glow);
+            box-shadow: 0 0 25px var(--accent-glow);
             background: rgba(15, 23, 42, 0.5);
+            flex-shrink: 0;
         }
 
         .profile-img-container img {
@@ -230,14 +231,15 @@
         }
 
         .hero-section h1 {
-            font-size: 1.75rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+            line-height: 1.1;
         }
 
         .designation {
-            font-size: 0.88rem;
+            font-size: 0.78rem;
             color: var(--accent-color);
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -248,14 +250,14 @@
             font-style: italic;
             color: var(--text-muted);
             max-width: 600px;
-            font-size: 0.8rem;
-            line-height: 1.4;
+            font-size: 0.75rem;
+            line-height: 1.3;
             border-left: 3px solid var(--accent-color);
-            padding-left: 12px;
+            padding-left: 10px;
             background: rgba(255, 215, 0, 0.15);
             backdrop-filter: blur(10px);
-            padding-top: 6px;
-            padding-bottom: 6px;
+            padding-top: 4px;
+            padding-bottom: 4px;
             border-radius: 0 6px 6px 0;
             text-align: left;
         }
@@ -373,7 +375,7 @@
                 height: 92%;
             }
             .hero-section h1 {
-                font-size: 1.35rem;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -414,7 +416,7 @@
 
     <!-- Strict Non-Scrollable Single Page Main Container -->
     <main>
-        <!-- About Section -->
+        <!-- About Section (Updated with your comprehensive professional profile) -->
         <div id="about" class="content-panel hero-section active">
             <div class="profile-img-container">
                 <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.src='https://via.placeholder.com/150'">
@@ -424,10 +426,10 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 4px;">
-                <h3 class="section-title" style="font-size: 0.9rem; border: none; margin-bottom: 3px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
-                <p style="font-size: 0.8rem;">
-                    Senior Technical Lead Analyst with 17 years experience. Bridging advanced technologies, modern AI tooling and operational excellency, driven zero downtime environment, compliances and optimized technical workflows.
+            <div style="width: 100%; text-align: left; margin-top: 2px;">
+                <h3 class="section-title" style="font-size: 0.85rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+                <p style="font-size: 0.76rem; line-height: 1.38;">
+                    Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra (Google client engagement). Proven expertise across the full hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
                 </p>
             </div>
         </div>
@@ -654,7 +656,7 @@
     <!-- JavaScript for Background Slideshow (256 Slides, 30s interval) & Clickable Tabs -->
     <script>
         const container = document.getElementById('slideshowContainer');
-        const totalSlides = 256; // Updated to 256 images
+        const totalSlides = 256; // 256 background images
 
         for (let i = 1; i <= totalSlides; i++) {
             const slideDiv = document.createElement('div');
@@ -675,7 +677,7 @@
         }
 
         if (slides.length > 1) {
-            setInterval(changeSlide, 30000); // Updated to 30 seconds per slide portal
+            setInterval(changeSlide, 30000); // 30 seconds duration per image portal
         }
 
         function showSection(sectionId) {
