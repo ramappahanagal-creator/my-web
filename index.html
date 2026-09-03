@@ -35,7 +35,29 @@
             color: var(--text-main);
         }
 
-        /* Ultra Bright Background Slideshow */
+        /* Moving Top Headline Banner */
+        .top-marquee-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid var(--border-glass);
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 1001;
+            padding: 4px 0;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .top-marquee-container marquee {
+            width: 100%;
+        }
+
+        /* Ultra Bright Background Slideshow with 25% Zoom Out */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -48,16 +70,17 @@
 
         .bg-slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -12.5%;
+            left: -12.5%;
+            width: 125%;
+            height: 125%;
             background-size: cover;
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             filter: brightness(1.6) contrast(1.35) saturate(1.3);
             z-index: -998;
+            transform: scale(0.8); /* 25% Zoom Out effect */
         }
 
         .bg-slide.active {
@@ -79,7 +102,7 @@
         /* Top Professional Header & Navigation */
         header {
             position: fixed;
-            top: 0;
+            top: 28px; /* Offset below the moving headline */
             left: 0;
             width: 100%;
             height: 60px;
@@ -143,12 +166,12 @@
         /* Single Page Strict Main Viewport */
         main {
             position: absolute;
-            top: 68px;
+            top: 96px; /* Adjusted for marquee + header */
             left: 50%;
             transform: translateX(-50%);
             width: 92%;
             max-width: 880px;
-            height: calc(100vh - 78px);
+            height: calc(100vh - 106px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -159,7 +182,7 @@
             position: absolute;
             width: 100%;
             height: 94%;
-            max-height: calc(100vh - 85px);
+            max-height: calc(100vh - 110px);
             background: var(--glass-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -357,6 +380,13 @@
 </head>
 <body>
 
+    <!-- Moving Top Headline Banner -->
+    <div class="top-marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            WELCOME TO RAMAPPA HANAGAL'S PROFESSIONAL PORTFOLIO &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; SPECIALIZED IN AI PROJECTS, LAB INFRASTRUCTURE & ADVANCED ENGINEERING &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; EXPLORE SECTIONS BELOW FOR DETAILED CREDENTIALS
+        </marquee>
+    </div>
+
     <!-- Ultra Bright Background Slideshow Container -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
     <div class="bg-overlay"></div>
@@ -372,6 +402,7 @@
                 <li><button onclick="showSection('skills')" id="btn-skills">Skills</button></li>
                 <li><button onclick="showSection('tools')" id="btn-tools">Tools</button></li>
                 <li><button onclick="showSection('projects')" id="btn-projects">Projects</button></li>
+                <li><button onclick="showSection('ai-project')" id="btn-ai-project" style="color:var(--accent-color); border-color:var(--accent-color);">AI Project</button></li>
                 <li><button onclick="showSection('education')" id="btn-education">Education</button></li>
                 <li><button onclick="showSection('certifications')" id="btn-certifications">Certifications</button></li>
                 <li><button onclick="showSection('ai-skills')" id="btn-ai-skills">AI Skills</button></li>
@@ -515,6 +546,20 @@
             </div>
         </div>
 
+        <!-- AI Project Section -->
+        <div id="ai-project" class="content-panel">
+            <h2 class="section-title"><i class="fa-solid fa-microchip"></i> AI Project & Innovations</h2>
+            <div class="project-item">
+                <h3>Generative AI & Automated Lab Workflows</h3>
+                <span class="date-badge">2026 Initiative</span>
+                <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols, drastically reducing manual latency and human error rates.</p>
+            </div>
+            <div class="project-item">
+                <h3>Smart Diagnostics Assistant</h3>
+                <p>Developed prompt engineering frameworks and automated diagnostic scripts using AI models to accelerate hardware fault isolation, component-level triage, and troubleshooting cycle timelines.</p>
+            </div>
+        </div>
+
         <!-- Education Section -->
         <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
@@ -606,10 +651,10 @@
         </div>
     </main>
 
-    <!-- JavaScript for Background Slideshow & Clickable Tabs -->
+    <!-- JavaScript for Background Slideshow (256 Slides, 30s interval) & Clickable Tabs -->
     <script>
         const container = document.getElementById('slideshowContainer');
-        const totalSlides = 57;
+        const totalSlides = 256; // Updated to 256 images
 
         for (let i = 1; i <= totalSlides; i++) {
             const slideDiv = document.createElement('div');
@@ -630,7 +675,7 @@
         }
 
         if (slides.length > 1) {
-            setInterval(changeSlide, 3000);
+            setInterval(changeSlide, 30000); // Updated to 30 seconds per slide portal
         }
 
         function showSection(sectionId) {
