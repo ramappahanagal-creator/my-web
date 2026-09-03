@@ -12,7 +12,7 @@
             --accent-glow: rgba(255, 215, 0, 0.8);
             --text-main: #ffffff;
             --text-muted: #ffffff;
-            --glass-bg: rgba(0, 0, 0, 0.04); /* Ultra-transparent glass to make background images sharply recognizable */
+            --glass-bg: rgba(0, 0, 0, 0.05); /* Ultra-transparent glass showcasing background images clearly */
             --border-glass: #000080; /* Absolute Solid Navy Blue Border */
             --border-glow: rgba(0, 0, 128, 0.9); /* Deep Navy Blue Glow */
         }
@@ -42,15 +42,15 @@
             top: 0;
             left: 0;
             width: 100vw;
-            background: rgba(0, 0, 128, 0.4);
+            background: rgba(0, 0, 128, 0.45);
             border-bottom: 2px solid var(--border-glass);
             color: var(--accent-color);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             overflow: hidden;
             white-space: nowrap;
             z-index: 1001;
-            padding: 4px 0;
+            padding: 5px 0;
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
@@ -85,12 +85,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: cover; /* Fixed: completely fills screen with zero black bars left/right */
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0;
             z-index: -998;
-            filter: brightness(1.7) contrast(1.4) saturate(1.35); /* Crystal clear image visibility */
+            filter: brightness(1.7) contrast(1.4) saturate(1.35);
             transition: opacity 1.5s ease-in-out;
         }
 
@@ -126,11 +126,11 @@
         /* Top Professional Header & Navigation */
         header {
             position: fixed;
-            top: 28px;
+            top: 30px;
             left: 0;
             width: 100%;
-            height: 60px;
-            background: rgba(0, 0, 128, 0.3);
+            height: 64px;
+            background: rgba(0, 0, 128, 0.35);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 2px solid var(--border-glass);
@@ -143,7 +143,7 @@
         }
 
         .logo {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--accent-color);
             letter-spacing: 0.5px;
@@ -154,7 +154,7 @@
             overflow-x: auto;
             white-space: nowrap;
             scrollbar-width: none;
-            max-width: 75vw;
+            max-width: 76vw;
         }
 
         nav::-webkit-scrollbar {
@@ -164,16 +164,16 @@
         nav ul {
             display: inline-flex;
             list-style: none;
-            gap: 4px;
+            gap: 5px;
         }
 
         nav ul li button {
-            background: rgba(0, 0, 128, 0.35);
+            background: rgba(0, 0, 128, 0.4);
             border: 1px solid var(--border-glass);
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Increased button font size */
             font-weight: 600;
-            padding: 5px 9px;
+            padding: 6px 11px;
             border-radius: 6px;
             cursor: pointer;
             backdrop-filter: blur(8px);
@@ -187,32 +187,32 @@
             box-shadow: 0 0 20px var(--border-glow);
         }
 
-        /* Single Page Strict Main Viewport Expanded to Eliminate Side Gaps */
+        /* Main Workspace Viewport */
         main {
             position: absolute;
-            top: 96px;
+            top: 100px;
             left: 50%;
             transform: translateX(-50%);
-            width: 96%; /* Expanded width to fully utilize screen space */
-            max-width: 1100px; /* Wider professional workspace */
-            height: calc(100vh - 106px);
+            width: 96%;
+            max-width: 1150px;
+            height: calc(100vh - 110px);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* High-Glassy Panels with Solid Navy Blue Border & High Background Transparency */
+        /* Glassy Panels with Solid Navy Blue Border & Expanded Content Typography */
         .content-panel {
             position: absolute;
             width: 100%;
             height: 94%;
-            max-height: calc(100vh - 110px);
+            max-height: calc(100vh - 115px);
             background: var(--glass-bg);
-            backdrop-filter: blur(10px); /* Reduced blur so background images remain sharply recognizable */
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 3px solid var(--border-glass);
             border-radius: 20px;
-            padding: 22px 30px;
+            padding: 26px 36px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 0, 128, 0.08), 0 0 25px rgba(0, 0, 128, 0.4);
             opacity: 0;
             visibility: hidden;
@@ -233,12 +233,12 @@
         .hero-section {
             align-items: center;
             text-align: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .profile-img-container {
-            width: 85px;
-            height: 85px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             border: 2px solid #000080;
             overflow: hidden;
@@ -254,7 +254,7 @@
         }
 
         .hero-section h1 {
-            font-size: 1.45rem;
+            font-size: 1.7rem; /* Larger prominent title */
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -262,7 +262,7 @@
         }
 
         .designation {
-            font-size: 0.8rem;
+            font-size: 0.92rem; /* Larger designation font size */
             color: var(--accent-color);
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -272,51 +272,51 @@
         .engineering-quote {
             font-style: italic;
             color: var(--text-muted);
-            max-width: 750px;
-            font-size: 0.77rem;
-            line-height: 1.35;
+            max-width: 850px;
+            font-size: 0.9rem; /* Larger quote font size */
+            line-height: 1.4;
             border-left: 3px solid #000080;
-            padding-left: 12px;
+            padding-left: 14px;
             background: rgba(0, 0, 128, 0.2);
             backdrop-filter: blur(8px);
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding-top: 6px;
+            padding-bottom: 6px;
             border-radius: 0 6px 6px 0;
             text-align: left;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem; /* Larger section title font size */
+            margin-bottom: 12px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             border-bottom: 2px solid var(--border-glass);
-            padding-bottom: 6px;
+            padding-bottom: 8px;
             font-weight: 700;
             text-shadow: 0 0 12px var(--accent-glow);
         }
 
         p, li {
             color: var(--text-muted);
-            line-height: 1.5;
-            font-size: 0.84rem;
+            line-height: 1.6;
+            font-size: 1.02rem; /* Increased body text font size to fill empty space cleanly */
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
 
         ul {
-            padding-left: 18px;
+            padding-left: 20px;
         }
 
         .experience-item, .project-item {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 0.95rem;
-            margin-bottom: 3px;
+            font-size: 1.15rem; /* Larger item headers */
+            margin-bottom: 4px;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -327,23 +327,23 @@
             backdrop-filter: blur(8px);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 8px;
-            font-size: 0.72rem;
-            margin-bottom: 4px;
+            font-size: 0.82rem; /* Larger date badges */
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
         }
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 5px;
-            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -351,16 +351,16 @@
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 7px;
         }
 
         .tag {
             background: rgba(0, 0, 128, 0.35);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-glass);
-            padding: 4px 8px;
-            border-radius: 5px;
-            font-size: 0.73rem;
+            padding: 6px 12px; /* Larger tag size */
+            border-radius: 6px;
+            font-size: 0.9rem; /* Larger tag text font size */
             color: var(--text-main);
             font-weight: 500;
             transition: 0.2s;
@@ -377,16 +377,16 @@
         .resume-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: linear-gradient(135deg, #000080 0%, #0000ff 100%);
             color: #fff;
-            padding: 9px 18px;
+            padding: 12px 22px;
             border-radius: 8px;
             font-weight: 800;
             text-decoration: none;
             box-shadow: 0 5px 20px var(--border-glow);
-            margin-top: 10px;
-            font-size: 0.85rem;
+            margin-top: 14px;
+            font-size: 1.05rem;
         }
 
         @media(max-width: 768px) {
@@ -394,12 +394,12 @@
                 max-width: 50vw;
             }
             .content-panel {
-                padding: 14px;
+                padding: 16px;
                 width: 98%;
                 height: 92%;
             }
             .hero-section h1 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -451,9 +451,9 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 4px;">
-                <h3 class="section-title" style="font-size: 0.9rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
-                <p style="font-size: 0.79rem; line-height: 1.42;">
+            <div style="width: 100%; text-align: left; margin-top: 6px;">
+                <h3 class="section-title" style="font-size: 1.15rem; border: none; margin-bottom: 4px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+                <p style="font-size: 0.98rem; line-height: 1.55;">
                     Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra. Proven expertise across the hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
                 </p>
             </div>
@@ -487,8 +487,8 @@
         <!-- Key Responsibilities Handled Section -->
         <div id="responsibilities" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Key Responsibilities Handled</h2>
-            <div style="max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
-                <ul style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="max-height: calc(100vh - 190px); overflow-y: auto; padding-right: 6px;">
+                <ul style="display: flex; flex-direction: column; gap: 10px;">
                     <li>Spearheaded global lab infrastructure operations, establishing rigorous governance models, compliance frameworks, and seamless hardware validation workflows.</li>
                     <li>Handled multiple leading smartphone brands including Apple iPhone, Google Pixel, OPPO, Realme, MI / Xiaomi; executed deep device teardowns, component-level rework, high-precision BGA soldering, micro-components handling, and advanced chip reballing activities.</li>
                     <li>Performed comprehensive debugging, hardware troubleshooting, performance benchmarking, and power analysis across diverse smartphone platforms.</li>
@@ -571,7 +571,7 @@
         <!-- Education Section -->
         <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-            <ul>
+            <ul style="display: flex; flex-direction: column; gap: 8px;">
                 <li><strong>B.Sc. in IT</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
                 <li><strong>ITI – Electronics Mechanics</strong> — Gov. ITI, Kalaghatagi (1998 – 2000)</li>
                 <li><strong>NAC</strong> — BEL, Bangalore (2001 – 2002)</li>
@@ -607,16 +607,18 @@
         <!-- Contact Section -->
         <div id="contact" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
-            <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
-            <p><strong>Phone:</strong> 9964375609</p>
-            <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
+                <p><strong>Phone:</strong> 9964375609</p>
+                <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
+            </div>
         </div>
 
         <!-- Resume Section -->
         <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
-            <p style="margin-bottom: 10px;">Download the official professional CV document.</p>
+            <p style="margin-bottom: 14px;">Download the official professional CV document.</p>
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
