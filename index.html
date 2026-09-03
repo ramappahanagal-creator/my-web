@@ -57,7 +57,7 @@
             width: 100%;
         }
 
-        /* Ultra Bright Background Slideshow with 25% Zoom Out */
+        /* Ultra Bright Background Slideshow with Zoom Out Animation */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -77,15 +77,16 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out, transform 30s linear;
             filter: brightness(1.6) contrast(1.35) saturate(1.3);
             z-index: -998;
-            transform: scale(0.8); /* 25% Zoom Out effect */
+            transform: scale(0.8); /* 25% Zoom Out effect base */
         }
 
         .bg-slide.active {
             opacity: 1;
             z-index: -997;
+            transform: scale(0.6); /* Continuous animated zoom out during display */
         }
 
         .bg-overlay {
@@ -102,7 +103,7 @@
         /* Top Professional Header & Navigation */
         header {
             position: fixed;
-            top: 28px; /* Offset below the moving headline */
+            top: 28px;
             left: 0;
             width: 100%;
             height: 60px;
@@ -166,7 +167,7 @@
         /* Single Page Strict Main Viewport */
         main {
             position: absolute;
-            top: 96px; /* Adjusted for marquee + header */
+            top: 96px;
             left: 50%;
             transform: translateX(-50%);
             width: 92%;
@@ -177,7 +178,7 @@
             justify-content: center;
         }
 
-        /* Ultra-Glossy & Highly Reflective Panels (Zero Scroll) */
+        /* Ultra-Glossy & Highly Reflective Panels */
         .content-panel {
             position: absolute;
             width: 100%;
@@ -206,7 +207,6 @@
             transform: scale(1);
         }
 
-        /* Hero / About Section */
         .hero-section {
             align-items: center;
             text-align: center;
@@ -389,7 +389,7 @@
         </marquee>
     </div>
 
-    <!-- Ultra Bright Background Slideshow Container -->
+    <!-- Background Slideshow Container (1.jpg to 57.jpg) -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
     <div class="bg-overlay"></div>
 
@@ -414,9 +414,9 @@
         </nav>
     </header>
 
-    <!-- Strict Non-Scrollable Single Page Main Container -->
+    <!-- Main Container -->
     <main>
-        <!-- About Section (Updated with your exact requested professional profile) -->
+        <!-- About Section -->
         <div id="about" class="content-panel hero-section active">
             <div class="profile-img-container">
                 <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.src='https://via.placeholder.com/150'">
@@ -429,7 +429,7 @@
             <div style="width: 100%; text-align: left; margin-top: 2px;">
                 <h3 class="section-title" style="font-size: 0.85rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
                 <p style="font-size: 0.76rem; line-height: 1.38;">
-                    Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra (Google client engagement). Proven expertise across the full hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
+                    Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra. Proven expertise across the full hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
                 </p>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
             </div>
             <div class="experience-item">
-                <h3>Tech Mahindra — Google Client Project</h3>
+                <h3>Tech Mahindra</h3>
                 <span class="date-badge">April 2025 – June 2026</span>
                 <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations and governance frameworks.</p>
             </div>
@@ -465,21 +465,10 @@
             <div style="max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
                 <ul style="display: flex; flex-direction: column; gap: 6px;">
                     <li>Spearheaded global lab infrastructure operations, establishing rigorous governance models, compliance frameworks, and seamless hardware validation workflows.</li>
-                    <li>Handled multiple leading smartphone brands including Apple iPhone, Google Pixel, OPPO, Realme, MI / Xiaomi; executed deep device teardowns, component-level rework, high-precision BGA soldering, micro-components handling (0201, 0402, 01005 components), BGA rework, and advanced chip reballing activities.</li>
+                    <li>Handled multiple leading smartphone brands including Apple iPhone, Google Pixel, OPPO, Realme, MI / Xiaomi; executed deep device teardowns, component-level rework, high-precision BGA soldering, micro-components handling, and advanced chip reballing activities.</li>
                     <li>Performed comprehensive debugging, hardware troubleshooting, performance benchmarking, and power analysis across diverse smartphone platforms.</li>
                     <li>Managed end-to-end laboratory asset tracking, calibration schedules, tool maintenance, and safety compliance audits to ensure zero downtime.</li>
                     <li>Coordinated cross-functional engineering teams to streamline hardware validation cycles, root-cause analysis, and defect tracking reports.</li>
-                    <li>Implemented strict quality assurance protocols for prototype testing, ensuring compliance with global regulatory and client-specific engineering standards.</li>
-                    <li>Maintained detailed technical documentation, test logs, failure analysis reports, and standard operating procedures (SOPs) for lab operations.</li>
-                    <li>Handled vendor negotiations, procurement of specialized testing equipment, and inventory control for critical electronic components and spare parts.</li>
-                    <li>Spearheaded technical training and knowledge transfer sessions for junior engineers and technicians on advanced soldering and diagnostic techniques.</li>
-                    <li>Optimized lab workflow efficiencies by adopting automated testing methodologies and streamlining hardware triage processes.</li>
-                    <li>Directed and executed critical silicon bring-up, advanced board power-on sequences, and complex hardware debugging activities across multiple silicon generations and prototype boards.</li>
-                    <li>Performed high-precision micro-soldering (SMD/BGA) and component-level fault isolation, significantly reducing hardware turnaround times and improving prototype reliability.</li>
-                    <li>Led, mentored, and supervised technical teams, overseeing daily lab operations, equipment maintenance, and adherence to strict safety and quality protocols.</li>
-                    <li>Executed thermal management analysis, voltage/current measurements, and signal integrity checks during initial board bring-up phases.</li>
-                    <li>Implemented rigorous ESD (Electrostatic Discharge) safety standards and lab environmental controls across all engineering testing floors.</li>
-                    <li>Designed and executed custom test fixtures and jigs to enhance diagnostic accuracy and speed up board-level testing cycles.</li>
                 </ul>
             </div>
         </div>
@@ -542,10 +531,6 @@
                 <h3>Custom Testing Fixtures</h3>
                 <p>Designed custom testing fixtures and implemented advanced BGA/SMD micro-soldering solutions that drastically improved prototype board reliability.</p>
             </div>
-            <div class="project-item">
-                <h3>Digital Transformation</h3>
-                <p>Spearheaded digital transformation and workflow efficiency drives by integrating advanced automated tracking and inventory governance.</p>
-            </div>
         </div>
 
         <!-- AI Project Section -->
@@ -554,11 +539,7 @@
             <div class="project-item">
                 <h3>Generative AI & Automated Lab Workflows</h3>
                 <span class="date-badge">2026 Initiative</span>
-                <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols, drastically reducing manual latency and human error rates.</p>
-            </div>
-            <div class="project-item">
-                <h3>Smart Diagnostics Assistant</h3>
-                <p>Developed prompt engineering frameworks and automated diagnostic scripts using AI models to accelerate hardware fault isolation, component-level triage, and troubleshooting cycle timelines.</p>
+                <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols.</p>
             </div>
         </div>
 
@@ -576,42 +557,11 @@
         <!-- Certifications Section -->
         <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
-            <div style="display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 4px;">
-                <div class="skill-category">
-                    <h4>AI & Generative AI</h4>
-                    <div class="tag-container">
-                        <span class="tag">Skill Nation AI Program</span>
-                        <span class="tag">Google Gen AI Courses</span>
-                        <span class="tag">Tech Mahindra AI 101</span>
-                        <span class="tag">ISO/IEC 42001:2023 AIMS Standard</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>IT, Project Management & Operations</h4>
-                    <div class="tag-container">
-                        <span class="tag">ITIL® 4 Foundation</span>
-                        <span class="tag">PMP Training (35 Hours)</span>
-                        <span class="tag">Future Leaders Program</span>
-                        <span class="tag">Supply Chain Foundations</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Electronics, Hardware & Networking</h4>
-                    <div class="tag-container">
-                        <span class="tag">FPGA Development Courses & Labs</span>
-                        <span class="tag">Advanced Electronics Soldering & Rework</span>
-                        <span class="tag">Computer Peripherals & Mainboard Troubleshooting</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Additional Credentials</h4>
-                    <div class="tag-container">
-                        <span class="tag">Global Lab Infrastructure Governance & Compliance Modules</span>
-                        <span class="tag">Mobile Device 5G Architecture & Teardown Specialist Badges</span>
-                        <span class="tag">Silicon Bring-Up & Power Analysis Methodologies</span>
-                        <span class="tag">Technical Workflow Automation & Enterprise Tooling Certifications</span>
-                    </div>
-                </div>
+            <div class="tag-container">
+                <span class="tag">Skill Nation AI Program</span>
+                <span class="tag">Google Gen AI Courses</span>
+                <span class="tag">ITIL® 4 Foundation</span>
+                <span class="tag">PMP Training (35 Hours)</span>
             </div>
         </div>
 
@@ -620,15 +570,11 @@
             <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
                 <span class="tag">Google AI Studio</span>
-                <span class="tag">Flow.ai</span>
                 <span class="tag">Claude AI</span>
                 <span class="tag">ChatGPT / OpenAI</span>
                 <span class="tag">Google Gemini</span>
                 <span class="tag">NotebookLM</span>
-                <span class="tag">Julius AI</span>
-                <span class="tag">Microsoft 365 Copilot</span>
                 <span class="tag">n8n Automation</span>
-                <span class="tag">Whisper AI</span>
                 <span class="tag">Prompt Engineering</span>
             </div>
         </div>
@@ -640,23 +586,22 @@
             <p><strong>Phone:</strong> 9964375609</p>
             <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
             <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ramappa-hanagal" target="_blank" style="color: var(--accent-color);">linkedin.com/in/ramappa-hanagal</a></p>
-            <p><strong>Portfolio:</strong> <a href="https://ramappahanagal-creator.github.io/my-web/" target="_blank" style="color: var(--accent-color);">ramappahanagal-creator.github.io/my-web/</a></p>
         </div>
 
         <!-- Resume Section -->
         <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
-            <p style="margin-bottom: 10px;">Download the official professional CV document (Ramappa_Hanagal_July-2026).</p>
+            <p style="margin-bottom: 10px;">Download the official professional CV document.</p>
             <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
                 <i class="fa-solid fa-download"></i> Download Resume PDF
             </a>
         </div>
     </main>
 
-    <!-- JavaScript for Background Slideshow (256 Slides, 30s interval) & Clickable Tabs -->
+    <!-- JavaScript for 57 Image Slideshow with Continuous 25% Zoom Out -->
     <script>
         const container = document.getElementById('slideshowContainer');
-        const totalSlides = 256; // 256 background images
+        const totalSlides = 57; // Updated to 57 background images (1.jpg to 57.jpg)
 
         for (let i = 1; i <= totalSlides; i++) {
             const slideDiv = document.createElement('div');
@@ -677,7 +622,7 @@
         }
 
         if (slides.length > 1) {
-            setInterval(changeSlide, 30000); // 30 seconds duration per image portal
+            setInterval(changeSlide, 15000); // Transitions every 15 seconds to cycle smoothly through 57 images
         }
 
         function showSection(sectionId) {
