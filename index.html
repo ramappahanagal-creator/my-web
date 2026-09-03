@@ -12,8 +12,8 @@
             --accent-glow: rgba(255, 215, 0, 0.8);
             --text-main: #ffffff;
             --text-muted: #ffffff;
-            --glass-bg: rgba(0, 0, 0, 0.0); /* 100% transparent core to let background images shine completely through with a true glassy effect */
-            --border-glass: #000080; /* Absolute Solid Navy Blue Border as requested */
+            --glass-bg: rgba(0, 0, 0, 0.15); /* Perfectly balanced ultra-transparent core for maximum image clarity */
+            --border-glass: #000080; /* Absolute Solid Navy Blue Border */
             --border-glow: rgba(0, 0, 128, 0.9); /* Deep Navy Blue Glow */
         }
 
@@ -130,7 +130,7 @@
             left: 0;
             width: 100%;
             height: 60px;
-            background: rgba(0, 0, 128, 0.15);
+            background: rgba(0, 0, 128, 0.25);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 2px solid var(--border-glass);
@@ -168,7 +168,7 @@
         }
 
         nav ul li button {
-            background: rgba(0, 0, 128, 0.2);
+            background: rgba(0, 0, 128, 0.3);
             border: 1px solid var(--border-glass);
             color: var(--text-muted);
             font-size: 0.75rem;
@@ -208,12 +208,12 @@
             height: 94%;
             max-height: calc(100vh - 110px);
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 3px solid var(--border-glass);
             border-radius: 20px;
             padding: 20px 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 128, 0.15), 0 0 25px rgba(0, 0, 128, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 128, 0.1), 0 0 25px rgba(0, 0, 128, 0.4);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -277,7 +277,7 @@
             line-height: 1.3;
             border-left: 3px solid #000080;
             padding-left: 10px;
-            background: rgba(0, 0, 128, 0.2);
+            background: rgba(0, 0, 128, 0.25);
             backdrop-filter: blur(10px);
             padding-top: 4px;
             padding-bottom: 4px;
@@ -323,7 +323,7 @@
 
         .date-badge {
             display: inline-block;
-            background: rgba(0, 0, 128, 0.4);
+            background: rgba(0, 0, 128, 0.5);
             backdrop-filter: blur(10px);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
@@ -355,7 +355,7 @@
         }
 
         .tag {
-            background: rgba(0, 0, 128, 0.25);
+            background: rgba(0, 0, 128, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-glass);
             padding: 3px 7px;
