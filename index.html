@@ -12,7 +12,7 @@
             --accent-glow: rgba(255, 215, 0, 0.8);
             --text-main: #ffffff;
             --text-muted: #ffffff;
-            --glass-bg: rgba(0, 0, 0, 0.15); /* Perfectly balanced ultra-transparent core for maximum image clarity */
+            --glass-bg: rgba(0, 0, 0, 0.04); /* Ultra-transparent glass to make background images sharply recognizable */
             --border-glass: #000080; /* Absolute Solid Navy Blue Border */
             --border-glow: rgba(0, 0, 128, 0.9); /* Deep Navy Blue Glow */
         }
@@ -42,7 +42,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 128, 0.4);
             border-bottom: 2px solid var(--border-glass);
             color: var(--accent-color);
             font-size: 0.8rem;
@@ -58,7 +58,7 @@
             width: 100%;
         }
 
-        /* Background Slideshow Container with Full Clarity & Zoom-Out Effect */
+        /* Background Slideshow Container with Full Cover & 25%-30% Zoom-Out Effect */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -70,12 +70,12 @@
             overflow: hidden;
         }
 
-        @keyframes smoothZoomOut {
+        @keyframes smoothZoomOutCover {
             0% {
-                transform: scale(1.15);
+                transform: scale(1.30);
             }
             100% {
-                transform: scale(0.85);
+                transform: scale(1.00);
             }
         }
 
@@ -85,19 +85,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: contain;
+            background-size: cover; /* Fixed: completely fills screen with zero black bars left/right */
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0;
             z-index: -998;
-            filter: brightness(1.7) contrast(1.4) saturate(1.35);
+            filter: brightness(1.7) contrast(1.4) saturate(1.35); /* Crystal clear image visibility */
             transition: opacity 1.5s ease-in-out;
         }
 
         .bg-slide.active {
             opacity: 1;
             z-index: -997;
-            animation: smoothZoomOut 15s linear infinite;
+            animation: smoothZoomOutCover 15s linear infinite;
         }
 
         .bg-ambient {
@@ -118,7 +118,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.02);
+            background: rgba(0, 0, 0, 0.01);
             z-index: -996;
             pointer-events: none;
         }
@@ -130,15 +130,15 @@
             left: 0;
             width: 100%;
             height: 60px;
-            background: rgba(0, 0, 128, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(0, 0, 128, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 2px solid var(--border-glass);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 4%;
+            padding: 0 3%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -154,7 +154,7 @@
             overflow-x: auto;
             white-space: nowrap;
             scrollbar-width: none;
-            max-width: 72vw;
+            max-width: 75vw;
         }
 
         nav::-webkit-scrollbar {
@@ -168,7 +168,7 @@
         }
 
         nav ul li button {
-            background: rgba(0, 0, 128, 0.3);
+            background: rgba(0, 0, 128, 0.35);
             border: 1px solid var(--border-glass);
             color: var(--text-muted);
             font-size: 0.75rem;
@@ -176,7 +176,7 @@
             padding: 5px 9px;
             border-radius: 6px;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             transition: all 0.25s ease;
         }
 
@@ -187,33 +187,33 @@
             box-shadow: 0 0 20px var(--border-glow);
         }
 
-        /* Single Page Strict Main Viewport */
+        /* Single Page Strict Main Viewport Expanded to Eliminate Side Gaps */
         main {
             position: absolute;
             top: 96px;
             left: 50%;
             transform: translateX(-50%);
-            width: 92%;
-            max-width: 880px;
+            width: 96%; /* Expanded width to fully utilize screen space */
+            max-width: 1100px; /* Wider professional workspace */
             height: calc(100vh - 106px);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Ultra-Transparent Glassy Panels with Solid Navy Blue Border */
+        /* High-Glassy Panels with Solid Navy Blue Border & High Background Transparency */
         .content-panel {
             position: absolute;
             width: 100%;
             height: 94%;
             max-height: calc(100vh - 110px);
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px); /* Reduced blur so background images remain sharply recognizable */
+            -webkit-backdrop-filter: blur(10px);
             border: 3px solid var(--border-glass);
             border-radius: 20px;
-            padding: 20px 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 128, 0.1), 0 0 25px rgba(0, 0, 128, 0.4);
+            padding: 22px 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 0, 128, 0.08), 0 0 25px rgba(0, 0, 128, 0.4);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -254,7 +254,7 @@
         }
 
         .hero-section h1 {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -262,7 +262,7 @@
         }
 
         .designation {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--accent-color);
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -272,36 +272,36 @@
         .engineering-quote {
             font-style: italic;
             color: var(--text-muted);
-            max-width: 600px;
-            font-size: 0.75rem;
-            line-height: 1.3;
+            max-width: 750px;
+            font-size: 0.77rem;
+            line-height: 1.35;
             border-left: 3px solid #000080;
-            padding-left: 10px;
-            background: rgba(0, 0, 128, 0.25);
-            backdrop-filter: blur(10px);
-            padding-top: 4px;
-            padding-bottom: 4px;
+            padding-left: 12px;
+            background: rgba(0, 0, 128, 0.2);
+            backdrop-filter: blur(8px);
+            padding-top: 5px;
+            padding-bottom: 5px;
             border-radius: 0 6px 6px 0;
             text-align: left;
         }
 
         .section-title {
-            font-size: 1.05rem;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
             gap: 10px;
             border-bottom: 2px solid var(--border-glass);
-            padding-bottom: 5px;
+            padding-bottom: 6px;
             font-weight: 700;
             text-shadow: 0 0 12px var(--accent-glow);
         }
 
         p, li {
             color: var(--text-muted);
-            line-height: 1.45;
-            font-size: 0.82rem;
+            line-height: 1.5;
+            font-size: 0.84rem;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
 
@@ -310,13 +310,13 @@
         }
 
         .experience-item, .project-item {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 0.92rem;
-            margin-bottom: 2px;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -324,26 +324,26 @@
         .date-badge {
             display: inline-block;
             background: rgba(0, 0, 128, 0.5);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
-            padding: 2px 7px;
+            padding: 2px 8px;
             border-radius: 8px;
-            font-size: 0.7rem;
-            margin-bottom: 3px;
+            font-size: 0.72rem;
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
         }
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 4px;
-            font-size: 0.82rem;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -351,16 +351,16 @@
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 5px;
         }
 
         .tag {
-            background: rgba(0, 0, 128, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 128, 0.35);
+            backdrop-filter: blur(8px);
             border: 1px solid var(--border-glass);
-            padding: 3px 7px;
+            padding: 4px 8px;
             border-radius: 5px;
-            font-size: 0.71rem;
+            font-size: 0.73rem;
             color: var(--text-main);
             font-weight: 500;
             transition: 0.2s;
@@ -380,21 +380,22 @@
             gap: 8px;
             background: linear-gradient(135deg, #000080 0%, #0000ff 100%);
             color: #fff;
-            padding: 8px 16px;
+            padding: 9px 18px;
             border-radius: 8px;
             font-weight: 800;
             text-decoration: none;
             box-shadow: 0 5px 20px var(--border-glow);
-            margin-top: 8px;
+            margin-top: 10px;
             font-size: 0.85rem;
         }
 
         @media(max-width: 768px) {
             nav {
-                max-width: 48vw;
+                max-width: 50vw;
             }
             .content-panel {
-                padding: 12px;
+                padding: 14px;
+                width: 98%;
                 height: 92%;
             }
             .hero-section h1 {
@@ -450,9 +451,9 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 2px;">
-                <h3 class="section-title" style="font-size: 0.85rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
-                <p style="font-size: 0.76rem; line-height: 1.38;">
+            <div style="width: 100%; text-align: left; margin-top: 4px;">
+                <h3 class="section-title" style="font-size: 0.9rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+                <p style="font-size: 0.79rem; line-height: 1.42;">
                     Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra. Proven expertise across the hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
                 </p>
             </div>
@@ -622,7 +623,7 @@
         </div>
     </main>
 
-    <!-- JavaScript for 57 Image Slideshow with Full Clarity and Zoom-Out -->
+    <!-- JavaScript for 57 Image Slideshow with Full Cover & Smooth Zoom-Out -->
     <script>
         const container = document.getElementById('slideshowContainer');
         const ambient = document.getElementById('ambientBg');
