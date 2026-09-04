@@ -43,12 +43,12 @@
             background: rgba(0, 0, 128, 0.45);
             border-bottom: 2px solid var(--border-glass);
             color: var(--accent-color);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             overflow: hidden;
             white-space: nowrap;
             z-index: 1001;
-            padding: 5px 0;
+            padding: 4px 0;
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
@@ -118,10 +118,10 @@
 
         header {
             position: fixed;
-            top: 30px;
+            top: 26px;
             left: 0;
             width: 100%;
-            height: 64px;
+            height: 56px;
             background: rgba(0, 0, 128, 0.35);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -129,28 +129,28 @@
             z-index: 1000;
             display: flex;
             align-items: center;
-            padding: 0 3%;
+            padding: 0 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
+            gap: 8px;
         }
 
         .logo {
-            font-size: 1.45rem;
-            font-weight: 900;
-            letter-spacing: 0.8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.3px;
             background: linear-gradient(135deg, #ffffff 30%, #00d2ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
             white-space: nowrap;
-            margin-right: 20px;
             z-index: 10;
             position: relative;
             background-color: rgba(0, 0, 128, 0.85);
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 5px 8px;
+            border-radius: 6px;
             border: 1px solid var(--border-glass);
             box-shadow: 0 0 20px rgba(0, 0, 128, 0.8);
+            flex-shrink: 0;
         }
 
         nav {
@@ -160,8 +160,9 @@
             scrollbar-width: none;
             position: relative;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         nav::-webkit-scrollbar {
@@ -171,20 +172,21 @@
         nav ul {
             display: inline-flex;
             list-style: none;
-            gap: 6px;
+            gap: 4px;
         }
 
         nav ul li button {
             background: rgba(0, 0, 128, 0.4);
             border: 1px solid var(--border-glass);
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            padding: 6px 11px;
-            border-radius: 6px;
+            padding: 5px 8px;
+            border-radius: 5px;
             cursor: pointer;
             backdrop-filter: blur(8px);
             transition: all 0.25s ease;
+            white-space: nowrap;
         }
 
         nav ul li button:hover, nav ul li button.active {
@@ -196,12 +198,12 @@
 
         main {
             position: absolute;
-            top: 100px;
+            top: 86px;
             left: 50%;
             transform: translateX(-50%);
-            width: 96%;
+            width: 98%;
             max-width: 1150px;
-            height: calc(100vh - 110px);
+            height: calc(100vh - 92px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -210,14 +212,14 @@
         .content-panel {
             position: absolute;
             width: 100%;
-            height: 94%;
-            max-height: calc(100vh - 115px);
+            height: 96%;
+            max-height: calc(100vh - 98px);
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 3px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 26px 36px;
+            border: 2px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 16px 20px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 0, 128, 0.08), 0 0 25px rgba(0, 0, 128, 0.4);
             opacity: 0;
             visibility: hidden;
@@ -226,7 +228,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .content-panel.active {
@@ -238,16 +240,17 @@
         .hero-section {
             align-items: center;
             text-align: center;
-            gap: 12px;
+            gap: 8px;
+            overflow-y: auto !important;
         }
 
         .profile-img-container {
-            width: 95px;
-            height: 95px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             border: 2px solid #000080;
             overflow: hidden;
-            box-shadow: 0 0 25px var(--border-glow);
+            box-shadow: 0 0 20px var(--border-glow);
             background: rgba(0, 0, 128, 0.3);
             flex-shrink: 0;
             display: flex;
@@ -262,7 +265,7 @@
         }
 
         .hero-section h1 {
-            font-size: 1.7rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -270,61 +273,61 @@
         }
 
         .designation {
-            font-size: 0.92rem;
+            font-size: 0.8rem;
             color: var(--accent-color);
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .engineering-quote {
             font-style: italic;
             color: var(--text-muted);
-            max-width: 850px;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            max-width: 100%;
+            font-size: 0.8rem;
+            line-height: 1.3;
             border-left: 3px solid #000080;
-            padding-left: 14px;
+            padding-left: 10px;
             background: rgba(0, 0, 128, 0.2);
             backdrop-filter: blur(8px);
-            padding-top: 6px;
-            padding-bottom: 6px;
+            padding-top: 4px;
+            padding-bottom: 4px;
             border-radius: 0 6px 6px 0;
             text-align: left;
         }
 
         .section-title {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             color: var(--accent-color);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             border-bottom: 2px solid var(--border-glass);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             font-weight: 700;
             text-shadow: 0 0 12px var(--accent-glow);
         }
 
         p, li {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 1.02rem;
+            line-height: 1.45;
+            font-size: 0.9rem;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
 
         ul {
-            padding-left: 20px;
+            padding-left: 16px;
         }
 
         .experience-item, .project-item {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 1.15rem;
-            margin-bottom: 4px;
+            font-size: 1rem;
+            margin-bottom: 3px;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -335,23 +338,23 @@
             backdrop-filter: blur(8px);
             color: var(--accent-color);
             border: 1px solid var(--border-glass);
-            padding: 3px 10px;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            margin-bottom: 5px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
         }
 
         .skill-category h4 {
             color: var(--text-main);
-            margin-bottom: 8px;
-            font-size: 1.02rem;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
@@ -359,16 +362,16 @@
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 7px;
+            gap: 6px;
         }
 
         .tag {
             background: rgba(0, 0, 128, 0.35);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-glass);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
             color: var(--text-main);
             font-weight: 500;
             transition: 0.2s;
@@ -385,26 +388,42 @@
         .resume-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #000080 0%, #0000ff 100%);
             color: #fff;
-            padding: 12px 22px;
-            border-radius: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
             font-weight: 800;
             text-decoration: none;
             box-shadow: 0 5px 20px var(--border-glow);
-            margin-top: 14px;
-            font-size: 1.05rem;
+            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
-        @media(max-width: 768px) {
-            .content-panel {
-                padding: 16px;
-                width: 98%;
-                height: 92%;
+        .scrollable-content {
+            max-height: calc(100vh - 170px);
+            overflow-y: auto;
+            padding-right: 4px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media(min-width: 1024px) {
+            .hero-section {
+                justify-content: center;
+                overflow-y: hidden !important;
+            }
+            .profile-img-container {
+                width: 95px;
+                height: 95px;
             }
             .hero-section h1 {
-                font-size: 1.3rem;
+                font-size: 1.7rem;
+            }
+            .designation {
+                font-size: 0.92rem;
+            }
+            .engineering-quote {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -427,7 +446,7 @@
             <ul id="navLinks">
                 <li><button onclick="showSection('about')" class="active" id="btn-about">About</button></li>
                 <li><button onclick="showSection('experience')" id="btn-experience">Experience</button></li>
-                <li><button onclick="showSection('responsibilities')" id="btn-responsibilities">Key Responsibilities Handled</button></li>
+                <li><button onclick="showSection('responsibilities')" id="btn-responsibilities">Key Responsibilities</button></li>
                 <li><button onclick="showSection('skills')" id="btn-skills">Skills</button></li>
                 <li><button onclick="showSection('tools')" id="btn-tools">Tools</button></li>
                 <li><button onclick="showSection('projects')" id="btn-projects">Projects</button></li>
@@ -451,9 +470,9 @@
             <div class="engineering-quote">
                 "Engineering excellence is not just about building complex systems, it is about bringing precision, resilience and operational harmony to the core"
             </div>
-            <div style="width: 100%; text-align: left; margin-top: 6px;">
-                <h3 class="section-title" style="font-size: 1.15rem; border: none; margin-bottom: 4px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
-                <p style="font-size: 0.98rem; line-height: 1.55;">
+            <div style="width: 100%; text-align: left; margin-top: 4px;">
+                <h3 class="section-title" style="font-size: 1rem; border: none; margin-bottom: 2px;"><i class="fa-solid fa-user"></i> ABOUT ME</h3>
+                <p style="font-size: 0.85rem; line-height: 1.4;">
                     Strategic and results-driven Senior Technical Lead Analyst with 17+ years of experience supporting tier-1 technology firms, including Intel and Tech Mahindra. Proven expertise across the hardware lifecycle — from component-level, high-precision board rework to enterprise project management and global supply chain operations. Specialized in multi-layer PCB layout analysis (10–12+ layers), 5G hardware architecture, advanced power profiling, multi-brand mobile device teardowns, and modern AI-tool integration. Skilled in optimizing lab workflows using ITIL frameworks, managing multi-million-dollar hardware assets, and leveraging GCP cloud infrastructure and Generative AI platforms to drive operational efficiency and scale. Proven track record of leading cross-functional teams of 300+ engineers with 100% audit and compliance accuracy.
                 </p>
             </div>
@@ -461,32 +480,34 @@
 
         <div id="experience" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-            <div class="experience-item">
-                <h3>Tech Mahindra</h3>
-                <span class="date-badge">June 2026 – Present</span>
-                <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
-            </div>
-            <div class="experience-item">
-                <h3>Tech Mahindra</h3>
-                <span class="date-badge">April 2025 – June 2026</span>
-                <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations and governance frameworks.</p>
-            </div>
-            <div class="experience-item">
-                <h3>UST Global — Intel Client Project</h3>
-                <span class="date-badge">2014 – 2025</span>
-                <p>Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up and board validations.</p>
-            </div>
-            <div class="experience-item">
-                <h3>Log-Us Business Systems</h3>
-                <span class="date-badge">2009 – 2014</span>
-                <p>System Engineer & Technical Team Lead</p>
+            <div class="scrollable-content">
+                <div class="experience-item">
+                    <h3>Tech Mahindra</h3>
+                    <span class="date-badge">June 2026 – Present</span>
+                    <p>Undergoing Technical Training and Advanced AI Applications / AI Accelerating Program</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Tech Mahindra</h3>
+                    <span class="date-badge">April 2025 – June 2026</span>
+                    <p>Technical Lead Analyst — Spearheaded global lab infrastructure operations and governance frameworks.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>UST Global — Intel Client Project</h3>
+                    <span class="date-badge">2014 – 2025</span>
+                    <p>Lab Admin, Senior Rework Engineer & Technical Team Lead — Handled silicon bring-up and board validations.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Log-Us Business Systems</h3>
+                    <span class="date-badge">2009 – 2014</span>
+                    <p>System Engineer & Technical Team Lead</p>
+                </div>
             </div>
         </div>
 
         <div id="responsibilities" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Key Responsibilities Handled</h2>
-            <div style="max-height: calc(100vh - 190px); overflow-y: auto; padding-right: 6px;">
-                <ul style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="scrollable-content">
+                <ul style="display: flex; flex-direction: column; gap: 8px;">
                     <li>Spearheaded global lab infrastructure operations, establishing rigorous governance models, compliance frameworks, and seamless hardware validation workflows.</li>
                     <li>Handled multiple leading smartphone brands including Apple iPhone, Google Pixel, OPPO, Realme, MI / Xiaomi; executed deep device teardowns, component-level rework, high-precision BGA soldering, micro-components handling, and advanced chip reballing activities.</li>
                     <li>Performed comprehensive debugging, hardware troubleshooting, performance benchmarking, and power analysis across diverse smartphone platforms.</li>
@@ -498,26 +519,28 @@
 
         <div id="skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Supported Brands</h4>
-                    <div class="tag-container">
-                        <span class="tag">Apple iPhone</span>
-                        <span class="tag">Google Pixel</span>
-                        <span class="tag">OPPO</span>
-                        <span class="tag">Realme</span>
-                        <span class="tag">MI / Xiaomi</span>
+            <div class="scrollable-content">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Supported Brands</h4>
+                        <div class="tag-container">
+                            <span class="tag">Apple iPhone</span>
+                            <span class="tag">Google Pixel</span>
+                            <span class="tag">OPPO</span>
+                            <span class="tag">Realme</span>
+                            <span class="tag">MI / Xiaomi</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Core Technical Skills</h4>
-                    <div class="tag-container">
-                        <span class="tag">Silicon Bring-Up</span>
-                        <span class="tag">Board Power-On</span>
-                        <span class="tag">Hardware Validation</span>
-                        <span class="tag">SMD/BGA Soldering</span>
-                        <span class="tag">Lab Infrastructure</span>
-                        <span class="tag">Thermal Management</span>
+                    <div class="skill-category">
+                        <h4>Core Technical Skills</h4>
+                        <div class="tag-container">
+                            <span class="tag">Silicon Bring-Up</span>
+                            <span class="tag">Board Power-On</span>
+                            <span class="tag">Hardware Validation</span>
+                            <span class="tag">SMD/BGA Soldering</span>
+                            <span class="tag">Lab Infrastructure</span>
+                            <span class="tag">Thermal Management</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -525,17 +548,19 @@
 
         <div id="tools" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Hardware & Measuring Equipment</h4>
-                    <div class="tag-container">
-                        <span class="tag">Oscilloscope</span>
-                        <span class="tag">Digital Multimeter (DMM)</span>
-                        <span class="tag">DAQ Systems</span>
-                        <span class="tag">DC Power Supply</span>
-                        <span class="tag">Logic Analyzers</span>
-                        <span class="tag">JTAG/Lauterbach</span>
-                        <span class="tag">Power Analyzer</span>
+            <div class="scrollable-content">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Hardware & Measuring Equipment</h4>
+                        <div class="tag-container">
+                            <span class="tag">Oscilloscope</span>
+                            <span class="tag">Digital Multimeter (DMM)</span>
+                            <span class="tag">DAQ Systems</span>
+                            <span class="tag">DC Power Supply</span>
+                            <span class="tag">Logic Analyzers</span>
+                            <span class="tag">JTAG/Lauterbach</span>
+                            <span class="tag">Power Analyzer</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -543,7 +568,7 @@
 
         <div id="projects" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
-            <div style="max-height: calc(100vh - 190px); overflow-y: auto; padding-right: 6px;">
+            <div class="scrollable-content">
                 <div class="project-item">
                     <h3>Intel & Apple Motherboard & SoC Bring-Up & Power-ON</h3>
                     <p>Successfully completed multiple complex Intel & Apple motherboard and SoC bring-up operations along with rigorous Power-ON validations.</p>
@@ -565,26 +590,30 @@
 
         <div id="ai-project" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-microchip"></i> AI Project & Innovations</h2>
-            <div class="project-item">
-                <h3>Generative AI & Automated Lab Workflows</h3>
-                <span class="date-badge">2026 Initiative</span>
-                <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols.</p>
+            <div class="scrollable-content">
+                <div class="project-item">
+                    <h3>Generative AI & Automated Lab Workflows</h3>
+                    <span class="date-badge">2026 Initiative</span>
+                    <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols.</p>
+                </div>
             </div>
         </div>
 
         <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-            <ul style="display: flex; flex-direction: column; gap: 8px;">
-                <li><strong>B.Sc. in IT</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
-                <li><strong>ITI – Electronics Mechanics</strong> — Gov. ITI, Kalaghatagi (1998 – 2000)</li>
-                <li><strong>NAC</strong> — BEL, Bangalore (2001 – 2002)</li>
-                <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
-            </ul>
+            <div class="scrollable-content">
+                <ul style="display: flex; flex-direction: column; gap: 8px;">
+                    <li><strong>B.Sc. in IT</strong> — Sikkim Manipal University, Bangalore (2010 – 2013)</li>
+                    <li><strong>ITI – Electronics Mechanics</strong> — Gov. ITI, Kalaghatagi (1998 – 2000)</li>
+                    <li><strong>NAC</strong> — BEL, Bangalore (2001 – 2002)</li>
+                    <li><strong>Hardware & Networking Certification</strong> (2008 – 2009)</li>
+                </ul>
+            </div>
         </div>
 
         <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
-            <div style="max-height: calc(100vh - 190px); overflow-y: auto; padding-right: 6px;">
+            <div class="scrollable-content">
                 <div class="tag-container">
                     <!-- AI & Generative AI -->
                     <span class="tag">Skill Nation AI Program</span>
@@ -614,20 +643,22 @@
 
         <div id="ai-skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
-            <div class="tag-container">
-                <span class="tag">Google AI Studio</span>
-                <span class="tag">Claude AI</span>
-                <span class="tag">ChatGPT / OpenAI</span>
-                <span class="tag">Google Gemini</span>
-                <span class="tag">NotebookLM</span>
-                <span class="tag">n8n Automation</span>
-                <span class="tag">Prompt Engineering</span>
+            <div class="scrollable-content">
+                <div class="tag-container">
+                    <span class="tag">Google AI Studio</span>
+                    <span class="tag">Claude AI</span>
+                    <span class="tag">ChatGPT / OpenAI</span>
+                    <span class="tag">Google Gemini</span>
+                    <span class="tag">NotebookLM</span>
+                    <span class="tag">n8n Automation</span>
+                    <span class="tag">Prompt Engineering</span>
+                </div>
             </div>
         </div>
 
         <div id="contact" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="scrollable-content" style="display: flex; flex-direction: column; gap: 8px;">
                 <p><strong>Location:</strong> Sarjapura, Bengaluru, India</p>
                 <p><strong>Phone:</strong> 9964375609</p>
                 <p><strong>Email:</strong> ramappa.hanagal@gmail.com</p>
@@ -637,10 +668,12 @@
 
         <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
-            <p style="margin-bottom: 14px;">Download the official professional CV document.</p>
-            <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
-                <i class="fa-solid fa-download"></i> Download Resume PDF
-            </a>
+            <div class="scrollable-content">
+                <p style="margin-bottom: 12px;">Download the official professional CV document.</p>
+                <a href="Ramappa_Hanagal_July-2026(1).pdf" class="resume-btn" download>
+                    <i class="fa-solid fa-download"></i> Download Resume PDF
+                </a>
+            </div>
         </div>
     </main>
 
