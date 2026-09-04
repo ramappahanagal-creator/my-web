@@ -450,10 +450,9 @@
                 <li><button onclick="showSection('skills')" id="btn-skills">Skills</button></li>
                 <li><button onclick="showSection('tools')" id="btn-tools">Tools</button></li>
                 <li><button onclick="showSection('projects')" id="btn-projects">Projects</button></li>
-                <li><button onclick="showSection('ai-project')" id="btn-ai-project" style="color:var(--accent-color); border-color:#000080;">AI Project</button></li>
+                <li><button onclick="showSection('ai-skill-projects')" id="btn-ai-skill-projects" style="color:var(--accent-color); border-color:#000080;">AI Skill & Projects</button></li>
                 <li><button onclick="showSection('education')" id="btn-education">Education</button></li>
                 <li><button onclick="showSection('certifications')" id="btn-certifications">Certifications</button></li>
-                <li><button onclick="showSection('ai-skills')" id="btn-ai-skills">AI Skills</button></li>
                 <li><button onclick="showSection('contact')" id="btn-contact">Contact</button></li>
                 <li><button onclick="showSection('resume')" id="btn-resume">Resume</button></li>
             </ul>
@@ -588,13 +587,28 @@
             </div>
         </div>
 
-        <div id="ai-project" class="content-panel">
-            <h2 class="section-title"><i class="fa-solid fa-microchip"></i> AI Project & Innovations</h2>
-            <div class="scrollable-content">
-                <div class="project-item">
-                    <h3>Generative AI & Automated Lab Workflows</h3>
-                    <span class="date-badge">2026 Initiative</span>
-                    <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols.</p>
+        <div id="ai-skill-projects" class="content-panel">
+            <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Skill & Projects</h2>
+            <div class="scrollable-content" style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1rem; margin-bottom: 6px; font-weight: 700;">AI Projects</h3>
+                    <div class="project-item">
+                        <h3>Generative AI & Automated Lab Workflows</h3>
+                        <span class="date-badge">2026 Initiative</span>
+                        <p>Architected custom AI integration pipelines leveraging LLMs, Google AI Studio, and n8n automation to optimize lab data logging, inventory control, and predictive maintenance protocols.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1rem; margin-bottom: 6px; font-weight: 700;">AI Skills</h3>
+                    <div class="tag-container">
+                        <span class="tag">Google AI Studio</span>
+                        <span class="tag">Claude AI</span>
+                        <span class="tag">ChatGPT / OpenAI</span>
+                        <span class="tag">Google Gemini</span>
+                        <span class="tag">NotebookLM</span>
+                        <span class="tag">n8n Automation</span>
+                        <span class="tag">Prompt Engineering</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -615,43 +629,21 @@
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
             <div class="scrollable-content">
                 <div class="tag-container">
-                    <!-- AI & Generative AI -->
                     <span class="tag">Skill Nation AI Program</span>
                     <span class="tag">Google Gen AI Courses</span>
                     <span class="tag">Tech Mahindra AI 101</span>
                     <span class="tag">ISO/IEC 42001:2023 AIMS Standard</span>
-                    
-                    <!-- IT, Project Management & Operations -->
                     <span class="tag">ITIL® 4 Foundation</span>
                     <span class="tag">PMP Training (35 Hours)</span>
                     <span class="tag">Future Leaders Program</span>
                     <span class="tag">Supply Chain Foundations</span>
-                    
-                    <!-- Electronics, Hardware & Networking -->
                     <span class="tag">FPGA Development Courses & Labs</span>
                     <span class="tag">Advanced Electronics Soldering & Rework</span>
                     <span class="tag">Computer Peripherals & Mainboard Troubleshooting</span>
-                    
-                    <!-- Additional Credentials -->
                     <span class="tag">Global Lab Infrastructure Governance & Compliance Modules</span>
                     <span class="tag">Mobile Device 5G Architecture & Teardown Specialist Badges</span>
                     <span class="tag">Silicon Bring-Up & Power Analysis Methodologies</span>
                     <span class="tag">Technical Workflow Automation & Enterprise Tooling Certifications</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="ai-skills" class="content-panel">
-            <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
-            <div class="scrollable-content">
-                <div class="tag-container">
-                    <span class="tag">Google AI Studio</span>
-                    <span class="tag">Claude AI</span>
-                    <span class="tag">ChatGPT / OpenAI</span>
-                    <span class="tag">Google Gemini</span>
-                    <span class="tag">NotebookLM</span>
-                    <span class="tag">n8n Automation</span>
-                    <span class="tag">Prompt Engineering</span>
                 </div>
             </div>
         </div>
