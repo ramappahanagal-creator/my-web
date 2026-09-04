@@ -12,9 +12,9 @@
             --accent-glow: rgba(255, 215, 0, 0.8);
             --text-main: #ffffff;
             --text-muted: #ffffff;
-            --glass-bg: rgba(0, 0, 0, 0.05); /* Ultra-transparent glass showcasing background images clearly */
-            --border-glass: #000080; /* Absolute Solid Navy Blue Border */
-            --border-glow: rgba(0, 0, 128, 0.9); /* Deep Navy Blue Glow */
+            --glass-bg: rgba(0, 0, 0, 0.05);
+            --border-glass: #000080;
+            --border-glow: rgba(0, 0, 128, 0.9);
         }
 
         * {
@@ -24,7 +24,6 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* HARD LOCK: Absolutely NO scrolling allowed on any device */
         html, body {
             width: 100vw;
             height: 100vh;
@@ -36,7 +35,6 @@
             color: var(--text-main);
         }
 
-        /* Moving Top Headline Banner */
         .top-marquee-container {
             position: fixed;
             top: 0;
@@ -58,7 +56,6 @@
             width: 100%;
         }
 
-        /* Background Slideshow Container with Full Cover & 25%-30% Zoom-Out Effect */
         .bg-slideshow {
             position: fixed;
             top: 0;
@@ -71,12 +68,8 @@
         }
 
         @keyframes smoothZoomOutCover {
-            0% {
-                transform: scale(1.30);
-            }
-            100% {
-                transform: scale(1.00);
-            }
+            0% { transform: scale(1.30); }
+            100% { transform: scale(1.00); }
         }
 
         .bg-slide {
@@ -123,7 +116,6 @@
             pointer-events: none;
         }
 
-        /* Top Professional Header & Navigation */
         header {
             position: fixed;
             top: 30px;
@@ -136,10 +128,10 @@
             border-bottom: 2px solid var(--border-glass);
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             padding: 0 3%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
 
         .logo {
@@ -148,13 +140,26 @@
             color: var(--accent-color);
             letter-spacing: 0.5px;
             text-shadow: 0 0 15px var(--accent-glow);
+            white-space: nowrap;
+            margin-right: 20px;
+            z-index: 10;
+            position: relative;
+            background: rgba(0, 0, 128, 0.85);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 0 20px rgba(0, 0, 128, 0.8);
         }
 
         nav {
+            flex-grow: 1;
             overflow-x: auto;
             white-space: nowrap;
             scrollbar-width: none;
-            max-width: 76vw;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            scroll-behavior: smooth;
         }
 
         nav::-webkit-scrollbar {
@@ -164,14 +169,14 @@
         nav ul {
             display: inline-flex;
             list-style: none;
-            gap: 5px;
+            gap: 6px;
         }
 
         nav ul li button {
             background: rgba(0, 0, 128, 0.4);
             border: 1px solid var(--border-glass);
             color: var(--text-muted);
-            font-size: 0.85rem; /* Increased button font size */
+            font-size: 0.85rem;
             font-weight: 600;
             padding: 6px 11px;
             border-radius: 6px;
@@ -187,7 +192,6 @@
             box-shadow: 0 0 20px var(--border-glow);
         }
 
-        /* Main Workspace Viewport */
         main {
             position: absolute;
             top: 100px;
@@ -201,7 +205,6 @@
             justify-content: center;
         }
 
-        /* Glassy Panels with Solid Navy Blue Border & Expanded Content Typography */
         .content-panel {
             position: absolute;
             width: 100%;
@@ -245,6 +248,9 @@
             box-shadow: 0 0 25px var(--border-glow);
             background: rgba(0, 0, 128, 0.3);
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-img-container img {
@@ -254,7 +260,7 @@
         }
 
         .hero-section h1 {
-            font-size: 1.7rem; /* Larger prominent title */
+            font-size: 1.7rem;
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -262,7 +268,7 @@
         }
 
         .designation {
-            font-size: 0.92rem; /* Larger designation font size */
+            font-size: 0.92rem;
             color: var(--accent-color);
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -273,7 +279,7 @@
             font-style: italic;
             color: var(--text-muted);
             max-width: 850px;
-            font-size: 0.9rem; /* Larger quote font size */
+            font-size: 0.9rem;
             line-height: 1.4;
             border-left: 3px solid #000080;
             padding-left: 14px;
@@ -286,7 +292,7 @@
         }
 
         .section-title {
-            font-size: 1.3rem; /* Larger section title font size */
+            font-size: 1.3rem;
             margin-bottom: 12px;
             color: var(--accent-color);
             display: flex;
@@ -301,7 +307,7 @@
         p, li {
             color: var(--text-muted);
             line-height: 1.6;
-            font-size: 1.02rem; /* Increased body text font size to fill empty space cleanly */
+            font-size: 1.02rem;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
         }
 
@@ -315,7 +321,7 @@
 
         .experience-item h3, .project-item h3 {
             color: var(--text-main);
-            font-size: 1.15rem; /* Larger item headers */
+            font-size: 1.15rem;
             margin-bottom: 4px;
             font-weight: 700;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
@@ -329,7 +335,7 @@
             border: 1px solid var(--border-glass);
             padding: 3px 10px;
             border-radius: 8px;
-            font-size: 0.82rem; /* Larger date badges */
+            font-size: 0.82rem;
             margin-bottom: 5px;
             font-weight: 600;
         }
@@ -358,9 +364,9 @@
             background: rgba(0, 0, 128, 0.35);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-glass);
-            padding: 6px 12px; /* Larger tag size */
+            padding: 6px 12px;
             border-radius: 6px;
-            font-size: 0.9rem; /* Larger tag text font size */
+            font-size: 0.9rem;
             color: var(--text-main);
             font-weight: 500;
             transition: 0.2s;
@@ -390,9 +396,6 @@
         }
 
         @media(max-width: 768px) {
-            nav {
-                max-width: 50vw;
-            }
             .content-panel {
                 padding: 16px;
                 width: 98%;
@@ -406,22 +409,19 @@
 </head>
 <body>
 
-    <!-- Moving Top Headline Banner -->
     <div class="top-marquee-container">
         <marquee behavior="scroll" direction="left" scrollamount="5">
             WELCOME TO RAMAPPA HANAGAL'S PROFESSIONAL PORTFOLIO &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; SPECIALIZED IN AI PROJECTS, LAB INFRASTRUCTURE & ADVANCED ENGINEERING &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; EXPLORE SECTIONS BELOW FOR DETAILED CREDENTIALS
         </marquee>
     </div>
 
-    <!-- Background Slideshow Container (1.jpg to 57.jpg) -->
     <div class="bg-slideshow" id="slideshowContainer"></div>
     <div class="bg-ambient" id="ambientBg"></div>
     <div class="bg-overlay"></div>
 
-    <!-- Navigation Bar -->
     <header>
         <div class="logo">RAMAPPA HANAGAL</div>
-        <nav>
+        <nav id="navScrollContainer">
             <ul id="navLinks">
                 <li><button onclick="showSection('about')" class="active" id="btn-about">About</button></li>
                 <li><button onclick="showSection('experience')" id="btn-experience">Experience</button></li>
@@ -439,12 +439,10 @@
         </nav>
     </header>
 
-    <!-- Main Container -->
     <main>
-        <!-- About Section -->
         <div id="about" class="content-panel hero-section active">
             <div class="profile-img-container">
-                <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.src='https://via.placeholder.com/150'">
+                <img src="my-photo.jpg" alt="Ramappa Hanagal" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
             </div>
             <h1>Ramappa Hanagal</h1>
             <div class="designation">SENIOR TECHNICAL LEAD ANALYST — LAB INFRASTRUCTURE & PROJECT MANAGEMENT OPERATIONS</div>
@@ -459,7 +457,6 @@
             </div>
         </div>
 
-        <!-- Experience Section -->
         <div id="experience" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
             <div class="experience-item">
@@ -484,7 +481,6 @@
             </div>
         </div>
 
-        <!-- Key Responsibilities Handled Section -->
         <div id="responsibilities" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Key Responsibilities Handled</h2>
             <div style="max-height: calc(100vh - 190px); overflow-y: auto; padding-right: 6px;">
@@ -498,7 +494,6 @@
             </div>
         </div>
 
-        <!-- Skills Section -->
         <div id="skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-gears"></i> Skills and Expertise</h2>
             <div class="skills-grid">
@@ -526,7 +521,6 @@
             </div>
         </div>
 
-        <!-- Tools Section -->
         <div id="tools" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-tools"></i> Tools and Technologies</h2>
             <div class="skills-grid">
@@ -545,7 +539,6 @@
             </div>
         </div>
 
-        <!-- Projects Section -->
         <div id="projects" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Projects and Achievements</h2>
             <div class="project-item">
@@ -558,7 +551,6 @@
             </div>
         </div>
 
-        <!-- AI Project Section -->
         <div id="ai-project" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-microchip"></i> AI Project & Innovations</h2>
             <div class="project-item">
@@ -568,7 +560,6 @@
             </div>
         </div>
 
-        <!-- Education Section -->
         <div id="education" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <ul style="display: flex; flex-direction: column; gap: 8px;">
@@ -579,7 +570,6 @@
             </ul>
         </div>
 
-        <!-- Certifications Section -->
         <div id="certifications" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Credentials</h2>
             <div class="tag-container">
@@ -590,7 +580,6 @@
             </div>
         </div>
 
-        <!-- AI Skills Section -->
         <div id="ai-skills" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-brain"></i> AI Tools & Generative AI Skills</h2>
             <div class="tag-container">
@@ -604,7 +593,6 @@
             </div>
         </div>
 
-        <!-- Contact Section -->
         <div id="contact" class="content-panel">
             <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Professional Details & Contact</h2>
             <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -615,7 +603,6 @@
             </div>
         </div>
 
-        <!-- Resume Section -->
         <div id="resume" class="content-panel" style="text-align: center;">
             <h2 class="section-title" style="justify-content: center;"><i class="fa-solid fa-file-arrow-down"></i> Resume Download</h2>
             <p style="margin-bottom: 14px;">Download the official professional CV document.</p>
@@ -625,7 +612,6 @@
         </div>
     </main>
 
-    <!-- JavaScript for 57 Image Slideshow with Full Cover & Smooth Zoom-Out -->
     <script>
         const container = document.getElementById('slideshowContainer');
         const ambient = document.getElementById('ambientBg');
@@ -655,7 +641,7 @@
         }
 
         if (slides.length > 1) {
-            setInterval(changeSlide, 15000); // Cycles smoothly through all 57 background images every 15 seconds
+            setInterval(changeSlide, 15000);
         }
 
         function showSection(sectionId) {
@@ -667,7 +653,25 @@
 
             document.getElementById(sectionId).classList.add('active');
             document.getElementById('btn-' + sectionId).classList.add('active');
+
+            // Automatically scroll the clicked option toward the left behind the name box
+            const selectedBtn = document.getElementById('btn-' + sectionId);
+            const nav = document.getElementById('navScrollContainer');
+            if (selectedBtn) {
+                nav.scrollTo({
+                    left: selectedBtn.offsetLeft - nav.offsetLeft - 20,
+                    behavior: 'smooth'
+                });
+            }
         }
+
+        const navContainer = document.getElementById('navScrollContainer');
+        navContainer.addEventListener('wheel', (evt) => {
+            if (evt.deltaY !== 0) {
+                evt.preventDefault();
+                navContainer.scrollLeft += evt.deltaY;
+            }
+        });
     </script>
 </body>
 </html>
